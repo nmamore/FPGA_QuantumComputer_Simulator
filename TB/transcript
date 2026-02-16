@@ -2,985 +2,63 @@
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
 # Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-vsim -gui work.tb_qc_sim_top
-# vsim -gui work.tb_qc_sim_top 
-# Start time: 14:21:24 on Feb 15,2026
-# Loading sv_std.std
-# Loading work.tb_qc_sim_top
-# ** Error: (vsim-3033) Instantiation of 'top_qc_sim' failed. The design unit was not found.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top File: C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv Line: 17
-#         Searched libraries:
-#             C:/work/FPGA_QuantumComputer_Simulator/TB/work
-# Error loading design
-# End time: 14:21:25 on Feb 15,2026, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 7
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-vsim -gui work.tb_qc_sim_top
-# vsim -gui work.tb_qc_sim_top 
-# Start time: 14:22:31 on Feb 15,2026
-# Loading sv_std.std
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.quantum_state_vector
-# Loading work.x_gate
-# ** Error (suppressible): (vsim-3389) Port 'clk_btn_ni' not found in the connected module (3rd connection).
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut File: C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv Line: 17
-# ** Error (suppressible): (vsim-12027) Array connection type 'wire[31:0]' is incompatible with 'reg[15:0]$[0:7]' for  port (re_i):  Can't mix packed and unpacked types.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut/init_state_vector File: C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 37
-# ** Error (suppressible): (vsim-12027) Array connection type 'wire[31:0]' is incompatible with 'reg[15:0]$[0:7]' for  port (im_i):  Can't mix packed and unpacked types.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut/init_state_vector File: C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 37
-# ** Error (suppressible): (vsim-3839) Variable '/tb_qc_sim_top/uut/init_sv_re', driven via a port connection, is multiply driven. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(37).
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut/init_state_vector File: C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 37
-# Error loading design
-# End time: 14:22:32 on Feb 15,2026, Elapsed time: 0:00:01
-# Errors: 4, Warnings: 2
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-vsim -gui work.tb_qc_sim_top
-# vsim -gui work.tb_qc_sim_top 
-# Start time: 14:28:01 on Feb 15,2026
-# Loading sv_std.std
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.quantum_state_vector
-# Loading work.x_gate
-# ** Error (suppressible): (vsim-12027) Array connection type 'wire[31:0]' is incompatible with 'reg[15:0]$[0:7]' for  port (re_i):  Can't mix packed and unpacked types.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut/init_state_vector File: C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 37
-# ** Error (suppressible): (vsim-12027) Array connection type 'wire[31:0]' is incompatible with 'reg[15:0]$[0:7]' for  port (im_i):  Can't mix packed and unpacked types.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut/init_state_vector File: C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 37
-# ** Error (suppressible): (vsim-3839) Variable '/tb_qc_sim_top/uut/init_sv_re', driven via a port connection, is multiply driven. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(37).
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut/init_state_vector File: C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 37
-# Error loading design
-# End time: 14:28:02 on Feb 15,2026, Elapsed time: 0:00:01
-# Errors: 3, Warnings: 2
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-vsim -gui work.tb_qc_sim_top
-# vsim -gui work.tb_qc_sim_top 
-# Start time: 14:32:35 on Feb 15,2026
-# Loading sv_std.std
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[0] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[0] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[1] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[1] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[2] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[2] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[3] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[3] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[4] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[4] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[5] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[5] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[6] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[6] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/im_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[7] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 24
-# ** Error (suppressible): (vsim-12003) Variable '/tb_qc_sim_top/uut/u0_x/re_i' written by continuous and procedural assignments. See C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/u0_x/genblk1[7] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/x_gate.sv Line: 23
-# Error loading design
-# End time: 14:32:36 on Feb 15,2026, Elapsed time: 0:00:01
-# Errors: 16, Warnings: 2
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv failed with 1 errors.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv failed with 1 errors.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-vsim -gui work.tb_qc_sim_top
-# vsim -gui work.tb_qc_sim_top 
-# Start time: 14:36:12 on Feb 15,2026
-# Loading sv_std.std
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/u0_sv_re \
-sim:/tb_qc_sim_top/uut/u0_sv_im \
-sim:/tb_qc_sim_top/uut/u0_re \
-sim:/tb_qc_sim_top/uut/u0_im \
-sim:/tb_qc_sim_top/uut/STATES \
-sim:/tb_qc_sim_top/uut/rst_ni \
-sim:/tb_qc_sim_top/uut/QUBITS \
-sim:/tb_qc_sim_top/uut/init_sv_re \
-sim:/tb_qc_sim_top/uut/init_sv_im \
-sim:/tb_qc_sim_top/uut/clk_i
-run -all
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-run -all
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# 4 compiles, 0 failed with no errors.
-restart -f
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-restart -f
-restart -f
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(34)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(35)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv failed with 2 errors.
-# 5 compiles, 1 failed with 2 errors.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# 5 compiles, 0 failed with no errors.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# 6 compiles, 0 failed with no errors.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv failed with 1 errors.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
 # 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/measure_sv/STATES \
-sim:/tb_qc_sim_top/uut/measure_sv/rst_ni \
-sim:/tb_qc_sim_top/uut/measure_sv/QUBITS \
-sim:/tb_qc_sim_top/uut/measure_sv/pseudo_rng_i \
-sim:/tb_qc_sim_top/uut/measure_sv/prob_windows \
-sim:/tb_qc_sim_top/uut/measure_sv/prob_i \
-sim:/tb_qc_sim_top/uut/measure_sv/measure_i \
-sim:/tb_qc_sim_top/uut/measure_sv/clk_i \
-sim:/tb_qc_sim_top/uut/measure_sv/cbits_o
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
 # Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
 # 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/prob_sv/STATES \
-sim:/tb_qc_sim_top/uut/prob_sv/re_i \
-sim:/tb_qc_sim_top/uut/prob_sv/QUBITS \
-sim:/tb_qc_sim_top/uut/prob_sv/prob_o \
-sim:/tb_qc_sim_top/uut/prob_sv/im_i
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
 # Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[1] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[2] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[3] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[4] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[5] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[6] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
-# ** Error (suppressible): (vsim-7033) Variable '/tb_qc_sim_top/uut/prob_sv/prob_o' driven in a combinational block, may not be driven by any other process. See C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv(22).
-#    Time: 0 ps  Iteration: 0  Region: /tb_qc_sim_top/uut/prob_sv/prob_sv[7] File: C:/work/FPGA_QuantumComputer_Simulator/RTL/probability.sv Line: 22
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
+do C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/wave.do
 restart -f
 # No Design Loaded!
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
 vsim -gui work.tb_qc_sim_top
 # vsim -gui work.tb_qc_sim_top 
-# Start time: 14:36:12 on Feb 15,2026
+# Start time: 22:15:11 on Feb 15,2026
 # Loading sv_std.std
 # Loading work.tb_qc_sim_top
 # Loading work.top_qc_sim
 # Loading work.x_gate
 # Loading work.quantum_state_vector
-# Loading work.lfsr
 # Loading work.probability
-# Loading work.measure
-add wave -position insertpoint sim:/tb_qc_sim_top/uut/*
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/u0_sv_re \
-sim:/tb_qc_sim_top/uut/u0_sv_im \
-sim:/tb_qc_sim_top/uut/u0_re \
-sim:/tb_qc_sim_top/uut/u0_im \
-sim:/tb_qc_sim_top/uut/STATES \
-sim:/tb_qc_sim_top/uut/rst_ni \
-sim:/tb_qc_sim_top/uut/QUBITS \
-sim:/tb_qc_sim_top/uut/pseudo_rng \
-sim:/tb_qc_sim_top/uut/prob_reg \
-sim:/tb_qc_sim_top/uut/init_sv_re \
-sim:/tb_qc_sim_top/uut/init_sv_im \
-sim:/tb_qc_sim_top/uut/clk_i \
-sim:/tb_qc_sim_top/uut/cbits
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/prob_sv/STATES \
-sim:/tb_qc_sim_top/uut/prob_sv/re_i \
-sim:/tb_qc_sim_top/uut/prob_sv/QUBITS \
-sim:/tb_qc_sim_top/uut/prob_sv/prob_o \
-sim:/tb_qc_sim_top/uut/prob_sv/im_i
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/measure_sv/STATES \
-sim:/tb_qc_sim_top/uut/measure_sv/rst_ni \
-sim:/tb_qc_sim_top/uut/measure_sv/QUBITS \
-sim:/tb_qc_sim_top/uut/measure_sv/pseudo_rng_i \
-sim:/tb_qc_sim_top/uut/measure_sv/prob_windows \
-sim:/tb_qc_sim_top/uut/measure_sv/prob_i \
-sim:/tb_qc_sim_top/uut/measure_sv/measure_i \
-sim:/tb_qc_sim_top/uut/measure_sv/clk_i \
-sim:/tb_qc_sim_top/uut/measure_sv/cbits_o
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
+# Loading work.probability_weights
 # Loading work.lfsr
-# Loading work.probability
 # Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
+do C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/wave.do
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/measure_sv/prob_i'.
+# Executing ONERROR command at macro C:\work\GitHub\FPGA_QuantumComputer_Simulator\FPGA_QuantumComputer_Simulator\TB\wave.do line 34
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/measure_sv/prob_windows'.
+# Executing ONERROR command at macro C:\work\GitHub\FPGA_QuantumComputer_Simulator\FPGA_QuantumComputer_Simulator\TB\wave.do line 35
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
 run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
 #    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv failed with 1 errors.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv failed with 1 errors.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv failed with 2 errors.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 2 errors.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv failed with 2 errors.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 2 errors.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/prob_sv/test_reg
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-add wave -position insertpoint sim:/tb_qc_sim_top/uut/*
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/fpga_rst_n \
-sim:/tb_qc_sim_top/fpga_clk
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/u0_sv_re \
-sim:/tb_qc_sim_top/uut/u0_sv_im \
-sim:/tb_qc_sim_top/uut/u0_re \
-sim:/tb_qc_sim_top/uut/u0_im \
-sim:/tb_qc_sim_top/uut/STATES \
-sim:/tb_qc_sim_top/uut/rst_ni \
-sim:/tb_qc_sim_top/uut/QUBITS \
-sim:/tb_qc_sim_top/uut/pseudo_rng \
-sim:/tb_qc_sim_top/uut/prob_reg \
-sim:/tb_qc_sim_top/uut/init_sv_re \
-sim:/tb_qc_sim_top/uut/init_sv_im \
-sim:/tb_qc_sim_top/uut/clk_i \
-sim:/tb_qc_sim_top/uut/cbits
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/u0_x/STATES \
-sim:/tb_qc_sim_top/uut/u0_x/re_o \
-sim:/tb_qc_sim_top/uut/u0_x/re_i \
-sim:/tb_qc_sim_top/uut/u0_x/QUBITS \
-sim:/tb_qc_sim_top/uut/u0_x/im_o \
-sim:/tb_qc_sim_top/uut/u0_x/im_i \
-sim:/tb_qc_sim_top/uut/u0_x/bitmask_i
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/u0_state_vector/wr_en_i \
-sim:/tb_qc_sim_top/uut/u0_state_vector/STATES \
-sim:/tb_qc_sim_top/uut/u0_state_vector/rst_ni \
-sim:/tb_qc_sim_top/uut/u0_state_vector/re_o \
-sim:/tb_qc_sim_top/uut/u0_state_vector/re_i \
-sim:/tb_qc_sim_top/uut/u0_state_vector/QUBITS \
-sim:/tb_qc_sim_top/uut/u0_state_vector/im_o \
-sim:/tb_qc_sim_top/uut/u0_state_vector/im_i \
-sim:/tb_qc_sim_top/uut/u0_state_vector/clk_i
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/rng_gen/rst_ni \
-sim:/tb_qc_sim_top/uut/rng_gen/pseudo_rng_q \
-sim:/tb_qc_sim_top/uut/rng_gen/pseudo_rng_o \
-sim:/tb_qc_sim_top/uut/rng_gen/parity \
-sim:/tb_qc_sim_top/uut/rng_gen/clk_i
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/prob_sv/test_reg \
-sim:/tb_qc_sim_top/uut/prob_sv/STATES \
-sim:/tb_qc_sim_top/uut/prob_sv/re_i \
-sim:/tb_qc_sim_top/uut/prob_sv/QUBITS \
-sim:/tb_qc_sim_top/uut/prob_sv/prob_o \
-sim:/tb_qc_sim_top/uut/prob_sv/im_i
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/measure_sv/STATES \
-sim:/tb_qc_sim_top/uut/measure_sv/rst_ni \
-sim:/tb_qc_sim_top/uut/measure_sv/QUBITS \
-sim:/tb_qc_sim_top/uut/measure_sv/pseudo_rng_i \
-sim:/tb_qc_sim_top/uut/measure_sv/prob_windows \
-sim:/tb_qc_sim_top/uut/measure_sv/prob_i \
-sim:/tb_qc_sim_top/uut/measure_sv/measure_i \
-sim:/tb_qc_sim_top/uut/measure_sv/clk_i \
-sim:/tb_qc_sim_top/uut/measure_sv/cbits_o
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/work/FPGA_QuantumComputer_Simulator/TB/wave.do
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-run -all
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv failed with 1 errors.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv failed with 1 errors.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-# Warning in wave window restart: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/prob_sv/test_reg'. 
-add wave -position insertpoint  \
-sim:/tb_qc_sim_top/uut/prob_sv/temp_reg
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/work/FPGA_QuantumComputer_Simulator/TB/wave.do
-restart -f
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv failed with 1 errors.
-# 7 compiles, 1 failed with 1 error.
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_re_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(39)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 9 of file "../TB/sv_im_init.hex". (Current address [8], address range [0:7])    : C:/work/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv(40)
-#    Time: 0 ps  Iteration: 0  Instance: /tb_qc_sim_top/uut
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# Compile of quantum_state_vector.sv was successful with warnings.
-# Compile of top_qc_sim.sv was successful.
-# Compile of x_gate.sv was successful with warnings.
-# Compile of tb_qc_sim_top.sv was successful.
-# Compile of lfsr.sv was successful with warnings.
-# Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-restart -f
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.x_gate
-# Loading work.quantum_state_vector
-# Loading work.lfsr
-# Loading work.probability
-# Loading work.measure
-run -all
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
-#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
+sim:/tb_qc_sim_top/uut/prob_weights_sv/QUBITS \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/STATES \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/clk_i \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/rst_ni \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/wr_en_i \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/prob_i \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o \
+sim:/tb_qc_sim_top/uut/prob_weights_sv/prob_windows
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/wave.do
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
@@ -988,23 +66,36 @@ run -all
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # Loading work.tb_qc_sim_top
 # Loading work.top_qc_sim
 # Loading work.x_gate
 # Loading work.quantum_state_vector
-# Loading work.lfsr
 # Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
 # Loading work.measure
 run -all
 # GetModuleFileName: The specified module could not be found.
 # 
 # 
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
 #    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
+add wave -position 46  sim:/tb_qc_sim_top/uut/measure_sv/measure_i
+add wave -position 47  sim:/tb_qc_sim_top/uut/measure_sv/prob_windows_i
+add wave -position 48  sim:/tb_qc_sim_top/uut/measure_sv/cbits_temp
+restart -f
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
@@ -1012,23 +103,26 @@ run -all
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # Loading work.tb_qc_sim_top
 # Loading work.top_qc_sim
 # Loading work.x_gate
 # Loading work.quantum_state_vector
-# Loading work.lfsr
 # Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
 # Loading work.measure
+# Warning in wave window restart: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/measure_sv/cbits_temp'. 
 run -all
 # GetModuleFileName: The specified module could not be found.
 # 
 # 
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
 #    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
@@ -1036,24 +130,52 @@ run -all
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
 restart -f
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # Loading work.tb_qc_sim_top
 # Loading work.top_qc_sim
 # Loading work.x_gate
 # Loading work.quantum_state_vector
-# Loading work.lfsr
 # Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
+# Loading work.measure
+add wave -position 56  sim:/tb_qc_sim_top/uut/measure_sv/flag_found
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of x_gate.sv was successful with warnings.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_qc_sim_top
+# Loading work.top_qc_sim
+# Loading work.x_gate
+# Loading work.quantum_state_vector
+# Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
 # Loading work.measure
 run -all
 # GetModuleFileName: The specified module could not be found.
 # 
 # 
-# ** Note: $stop    : C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
 #    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
-# Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
-# WARNING: No extended dataflow license exists
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
@@ -1061,15 +183,34 @@ run -all
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_qc_sim_top
+# Loading work.top_qc_sim
+# Loading work.x_gate
+# Loading work.quantum_state_vector
+# Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
+# Loading work.measure
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
 # Compile of tb_qc_sim_top.sv was successful.
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
-# Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
+# Compile of measure.sv failed with 2 errors.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 1 failed with 2 errors.
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
@@ -1077,7 +218,17 @@ run -all
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv failed with 1 errors.
-# 7 compiles, 1 failed with 1 error.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 1 failed with 1 error.
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of x_gate.sv was successful with warnings.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv failed with 1 errors.
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 1 failed with 1 error.
 # Compile of quantum_state_vector.sv was successful with warnings.
 # Compile of top_qc_sim.sv was successful.
 # Compile of x_gate.sv was successful with warnings.
@@ -1085,6 +236,26 @@ run -all
 # Compile of lfsr.sv was successful.
 # Compile of probability.sv was successful with warnings.
 # Compile of measure.sv was successful with warnings.
-# 7 compiles, 0 failed with no errors.
-# End time: 21:25:06 on Feb 15,2026, Elapsed time: 6:48:54
-# Errors: 0, Warnings: 6
+# Compile of probability_weights.sv was successful with warnings.
+# 8 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_qc_sim_top
+# Loading work.top_qc_sim
+# Loading work.x_gate
+# Loading work.quantum_state_vector
+# Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
+# Loading work.measure
+# Warning in wave window restart: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/measure_sv/flag_found'. 
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(40)
+#    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/wave.do
+# End time: 22:59:19 on Feb 15,2026, Elapsed time: 0:44:08
+# Errors: 0, Warnings: 1

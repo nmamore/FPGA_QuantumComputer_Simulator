@@ -32,6 +32,7 @@ logic [15:0] u0_sv_im [0:STATES-1];
 logic [15:0] pseudo_rng;
 
 logic [15:0] prob_reg [0:STATES-1];
+logic [15:0] prob_weight_reg [0:STATES-1];
 
 logic [QUBITS-1:0] cbits;
 
@@ -65,33 +66,41 @@ quantum_state_vector # (
   
 );
 
+probability #(
+  .QUBITS(3)
+) prob_sv (
+  .clk_i(clk_i),
+  .rst_ni(rst_ni),
+  .wr_en_i(1'b1),
+  .re_i(u0_sv_re),
+  .im_i(u0_sv_im),
+  .prob_o(prob_reg)
+);
+
+probability_weights #(
+  .QUBITS(3)
+) prob_weights_sv (
+  .clk_i(clk_i),
+  .rst_ni(rst_ni),
+  .wr_en_i(1'b1),
+  .prob_i(prob_reg),
+  .prob_weight_o(prob_weight_reg)
+);
+
 lfsr rng_gen (
   .clk_i(clk_i),
   .rst_ni(rst_ni),
   .pseudo_rng_o(pseudo_rng)
 );
 
-probability #(
-  .QUBITS(3)
-) prob_sv (
-  .re_i(u0_sv_re),
-  .im_i(u0_sv_im),
-  
-  .prob_o(prob_reg)
-);
-
-
 measure #(
   .QUBITS(3)
 ) measure_sv (
   .clk_i(clk_i),
   .rst_ni(rst_ni),
-  
-  .prob_i(prob_reg),
-  .pseudo_rng_i({1'b0,pseudo_rng[14:0]}),
-  
   .measure_i(1'b1),
-  
+  .prob_windows_i(prob_weight_reg),
+  .pseudo_rng_i({2'b00,pseudo_rng[13:0]}),
   .cbits_o(cbits)
 );
 

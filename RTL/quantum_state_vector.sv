@@ -5,45 +5,42 @@
 * @date Created 1/10/2026
 */
 
-module quantum_state_vector (
+`timescale 1ns/1ps
+
+module quantum_state_vector #(
+  parameter QUBITS = 3
+)(
   input logic         clk_i,
   input logic         rst_ni,
   input logic         wr_en_i,
   
-  input logic  [17:0] alpha_re_i,
-  input logic  [17:0] alpha_im_i,
-  input logic  [17:0] beta_re_i,
-  input logic  [17:0] beta_im_i,
+  input logic  [15:0] re_i [0:(2**QUBITS)-1],
+  input logic  [15:0] im_i [0:(2**QUBITS)-1],
   
-  output logic [17:0] alpha_re_o,
-  output logic [17:0] alpha_im_o,
-  output logic [17:0] beta_re_o,
-  output logic [17:0] beta_im_o
+  output logic [15:0] re_o [0:(2**QUBITS)-1],
+  output logic [15:0] im_o [0:(2**QUBITS)-1]
   
 );
 
-logic [17:0] alpha_re_q;
-logic [17:0] alpha_im_q;
-logic [17:0] beta_re_q;
-logic [17:0] beta_im_q;
+localparam STATES = 2**QUBITS;
 
-always_ff @(posedge clk_i or negedge rst_ni) begin
-  if (!rst_ni) begin
-    alpha_re_q <= 18'h10000;
-    alpha_im_q <= 18'h00000;
-    beta_re_q  <= 18'h00000;
-    beta_im_q  <= 18'h00000;
-  end else if (wr_en_i) begin
-    alpha_re_q <= alpha_re_i;
-    alpha_im_q <= alpha_im_i;
-    beta_re_q  <= beta_re_i;
-    beta_im_q  <= beta_im_i;
+for (genvar i = 0; i < STATES; i++) begin: qsv_flip_flops
+
+  logic [15:0] re_q;
+  logic [15:0] im_q;
+
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      re_q <= 'h0;
+      im_q <= 'h0;
+    end else if (wr_en_i) begin
+      re_q <= re_i[i];
+      im_q <= im_i[i];
+    end
   end
+
+  assign re_o[i] = re_q;
+  assign im_o[i] = im_q;
+
 end
-
-assign alpha_re_o = alpha_re_q;
-assign alpha_im_o = alpha_im_q;
-assign beta_re_o =  beta_re_q;
-assign beta_im_o =  beta_im_q;
-
 endmodule

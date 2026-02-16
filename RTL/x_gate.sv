@@ -5,23 +5,22 @@
 * @date Created 1/10/2026
 */
 
-module x_gate (
-  input logic  [17:0] alpha_re_i,
-  input logic  [17:0] alpha_im_i,
-  input logic  [17:0] beta_re_i,
-  input logic  [17:0] beta_im_i,
+module x_gate #(
+  parameter QUBITS = 3
+)(
+  input logic  [QUBITS-1:0] bitmask_i,
+  input logic  [15:0] re_i [0:(2**QUBITS)-1],
+  input logic  [15:0] im_i [0:(2**QUBITS)-1],
   
-  output logic [17:0] alpha_re_o,
-  output logic [17:0] alpha_im_o,
-  output logic [17:0] beta_re_o,
-  output logic [17:0] beta_im_o
+  output logic [15:0] re_o [0:(2**QUBITS)-1],
+  output logic [15:0] im_o [0:(2**QUBITS)-1]
 );
 
-//Coefficients for the input vector are swapped
-//Alpha maps to Beta and Beta maps to alpha
-assign alpha_re_o = beta_re_i;
-assign alpha_im_o = beta_im_i;
-assign beta_re_o  = alpha_re_i;
-assign beta_im_o  = alpha_im_i;
+localparam STATES = 2**QUBITS;
+
+for (genvar i = 0; i < STATES; i++) begin
+  assign re_o[i] = re_i[i^bitmask_i];
+  assign im_o[i] = im_i[i^bitmask_i];
+end
 
 endmodule

@@ -1054,3 +1054,37 @@ run -all
 #    Time: 10200 ns  Iteration: 0  Instance: /tb_qc_sim_top
 # Break in Module tb_qc_sim_top at C:/work/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 40
 # WARNING: No extended dataflow license exists
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of x_gate.sv was successful with warnings.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# 7 compiles, 0 failed with no errors.
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of x_gate.sv was successful with warnings.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# 7 compiles, 0 failed with no errors.
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of x_gate.sv was successful with warnings.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv failed with 1 errors.
+# 7 compiles, 1 failed with 1 error.
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of x_gate.sv was successful with warnings.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# 7 compiles, 0 failed with no errors.
+# End time: 21:25:06 on Feb 15,2026, Elapsed time: 6:48:54
+# Errors: 0, Warnings: 6

@@ -19,8 +19,10 @@ module x_gate #(
 localparam STATES = 2**QUBITS;
 
 for (genvar i = 0; i < STATES; i++) begin
+
   assign re_o[i] = re_i[i^bitmask_i];
   assign im_o[i] = im_i[i^bitmask_i];
+
 end
 
 endmodule

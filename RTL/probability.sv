@@ -21,7 +21,11 @@ localparam STATES = 2**QUBITS;
 
 logic signed [31:0] temp_reg [0:(2**QUBITS)-1];
 
-for (genvar i = 0; i < STATES; i++) begin: prob_sv
+genvar i;
+
+generate
+
+for (i = 0; i < STATES; i++) begin: prob_sv
   
   logic signed [15:0] prob_q;
   
@@ -31,12 +35,12 @@ for (genvar i = 0; i < STATES; i++) begin: prob_sv
     if (!rst_ni) begin
       prob_q <= 'h0;
     end else if (wr_en_i) begin
-      prob_q <= temp_reg[i];
+      prob_q <= temp_reg[i][15:0];
     end
   end
   
   assign prob_o[i] = prob_q;
   
 end
-
+endgenerate
 endmodule

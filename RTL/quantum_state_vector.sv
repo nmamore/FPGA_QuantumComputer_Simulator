@@ -24,7 +24,11 @@ module quantum_state_vector #(
 
 localparam STATES = 2**QUBITS;
 
-for (genvar i = 0; i < STATES; i++) begin: qsv_flip_flops
+genvar i;
+
+generate
+
+for (i = 0; i < STATES; i++) begin: qsv_flip_flops
 
   logic signed [15:0] re_q;
   logic signed [15:0] im_q;
@@ -43,4 +47,7 @@ for (genvar i = 0; i < STATES; i++) begin: qsv_flip_flops
   assign im_o[i] = im_q;
 
 end
+
+endgenerate
+
 endmodule

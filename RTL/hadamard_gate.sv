@@ -7,6 +7,7 @@
 
 module hadamard_gate #(
   parameter int QUBITS = 3,
+  parameter int GATES  = 1,
   parameter int BITMASK = 7
 ) (
   input logic signed [15:0] re_i [0:(2**QUBITS)-1],
@@ -17,13 +18,12 @@ module hadamard_gate #(
 );
 
 localparam int STATES = 2**QUBITS;
-localparam int GATES  = $countones(BITMASK);
-localparam int COEFF  = $floor((1.0/(2.0**(GATES/2.0))) * (2**14));
+//localparam int COEFF  = $floor((1.0/(2.0**(GATES/2.0))) * (2**14));
 
 logic signed [31:0] re_temp [0:(2**QUBITS)-1];
 logic signed [31:0] im_temp [0:(2**QUBITS)-1];
 
-logic signed [15:0] sqrt_2_n = COEFF;
+logic signed [15:0] sqrt_2_n = 16'h2D41;
 
 always_comb begin
   if (BITMASK == 0) begin
@@ -165,11 +165,17 @@ always_comb begin
   end
 end
 
-for (genvar i = 0; i < STATES; i++) begin
+genvar i;
+
+generate
+
+for (i = 0; i < STATES; i++) begin: gen_hadamard
 
   assign re_o[i] = re_temp[i][15:0];
   assign im_o[i] = im_temp[i][15:0];
 
 end
+
+endgenerate
 
 endmodule

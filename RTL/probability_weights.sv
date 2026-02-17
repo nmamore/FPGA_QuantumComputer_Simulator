@@ -21,12 +21,20 @@ localparam STATES = 2**QUBITS;
 logic signed [31:0] prob_windows [0:(2**QUBITS)-1];
 
 assign prob_windows[0] = prob_i[0];
-  
-for (genvar i = 1; i < STATES; i++) begin: prob_window
+
+genvar i;
+
+generate
+
+for (i = 1; i < STATES; i++) begin: prob_window
   assign prob_windows[i] = prob_i[i] + prob_windows[i-1];
 end
 
-for (genvar i = 0; i < STATES; i++) begin: prob_weight_sv
+endgenerate
+
+generate
+
+for (i = 0; i < STATES; i++) begin: prob_weight_sv
   
   logic signed [15:0] prob_weight_q;
   
@@ -34,11 +42,12 @@ for (genvar i = 0; i < STATES; i++) begin: prob_weight_sv
     if (!rst_ni) begin
       prob_weight_q <= 'h0;
     end else if (wr_en_i) begin
-      prob_weight_q <= prob_windows[i];
+      prob_weight_q <= prob_windows[i][15:0];
     end
   end
   
   assign prob_weight_o[i] = prob_weight_q;
 end
 
+endgenerate
 endmodule

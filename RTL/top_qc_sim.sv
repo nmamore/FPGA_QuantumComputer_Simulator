@@ -11,7 +11,10 @@ module top_qc_sim #(
   parameter QUBITS = 3
 )(
   input clk_i,
-  input rst_ni
+  input rst_ni,
+  input measure_ni,
+  
+  output [7:0] hex_0_o
 
 );
 
@@ -65,6 +68,9 @@ logic signed [15:0] u6_sv_im [0:STATES-1];
 
 //General Signals
 
+logic sync_measure_n;
+logic sync_rst_n;
+
 logic signed [15:0] pseudo_rng;
 
 logic signed [15:0] prob_reg [0:STATES-1];
@@ -79,7 +85,8 @@ end
 
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(4)
+  .BITMASK(4),
+  .GATES(1)
 ) u0_h_q2 (
   .re_i(init_sv_re),
   .im_i(init_sv_im),
@@ -92,7 +99,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u0_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u0_re),
@@ -116,7 +123,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u1_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u1_re),
@@ -140,7 +147,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u2_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u2_re),
@@ -151,7 +158,8 @@ quantum_state_vector # (
 
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(2)
+  .BITMASK(2),
+  .GATES(1)
 ) u3_h_q1 (
   .re_i(u2_sv_re),
   .im_i(u2_sv_im),
@@ -164,7 +172,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u3_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u3_re),
@@ -188,7 +196,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u4_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u4_re),
@@ -199,7 +207,8 @@ quantum_state_vector # (
 
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(1)
+  .BITMASK(1),
+  .GATES(1)
 ) u5_h_q0 (
   .re_i(u4_sv_re),
   .im_i(u4_sv_im),
@@ -212,7 +221,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u5_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u5_re),
@@ -236,7 +245,7 @@ quantum_state_vector # (
   .QUBITS(3)
 ) u6_state_vector (
   .clk_i      (clk_i),
-  .rst_ni     (rst_ni),
+  .rst_ni     (sync_rst_n),
   .wr_en_i    (1'b1),
   
   .re_i (u6_re),
@@ -250,7 +259,7 @@ probability #(
   .QUBITS(3)
 ) prob_sv (
   .clk_i(clk_i),
-  .rst_ni(rst_ni),
+  .rst_ni(sync_rst_n),
   .wr_en_i(1'b1),
   .re_i(u6_sv_re),
   .im_i(u6_sv_im),
@@ -261,7 +270,7 @@ probability_weights #(
   .QUBITS(3)
 ) prob_weights_sv (
   .clk_i(clk_i),
-  .rst_ni(rst_ni),
+  .rst_ni(sync_rst_n),
   .wr_en_i(1'b1),
   .prob_i(prob_reg),
   .prob_weight_o(prob_weight_reg)
@@ -269,7 +278,7 @@ probability_weights #(
 
 lfsr rng_gen (
   .clk_i(clk_i),
-  .rst_ni(rst_ni),
+  .rst_ni(sync_rst_n),
   .pseudo_rng_o(pseudo_rng)
 );
 
@@ -277,11 +286,28 @@ measure #(
   .QUBITS(3)
 ) measure_sv (
   .clk_i(clk_i),
-  .rst_ni(rst_ni),
-  .measure_i(1'b1),
+  .rst_ni(sync_rst_n),
+  .measure_i(!sync_measure_n),
   .prob_windows_i(prob_weight_reg),
   .pseudo_rng_i({2'b00,pseudo_rng[13:0]}),
   .cbits_o(cbits)
+);
+
+sync rst_sync (
+  .clk_i  (clk_i),
+  .async_i(rst_ni),
+  .sync_o (sync_rst_n)
+);
+
+sync clk_btn_sync (
+  .clk_i  (clk_i),
+  .async_i(measure_ni),
+  .sync_o (sync_measure_n)
+);
+
+sev_seg_display hex0 (
+  .dat_i      ({1'b0, cbits}),
+  .seven_seg_o(hex_0_o)
 );
 
 endmodule

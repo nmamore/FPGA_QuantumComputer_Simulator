@@ -93,11 +93,16 @@ always_comb begin
   end
 end
 
-for (genvar i = 0; i < STATES; i++) begin
+genvar i;
+
+generate
+
+for (i = 0; i < STATES; i++) begin: gen_rot_pi4
 
   assign re_o[i] = re_temp[i][15:0];
   assign im_o[i] = im_temp[i][15:0];
 
 end
+endgenerate
 
 endmodule

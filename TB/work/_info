@@ -11,24 +11,24 @@ cModel Technology
 dC:/intelFPGA/20.1
 vhadamard_gate
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 !s110 1771299530
+Z1 !s110 1771303114
 !i10b 1
-!s100 >j9UfI?nVW;<860a>WEZl0
+!s100 bG?_Y8>GdoE6[dAS2AG202
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-II88i6W0nL6baNmTm:Nb7_1
+IQlMXQc[lgna0nLJA94W1P3
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 S1
 Z4 dC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB
-w1771289160
+w1771302888
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/hadamard_gate.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/hadamard_gate.sv
-!i122 708
-L0 8 168
+!i122 768
+L0 8 174
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1771299530.000000
+Z6 !s108 1771303114.000000
 !s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/hadamard_gate.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/hadamard_gate.sv|
 !i113 1
@@ -47,7 +47,7 @@ R4
 w1771288869
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/lfsr.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/lfsr.sv
-!i122 704
+!i122 764
 L0 10 24
 R5
 r1
@@ -69,10 +69,10 @@ Ilehh>eH0VGiR8SLS911702
 R3
 S1
 R4
-Z9 w1771289073
+w1771289073
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/measure.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/measure.sv
-!i122 706
+!i122 766
 L0 8 40
 R5
 r1
@@ -88,17 +88,17 @@ vprobability
 R0
 R1
 !i10b 1
-!s100 cWXc_<1<@g7MeceKC7ACW3
+!s100 GzE[EbHTQ1iG9WfTSPc^=3
 R2
-INOi8K5R`b]3;O<>`0e[DO0
+I5kOlSf`Z@jJH<VRZ^9hz00
 R3
 S1
 R4
-w1771288809
+w1771303090
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/probability.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/probability.sv
-!i122 705
-L0 8 35
+!i122 765
+L0 8 39
 R5
 r1
 !s85 0
@@ -113,17 +113,17 @@ vprobability_weights
 R0
 R1
 !i10b 1
-!s100 BXf;z5;0K?Y`UO>H2khTc1
+!s100 GC3J@M:QX`WZo1oZX7l]T1
 R2
-I`BhTf@KEJOnN[o^]HT@7f0
+Ig49Z;UFZcg;8`>3PUiGXV1
 R3
 S1
 R4
-w1771288851
+w1771303099
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/probability_weights.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/probability_weights.sv
-!i122 707
-L0 8 37
+!i122 767
+L0 8 46
 R5
 r1
 !s85 0
@@ -136,24 +136,24 @@ R7
 R8
 vquantum_state_vector
 R0
-Z10 !s110 1771299529
+R1
 !i10b 1
-!s100 VR?1C0`C;O6Czh`JG?[_[3
+!s100 lTb<O:[ACL4@nA>;Jk:?A0
 R2
-I_^ZCne7li>eaLHbRoPe=M1
+I_A1;?AmSAVRU94m8=f_K20
 R3
 S1
 R4
-w1771288739
+w1771302339
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/quantum_state_vector.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/quantum_state_vector.sv
-!i122 701
-L0 10 37
+!i122 761
+Z9 L0 10 44
 R5
 r1
 !s85 0
 31
-Z11 !s108 1771299529.000000
+R6
 !s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/quantum_state_vector.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/quantum_state_vector.sv|
 !i113 1
@@ -161,19 +161,19 @@ R7
 R8
 vrot_gate_pi_2
 R0
-R1
+Z10 !s110 1771303115
 !i10b 1
-!s100 C=76GjIKDH9==Y<]K1bJY3
+!s100 GAccMUkUUe3f:1>2T@G`Q0
 R2
-Il?CoN^kUGc24]GdJA^G>>2
+Ib`^[gYnR8cDC4@jB:8Xaa1
 R3
 S1
 R4
-R9
+w1771302476
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/rot_gate_pi_2.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/rot_gate_pi_2.sv
-!i122 709
-L0 8 94
+!i122 769
+L0 8 100
 R5
 r1
 !s85 0
@@ -186,32 +186,57 @@ R7
 R8
 vrot_gate_pi_4
 R0
-R1
+R10
 !i10b 1
-!s100 >@;VBhDQ^15zZYD2oRNY33
+!s100 CZdnb:9n<<mzHi0UliKiJ3
 R2
-INm1O2M[K2gAX@4cZ`^`9N2
+IZ?aZP4WLAV4]4e;LW79HO3
 R3
 S1
 R4
-w1771297995
+w1771302460
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/rot_gate_pi_4.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/rot_gate_pi_4.sv
-!i122 710
-L0 8 96
+!i122 770
+L0 8 101
 R5
 r1
 !s85 0
 31
-R6
+Z11 !s108 1771303115.000000
 !s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/rot_gate_pi_4.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/rot_gate_pi_4.sv|
 !i113 1
 R7
 R8
+vsev_seg_display
+R0
+R10
+!i10b 1
+!s100 ]`jz;cl72EcS[MhLj9bn_1
+R2
+IfRZ96[b]enh>Pa55>4ejP3
+R3
+S1
+R4
+w1754783840
+8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sev_seg_display.sv
+FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sev_seg_display.sv
+!i122 772
+L0 8 62
+R5
+r1
+!s85 0
+31
+R11
+!s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sev_seg_display.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sev_seg_display.sv|
+!i113 1
+R7
+R8
 vswap_gate
 R0
-R1
+R10
 !i10b 1
 !s100 JRJ[mYnmilSV0hAcQM`zV3
 R2
@@ -222,15 +247,40 @@ R4
 w1771299525
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/swap_gate.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/swap_gate.sv
-!i122 711
+!i122 771
 L0 8 77
 R5
 r1
 !s85 0
 31
-R6
+R11
 !s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/swap_gate.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/swap_gate.sv|
+!i113 1
+R7
+R8
+vsync
+R0
+R10
+!i10b 1
+!s100 E@l[cK5NGjoieQ6kf[<`z1
+R2
+IY2n2QK<DOdoPY>K8HVdaM2
+R3
+S1
+R4
+w1754836856
+8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sync.sv
+FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sync.sv
+!i122 773
+L0 8 24
+R5
+r1
+!s85 0
+31
+R11
+!s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sync.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sync.sv|
 !i113 1
 R7
 R8
@@ -238,17 +288,17 @@ vtb_qc_sim_top
 R0
 R1
 !i10b 1
-!s100 D8oRc_Og0Fhe7CIR=^jBi3
+!s100 T:mQzfjP4U`HHB5MzH1RW0
 R2
-IZiJ;OW@=TZQ5<6:2AigDn3
+Ikz>joQZkA5K_PJ2@B>g6E0
 R3
 S1
 R4
-w1771210966
+w1771300907
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv
-!i122 703
-L0 10 34
+!i122 763
+R9
 R5
 r1
 !s85 0
@@ -261,24 +311,24 @@ R7
 R8
 vtop_qc_sim
 R0
-R10
+R1
 !i10b 1
-!s100 Tc:z?lhSEk7?OXTTaQTNZ1
+!s100 ^Pjo;HzP9VzP1S:`93U<;3
 R2
-I5=Y99l6;G3<Bh2?dzeEgJ2
+ILooKK6H;L9e:K4zeW3YFc3
 R3
 S1
 R4
-w1771299449
+w1771302760
 8C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv
 FC:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv
-!i122 702
-L0 10 278
+!i122 762
+L0 10 304
 R5
 r1
 !s85 0
 31
-R11
+R6
 !s107 C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv|
 !i113 1

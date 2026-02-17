@@ -11,19 +11,19 @@ module probability #(
   input logic         clk_i,
   input logic         rst_ni,
   input logic         wr_en_i,
-  input logic  [15:0] re_i [0:(2**QUBITS)-1],
-  input logic  [15:0] im_i [0:(2**QUBITS)-1],
+  input logic signed [15:0] re_i [0:(2**QUBITS)-1],
+  input logic signed [15:0] im_i [0:(2**QUBITS)-1],
   
-  output logic [15:0] prob_o [0:(2**QUBITS)-1]
+  output logic signed [15:0] prob_o [0:(2**QUBITS)-1]
 );
 
 localparam STATES = 2**QUBITS;
 
-logic [31:0] temp_reg [0:(2**QUBITS)-1];
+logic signed [31:0] temp_reg [0:(2**QUBITS)-1];
 
 for (genvar i = 0; i < STATES; i++) begin: prob_sv
   
-  logic [15:0] prob_q;
+  logic signed [15:0] prob_q;
   
   assign temp_reg[i] = ((re_i[i]*re_i[i]) + (im_i[i]*im_i[i])) >>> 14;
   

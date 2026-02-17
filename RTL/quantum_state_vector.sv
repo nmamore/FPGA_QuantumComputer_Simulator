@@ -14,11 +14,11 @@ module quantum_state_vector #(
   input logic         rst_ni,
   input logic         wr_en_i,
   
-  input logic  [15:0] re_i [0:(2**QUBITS)-1],
-  input logic  [15:0] im_i [0:(2**QUBITS)-1],
+  input logic signed [15:0] re_i [0:(2**QUBITS)-1],
+  input logic signed [15:0] im_i [0:(2**QUBITS)-1],
   
-  output logic [15:0] re_o [0:(2**QUBITS)-1],
-  output logic [15:0] im_o [0:(2**QUBITS)-1]
+  output logic signed [15:0] re_o [0:(2**QUBITS)-1],
+  output logic signed [15:0] im_o [0:(2**QUBITS)-1]
   
 );
 
@@ -26,8 +26,8 @@ localparam STATES = 2**QUBITS;
 
 for (genvar i = 0; i < STATES; i++) begin: qsv_flip_flops
 
-  logic [15:0] re_q;
-  logic [15:0] im_q;
+  logic signed [15:0] re_q;
+  logic signed [15:0] im_q;
 
   always_ff @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni) begin

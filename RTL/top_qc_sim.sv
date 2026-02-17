@@ -10,29 +10,65 @@
 module top_qc_sim #(
   parameter QUBITS = 3
 )(
-  input        clk_i,
-  input        rst_ni
+  input clk_i,
+  input rst_ni
 
 );
 
 localparam STATES = 2**QUBITS;
 
 //Signal Declarations
-logic [15:0] init_sv_re [0:STATES-1];
-logic [15:0] init_sv_im [0:STATES-1];
+logic signed [15:0] init_sv_re [0:STATES-1];
+logic signed [15:0] init_sv_im [0:STATES-1];
 
-logic [15:0] u0_re [0:STATES-1];
-logic [15:0] u0_im [0:STATES-1];
+logic signed [15:0] u0_re [0:STATES-1];
+logic signed [15:0] u0_im [0:STATES-1];
 
-logic [15:0] u0_sv_re [0:STATES-1];
-logic [15:0] u0_sv_im [0:STATES-1];
+logic signed [15:0] u0_sv_re [0:STATES-1];
+logic signed [15:0] u0_sv_im [0:STATES-1];
+
+logic signed [15:0] u1_re [0:STATES-1];
+logic signed [15:0] u1_im [0:STATES-1];
+
+logic signed [15:0] u1_sv_re [0:STATES-1];
+logic signed [15:0] u1_sv_im [0:STATES-1];
+
+logic signed [15:0] u2_re [0:STATES-1];
+logic signed [15:0] u2_im [0:STATES-1];
+
+logic signed [15:0] u2_sv_re [0:STATES-1];
+logic signed [15:0] u2_sv_im [0:STATES-1];
+
+logic signed [15:0] u3_re [0:STATES-1];
+logic signed [15:0] u3_im [0:STATES-1];
+
+logic signed [15:0] u3_sv_re [0:STATES-1];
+logic signed [15:0] u3_sv_im [0:STATES-1];
+
+logic signed [15:0] u4_re [0:STATES-1];
+logic signed [15:0] u4_im [0:STATES-1];
+
+logic signed [15:0] u4_sv_re [0:STATES-1];
+logic signed [15:0] u4_sv_im [0:STATES-1];
+
+logic signed [15:0] u5_re [0:STATES-1];
+logic signed [15:0] u5_im [0:STATES-1];
+
+logic signed [15:0] u5_sv_re [0:STATES-1];
+logic signed [15:0] u5_sv_im [0:STATES-1];
+
+logic signed [15:0] u6_re [0:STATES-1];
+logic signed [15:0] u6_im [0:STATES-1];
+
+logic signed [15:0] u6_sv_re [0:STATES-1];
+logic signed [15:0] u6_sv_im [0:STATES-1];
 
 //General Signals
 
-logic [15:0] pseudo_rng;
+logic signed [15:0] pseudo_rng;
 
-logic [15:0] prob_reg [0:STATES-1];
-logic [15:0] prob_weight_reg [0:STATES-1];
+logic signed [15:0] prob_reg [0:STATES-1];
+logic signed [15:0] prob_weight_reg [0:STATES-1];
 
 logic [QUBITS-1:0] cbits;
 
@@ -41,10 +77,10 @@ initial begin
   $readmemh("../TB/sv_im_init.hex", init_sv_im);
 end
 
-x_gate #(
-  .QUBITS(3)
-) u0_x (
-  .bitmask_i(3'b000),
+hadamard_gate #(
+  .QUBITS(3),
+  .BITMASK(4)
+) u0_h_q2 (
   .re_i(init_sv_re),
   .im_i(init_sv_im),
   
@@ -63,8 +99,152 @@ quantum_state_vector # (
   .im_i (u0_im),
   .re_o (u0_sv_re),
   .im_o (u0_sv_im)
-  
 );
+
+rot_gate_pi_2 #(
+  .QUBITS(3),
+  .CONTROL(1),
+  .TARGET(2)
+) u1_rpi2_q1q2 (
+  .re_i(u0_sv_re),
+  .im_i(u0_sv_im),
+  .re_o(u1_re),
+  .im_o(u1_im)
+);
+
+quantum_state_vector # (
+  .QUBITS(3)
+) u1_state_vector (
+  .clk_i      (clk_i),
+  .rst_ni     (rst_ni),
+  .wr_en_i    (1'b1),
+  
+  .re_i (u1_re),
+  .im_i (u1_im),
+  .re_o (u1_sv_re),
+  .im_o (u1_sv_im)
+);
+
+rot_gate_pi_4 #(
+  .QUBITS(3),
+  .CONTROL(0),
+  .TARGET(2)
+) u2_rpi4_q0q2 (
+  .re_i(u1_sv_re),
+  .im_i(u1_sv_im),
+  .re_o(u2_re),
+  .im_o(u2_im)
+);
+
+quantum_state_vector # (
+  .QUBITS(3)
+) u2_state_vector (
+  .clk_i      (clk_i),
+  .rst_ni     (rst_ni),
+  .wr_en_i    (1'b1),
+  
+  .re_i (u2_re),
+  .im_i (u2_im),
+  .re_o (u2_sv_re),
+  .im_o (u2_sv_im)
+);
+
+hadamard_gate #(
+  .QUBITS(3),
+  .BITMASK(2)
+) u3_h_q1 (
+  .re_i(u2_sv_re),
+  .im_i(u2_sv_im),
+  
+  .re_o(u3_re),
+  .im_o(u3_im)
+);
+
+quantum_state_vector # (
+  .QUBITS(3)
+) u3_state_vector (
+  .clk_i      (clk_i),
+  .rst_ni     (rst_ni),
+  .wr_en_i    (1'b1),
+  
+  .re_i (u3_re),
+  .im_i (u3_im),
+  .re_o (u3_sv_re),
+  .im_o (u3_sv_im)
+);
+
+rot_gate_pi_2 #(
+  .QUBITS(3),
+  .CONTROL(0),
+  .TARGET(1)
+) u4_rpi2_q0q1 (
+  .re_i(u3_sv_re),
+  .im_i(u3_sv_im),
+  .re_o(u4_re),
+  .im_o(u4_im)
+);
+
+quantum_state_vector # (
+  .QUBITS(3)
+) u4_state_vector (
+  .clk_i      (clk_i),
+  .rst_ni     (rst_ni),
+  .wr_en_i    (1'b1),
+  
+  .re_i (u4_re),
+  .im_i (u4_im),
+  .re_o (u4_sv_re),
+  .im_o (u4_sv_im)
+);
+
+hadamard_gate #(
+  .QUBITS(3),
+  .BITMASK(1)
+) u5_h_q0 (
+  .re_i(u4_sv_re),
+  .im_i(u4_sv_im),
+  
+  .re_o(u5_re),
+  .im_o(u5_im)
+);
+
+quantum_state_vector # (
+  .QUBITS(3)
+) u5_state_vector (
+  .clk_i      (clk_i),
+  .rst_ni     (rst_ni),
+  .wr_en_i    (1'b1),
+  
+  .re_i (u5_re),
+  .im_i (u5_im),
+  .re_o (u5_sv_re),
+  .im_o (u5_sv_im)
+);
+
+swap_gate #(
+  .QUBITS(3),
+  .SWAP(1)
+) u6_swap_q2q0 (
+  .re_i(u5_sv_re),
+  .im_i(u5_sv_im),
+  
+  .re_o(u6_re),
+  .im_o(u6_im)
+);
+
+quantum_state_vector # (
+  .QUBITS(3)
+) u6_state_vector (
+  .clk_i      (clk_i),
+  .rst_ni     (rst_ni),
+  .wr_en_i    (1'b1),
+  
+  .re_i (u6_re),
+  .im_i (u6_im),
+  .re_o (u6_sv_re),
+  .im_o (u6_sv_im)
+);
+
 
 probability #(
   .QUBITS(3)
@@ -72,8 +252,8 @@ probability #(
   .clk_i(clk_i),
   .rst_ni(rst_ni),
   .wr_en_i(1'b1),
-  .re_i(u0_sv_re),
-  .im_i(u0_sv_im),
+  .re_i(u6_sv_re),
+  .im_i(u6_sv_im),
   .prob_o(prob_reg)
 );
 

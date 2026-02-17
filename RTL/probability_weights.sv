@@ -11,14 +11,14 @@ module probability_weights #(
   input logic         clk_i,
   input logic         rst_ni,
   input logic         wr_en_i,
-  input logic  [15:0] prob_i [0:(2**QUBITS)-1],
+  input logic signed  [15:0] prob_i [0:(2**QUBITS)-1],
   
-  output logic [15:0] prob_weight_o [0:(2**QUBITS)-1]
+  output logic signed [15:0] prob_weight_o [0:(2**QUBITS)-1]
 );
 
 localparam STATES = 2**QUBITS;
 
-logic [31:0] prob_windows [0:(2**QUBITS)-1];
+logic signed [31:0] prob_windows [0:(2**QUBITS)-1];
 
 assign prob_windows[0] = prob_i[0];
   
@@ -28,7 +28,7 @@ end
 
 for (genvar i = 0; i < STATES; i++) begin: prob_weight_sv
   
-  logic [15:0] prob_weight_q;
+  logic signed [15:0] prob_weight_q;
   
   always_ff @(posedge clk_i or negedge rst_ni) begin
     if (!rst_ni) begin

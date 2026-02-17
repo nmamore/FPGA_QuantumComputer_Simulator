@@ -11,10 +11,10 @@ module lfsr (
 
   input logic         clk_i,
   input logic         rst_ni,
-  output logic [15:0] pseudo_rng_o
+  output logic signed [15:0] pseudo_rng_o
 );
 
-logic [15:0] pseudo_rng_q;
+logic signed [15:0] pseudo_rng_q;
 
 logic parity;
 

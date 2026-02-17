@@ -12,10 +12,10 @@ module measure #(
   input logic rst_ni,
   input logic measure_i,
   
-  input logic  [15:0] prob_windows_i [0:(2**QUBITS)-1],
-  input logic  [15:0] pseudo_rng_i,
+  input logic signed  [15:0] prob_windows_i [0:(2**QUBITS)-1],
+  input logic signed  [15:0] pseudo_rng_i,
   
-  output logic [QUBITS-1:0] cbits_o
+  output logic signed [QUBITS-1:0] cbits_o
 );
 
 localparam STATES = 2**QUBITS;

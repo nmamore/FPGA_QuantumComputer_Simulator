@@ -38,7 +38,6 @@ add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/QUBITS
 add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/BITMASK
 add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/STATES
 add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/GATES
-add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/COEFF
 add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/re_i
 add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/im_i
 add wave -noupdate -group U0_H /tb_qc_sim_top/uut/u0_h_q2/re_o
@@ -98,7 +97,6 @@ add wave -noupdate -group U3_H /tb_qc_sim_top/uut/u3_h_q1/QUBITS
 add wave -noupdate -group U3_H /tb_qc_sim_top/uut/u3_h_q1/BITMASK
 add wave -noupdate -group U3_H /tb_qc_sim_top/uut/u3_h_q1/STATES
 add wave -noupdate -group U3_H /tb_qc_sim_top/uut/u3_h_q1/GATES
-add wave -noupdate -group U3_H /tb_qc_sim_top/uut/u3_h_q1/COEFF
 add wave -noupdate -group U3_H -radix sfixed /tb_qc_sim_top/uut/u3_h_q1/re_i
 add wave -noupdate -group U3_H -radix sfixed /tb_qc_sim_top/uut/u3_h_q1/im_i
 add wave -noupdate -group U3_H -radix sfixed -childformat {{{/tb_qc_sim_top/uut/u3_h_q1/re_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/u3_h_q1/re_o[7]} -radix sfixed}} -expand -subitemconfig {{/tb_qc_sim_top/uut/u3_h_q1/re_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u3_h_q1/re_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/u3_h_q1/re_o
@@ -138,7 +136,6 @@ add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/QUBITS
 add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/BITMASK
 add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/STATES
 add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/GATES
-add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/COEFF
 add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/re_i
 add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/im_i
 add wave -noupdate -group U5_H /tb_qc_sim_top/uut/u5_h_q0/re_o
@@ -189,7 +186,7 @@ add wave -noupdate -expand -group Measure -radix sfixed /tb_qc_sim_top/uut/measu
 add wave -noupdate -expand -group Measure -radix sfixed -childformat {{{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[0]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[1]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[2]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[3]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[4]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[5]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[6]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[7]} -radix sfixed}} -subitemconfig {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/measure_sv/prob_windows_i
 add wave -noupdate -expand -group Measure -radix hexadecimal /tb_qc_sim_top/uut/measure_sv/cbits_o
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {6926625 ps} 0}
+WaveRestoreCursors {{Cursor 1} {17880254 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 236
@@ -205,4 +202,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {4126781 ps}
+WaveRestoreZoom {17479559 ps} {21606340 ps}

@@ -6,9 +6,9 @@
 */
 
 module rot_gate_pi_2 #(
-  parameter int QUBITS  =   3,
-  parameter int CONTROL =  1,
-  parameter int TARGET  =   0
+  parameter int QUBITS  =   3, //Qubits determine vector size
+  parameter int CONTROL =  1, //Sets control qubit
+  parameter int TARGET  =   0 //Sets target qubit
 )(
   input logic signed  [15:0] re_i [0:(2**QUBITS)-1],
   input logic signed  [15:0] im_i [0:(2**QUBITS)-1],
@@ -19,14 +19,14 @@ module rot_gate_pi_2 #(
 
 localparam int STATES = 2**QUBITS;
 
-logic signed [31:0] re_temp [0:(2**QUBITS)-1];
+logic signed [31:0] re_temp [0:(2**QUBITS)-1]; //Temp register to avoid overflow from multiplication
 logic signed [31:0] im_temp [0:(2**QUBITS)-1];
 
 always_comb begin
-  if ((CONTROL == 1) && (TARGET == 0)) begin
+  if ((CONTROL == 1) && (TARGET == 0)) begin //Operates on specific qubits depending on target and control
     for (int i = 0; i < STATES; i++) begin
-      if (i == 3 || i == 7) begin
-        re_temp[i] = -im_i[i];
+      if (i == 3 || i == 7) begin //Acts on states where target and control are 1. Rest are identity
+        re_temp[i] = -im_i[i]; //-i multiplication flips real and imaginary. Imaginary is negated
         im_temp[i] = re_i[i];
       end else begin
         re_temp[i] = re_i[i];
@@ -55,7 +55,7 @@ always_comb begin
     end
   end else if ((CONTROL == 0) && (TARGET == 2)) begin
     for (int i = 0; i < STATES; i++) begin
-      if (i == 6 || i == 7) begin
+      if (i == 5 || i == 7) begin
         re_temp[i] = -im_i[i];
         im_temp[i] = re_i[i];
       end else begin
@@ -65,7 +65,7 @@ always_comb begin
     end
   end else if ((CONTROL == 0) && (TARGET == 1)) begin
     for (int i = 0; i < STATES; i++) begin
-      if (i == 6 || i == 7) begin
+      if (i == 3 || i == 7) begin
         re_temp[i] = -im_i[i];
         im_temp[i] = re_i[i];
       end else begin
@@ -91,11 +91,17 @@ always_comb begin
   end
 end
 
-for (genvar i = 0; i < STATES; i++) begin
+genvar i; //Creates multiple iterations of the same circuit
+
+generate
+
+for (i = 0; i < STATES; i++) begin: gen_rot_pi2 //Output values for each index of state vector
 
   assign re_o[i] = re_temp[i][15:0];
   assign im_o[i] = im_temp[i][15:0];
 
 end
+
+endgenerate
 
 endmodule

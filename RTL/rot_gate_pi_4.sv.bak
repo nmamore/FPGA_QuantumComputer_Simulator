@@ -6,9 +6,9 @@
 */
 
 module rot_gate_pi_4 #(
-  parameter int QUBITS  =   3, //Qubits determine vector size
-  parameter int CONTROL =  1, //Sets control qubit
-  parameter int TARGET  =   0 //Sets target qubit
+  parameter int QUBITS  =   3,
+  parameter int CONTROL =  1,
+  parameter int TARGET  =   0
 )(
   input logic signed  [15:0] re_i [0:(2**QUBITS)-1],
   input logic signed  [15:0] im_i [0:(2**QUBITS)-1],
@@ -19,17 +19,17 @@ module rot_gate_pi_4 #(
 
 localparam int STATES = 2**QUBITS;
 
-logic signed [15:0] SQRT2_2 = 16'h2D41; //1/sqrt(2)
+logic signed [15:0] SQRT2_2 = 16'h2D41;
 
-logic signed [31:0] re_temp [0:(2**QUBITS)-1]; //Temp register to avoid overflow from multiplication
+logic signed [31:0] re_temp [0:(2**QUBITS)-1];
 logic signed [31:0] im_temp [0:(2**QUBITS)-1];
 
 always_comb begin
-  if ((CONTROL == 1) && (TARGET == 0)) begin //Operates on specific qubits depending on target and control
-    for (int i = 0; i < STATES; i++) begin //Acts on states where target and control are 1. Rest are identity
-      if (i == 3 || i == 7) begin  //Multiplication by exp(i(pi/4))
-        re_temp[i] = ((re_i[i] - im_i[i]) * SQRT2_2) >>> 14; //Arithmetic shift to scale back to Q1.14
-        im_temp[i] = ((re_i[i] + im_i[i]) * SQRT2_2) >>> 14;
+  if ((CONTROL == 1) && (TARGET == 0)) begin
+    for (int i = 0; i < STATES; i++) begin
+      if (i == 3 || i == 7) begin
+        re_temp[i] = -im_i[i];
+        im_temp[i] = re_i[i];
       end else begin
         re_temp[i] = re_i[i];
         im_temp[i] = im_i[i];
@@ -93,16 +93,11 @@ always_comb begin
   end
 end
 
-genvar i; //Creates multiple iterations of the same circuit
-
-generate
-
-for (i = 0; i < STATES; i++) begin: gen_rot_pi4 //Output values for each index of state vector
+for (genvar i = 0; i < STATES; i++) begin
 
   assign re_o[i] = re_temp[i][15:0];
   assign im_o[i] = im_temp[i][15:0];
 
 end
-endgenerate
 
 endmodule

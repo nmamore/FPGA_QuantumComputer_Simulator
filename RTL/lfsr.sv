@@ -18,13 +18,13 @@ logic signed [15:0] pseudo_rng_q;
 
 logic parity;
 
-assign parity = (pseudo_rng_q[4]^pseudo_rng_q[13])^pseudo_rng_q[15];
+assign parity = (pseudo_rng_q[4]^pseudo_rng_q[13])^pseudo_rng_q[15]; //Creates "tap" to ensure maximum number of possible values used
 
 always_ff @(posedge clk_i or negedge rst_ni) begin
   if (!rst_ni) begin
-    pseudo_rng_q <= 16'h4123;
+    pseudo_rng_q <= 16'h4123; //Arbitary seed
   end else begin
-    pseudo_rng_q <= {pseudo_rng_q[14:0],parity};
+    pseudo_rng_q <= {pseudo_rng_q[14:0],parity}; //Shift data to the left one position. Drop MSB, add parity bit in
   end
 end
 

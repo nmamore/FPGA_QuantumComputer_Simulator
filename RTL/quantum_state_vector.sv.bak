@@ -8,7 +8,7 @@
 `timescale 1ns/1ps
 
 module quantum_state_vector #(
-  parameter QUBITS = 3 //Qubits determine vector size
+  parameter QUBITS = 3
 )(
   input logic         clk_i,
   input logic         rst_ni,
@@ -22,13 +22,9 @@ module quantum_state_vector #(
   
 );
 
-localparam STATES = 2**QUBITS; //Determines how many states there are
+localparam STATES = 2**QUBITS;
 
-genvar i; //Creates multiple iterations of the same circuit
-
-generate
-
-for (i = 0; i < STATES; i++) begin: qsv_flip_flops
+for (genvar i = 0; i < STATES; i++) begin: qsv_flip_flops
 
   logic signed [15:0] re_q;
   logic signed [15:0] im_q;
@@ -37,7 +33,7 @@ for (i = 0; i < STATES; i++) begin: qsv_flip_flops
     if (!rst_ni) begin
       re_q <= 'h0;
       im_q <= 'h0;
-    end else if (wr_en_i) begin //Stores input on clock edge and while write enabled
+    end else if (wr_en_i) begin
       re_q <= re_i[i];
       im_q <= im_i[i];
     end
@@ -47,7 +43,4 @@ for (i = 0; i < STATES; i++) begin: qsv_flip_flops
   assign im_o[i] = im_q;
 
 end
-
-endgenerate
-
 endmodule

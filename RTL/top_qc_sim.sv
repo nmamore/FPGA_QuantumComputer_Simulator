@@ -8,7 +8,7 @@
 `timescale 1ns/1ps
 
 module top_qc_sim #(
-  parameter QUBITS = 3
+  parameter QUBITS = 3 //Sets number of qubits
 )(
   input clk_i,
   input rst_ni,
@@ -20,7 +20,7 @@ module top_qc_sim #(
 
 localparam STATES = 2**QUBITS;
 
-//Signal Declarations
+//Signal routing between modules
 logic signed [15:0] init_sv_re [0:STATES-1];
 logic signed [15:0] init_sv_im [0:STATES-1];
 
@@ -78,11 +78,15 @@ logic signed [15:0] prob_weight_reg [0:STATES-1];
 
 logic [QUBITS-1:0] cbits;
 
+
+//Intializes state vectors with data to perform QFT
 initial begin
   $readmemh("../TB/sv_re_init.hex", init_sv_re);
   $readmemh("../TB/sv_im_init.hex", init_sv_im);
 end
 
+
+//Hadamard on q2
 hadamard_gate #(
   .QUBITS(3),
   .BITMASK(4),
@@ -95,6 +99,7 @@ hadamard_gate #(
   .im_o(u0_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u0_state_vector (
@@ -108,6 +113,7 @@ quantum_state_vector # (
   .im_o (u0_sv_im)
 );
 
+//Q1 control rotation of pi/2 on q2
 rot_gate_pi_2 #(
   .QUBITS(3),
   .CONTROL(1),
@@ -119,6 +125,7 @@ rot_gate_pi_2 #(
   .im_o(u1_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u1_state_vector (
@@ -132,6 +139,7 @@ quantum_state_vector # (
   .im_o (u1_sv_im)
 );
 
+//Q0 control rotation of pi/4 on q2
 rot_gate_pi_4 #(
   .QUBITS(3),
   .CONTROL(0),
@@ -143,6 +151,7 @@ rot_gate_pi_4 #(
   .im_o(u2_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u2_state_vector (
@@ -156,6 +165,7 @@ quantum_state_vector # (
   .im_o (u2_sv_im)
 );
 
+//Hadamard on q1
 hadamard_gate #(
   .QUBITS(3),
   .BITMASK(2),
@@ -168,6 +178,7 @@ hadamard_gate #(
   .im_o(u3_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u3_state_vector (
@@ -181,6 +192,7 @@ quantum_state_vector # (
   .im_o (u3_sv_im)
 );
 
+//Q0 control rotation of pi/2 on q1
 rot_gate_pi_2 #(
   .QUBITS(3),
   .CONTROL(0),
@@ -192,6 +204,7 @@ rot_gate_pi_2 #(
   .im_o(u4_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u4_state_vector (
@@ -205,6 +218,7 @@ quantum_state_vector # (
   .im_o (u4_sv_im)
 );
 
+//Hadamard on q0
 hadamard_gate #(
   .QUBITS(3),
   .BITMASK(1),
@@ -217,6 +231,7 @@ hadamard_gate #(
   .im_o(u5_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u5_state_vector (
@@ -230,6 +245,7 @@ quantum_state_vector # (
   .im_o (u5_sv_im)
 );
 
+//Swap q2 and q0
 swap_gate #(
   .QUBITS(3),
   .SWAP(1)
@@ -241,6 +257,7 @@ swap_gate #(
   .im_o(u6_im)
 );
 
+//Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
 ) u6_state_vector (
@@ -254,7 +271,7 @@ quantum_state_vector # (
   .im_o (u6_sv_im)
 );
 
-
+//Generate probabilities from SV amplitudes
 probability #(
   .QUBITS(3)
 ) prob_sv (
@@ -266,6 +283,7 @@ probability #(
   .prob_o(prob_reg)
 );
 
+//Create CDF from probabilites
 probability_weights #(
   .QUBITS(3)
 ) prob_weights_sv (
@@ -276,35 +294,42 @@ probability_weights #(
   .prob_weight_o(prob_weight_reg)
 );
 
+//Generate random number
 lfsr rng_gen (
   .clk_i(clk_i),
   .rst_ni(sync_rst_n),
   .pseudo_rng_o(pseudo_rng)
 );
 
+//Measure state vector
+//Keys off on button press
 measure #(
   .QUBITS(3)
 ) measure_sv (
   .clk_i(clk_i),
   .rst_ni(sync_rst_n),
-  .measure_i(!sync_measure_n),
+  .measure_i(!sync_measure_n), //Invert logic
   .prob_windows_i(prob_weight_reg),
-  .pseudo_rng_i({2'b00,pseudo_rng[13:0]}),
+  .pseudo_rng_i({2'b00,pseudo_rng[13:0]}), //remove sign and integer bit to match format of probabilities
   .cbits_o(cbits)
 );
 
+
+//Synchronize async inputs
 sync rst_sync (
   .clk_i  (clk_i),
   .async_i(rst_ni),
   .sync_o (sync_rst_n)
 );
 
+//Synchronize async inputs
 sync clk_btn_sync (
   .clk_i  (clk_i),
   .async_i(measure_ni),
   .sync_o (sync_measure_n)
 );
 
+//Output result to sev seg display
 sev_seg_display hex0 (
   .dat_i      ({1'b0, cbits}),
   .seven_seg_o(hex_0_o)

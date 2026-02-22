@@ -6,7 +6,7 @@
 */
 
 module measure #(
-  parameter QUBITS = 3
+  parameter QUBITS = 3 //Qubits determine vector size
 )(
   input logic clk_i,
   input logic rst_ni,
@@ -18,14 +18,14 @@ module measure #(
   output logic signed [QUBITS-1:0] cbits_o
 );
 
-localparam STATES = 2**QUBITS;
+localparam STATES = 2**QUBITS; //Determines how many states there are
 
 always_ff @(posedge clk_i or negedge rst_ni) begin
   if (!rst_ni) begin
     cbits_o <= 'h0;
-  end else if (measure_i) begin
-    if (pseudo_rng_i < prob_windows_i[0]) begin
-      cbits_o <= 3'b000;
+  end else if (measure_i) begin //Waits until measure is asserted
+    if (pseudo_rng_i < prob_windows_i[0]) begin //Checks random number against probability window
+      cbits_o <= 3'b000; //Sets output to state if random number is in window
     end else if (pseudo_rng_i < prob_windows_i[1]) begin
       cbits_o <= 3'b001;
     end else if (pseudo_rng_i < prob_windows_i[2]) begin

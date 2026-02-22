@@ -6,8 +6,8 @@
 */
 
 module swap_gate #(
-  parameter QUBITS = 3,
-  parameter SWAP  = 1
+  parameter QUBITS = 3, //Qubits determine vector size
+  parameter SWAP  = 1 //Determines qubits to swap
 )(
   input logic signed [15:0] re_i [0:(2**QUBITS)-1],
   input logic signed [15:0] im_i [0:(2**QUBITS)-1],
@@ -19,7 +19,7 @@ module swap_gate #(
 localparam STATES = 2**QUBITS;
 
 always_comb begin
-  if (SWAP == 0) begin
+  if (SWAP == 0) begin //Swap q0 and q1 (q2q1q0 -> q2q0q1)
     re_o[0] = re_i[0];
     re_o[1] = re_i[2];
     re_o[2] = re_i[1];
@@ -37,7 +37,7 @@ always_comb begin
     im_o[5] = im_i[6];
     im_o[6] = im_i[5];
     im_o[7] = im_i[7];
-  end else if (SWAP == 1) begin
+  end else if (SWAP == 1) begin //Swap q0 and q2 (q2q1q0 -> q0q1q2)
     re_o[0] = re_i[0];
     re_o[1] = re_i[4];
     re_o[2] = re_i[2];
@@ -55,7 +55,7 @@ always_comb begin
     im_o[5] = im_i[5];
     im_o[6] = im_i[3];
     im_o[7] = im_i[7];
-  end else if (SWAP == 2) begin
+  end else if (SWAP == 2) begin //Swap q1 and q2 (q2q1q0 -> q1q2q0)
     re_o[0] = re_i[0];
     re_o[1] = re_i[1];
     re_o[2] = re_i[4];
@@ -74,7 +74,7 @@ always_comb begin
     im_o[6] = im_i[6];
     im_o[7] = im_i[7];
   end else begin
-    for (int i = 0; i < STATES; i++) begin
+    for (int i = 0; i < STATES; i++) begin //No other swaps. Identity
       re_o[i] = re_i[i];
       im_o[i] = im_i[i];
     end

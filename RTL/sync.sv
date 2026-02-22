@@ -16,6 +16,7 @@ logic ff_1_q, ff_2_q;
 
 assign ff_1_d = async_i;
 
+//Two clock cycles to synchronize
 always_ff @(posedge clk_i) begin
   ff_1_q <= ff_1_d;
 end

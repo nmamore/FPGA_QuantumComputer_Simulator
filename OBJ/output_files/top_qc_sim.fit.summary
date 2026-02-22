@@ -1,12 +1,12 @@
-Fitter Status : Successful - Mon Feb 16 23:40:13 2026
+Fitter Status : Successful - Sat Feb 21 23:11:19 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : top_qc_sim
 Top-level Entity Name : top_qc_sim
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 2,081 / 49,760 ( 4 % )
-    Total combinational functions : 2,063 / 49,760 ( 4 % )
+Total logic elements : 2,070 / 49,760 ( 4 % )
+    Total combinational functions : 2,053 / 49,760 ( 4 % )
     Dedicated logic registers : 621 / 49,760 ( 1 % )
 Total registers : 621
 Total pins : 11 / 360 ( 3 % )

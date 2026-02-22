@@ -1,5 +1,5 @@
 Fitter report for top_qc_sim
-Mon Feb 16 23:40:13 2026
+Sat Feb 21 23:11:19 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -69,15 +69,15 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Mon Feb 16 23:40:13 2026           ;
+; Fitter Status                      ; Successful - Sat Feb 21 23:11:19 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; top_qc_sim                                      ;
 ; Top-level Entity Name              ; top_qc_sim                                      ;
 ; Family                             ; MAX 10                                          ;
 ; Device                             ; 10M50DAF484C7G                                  ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 2,081 / 49,760 ( 4 % )                          ;
-;     Total combinational functions  ; 2,063 / 49,760 ( 4 % )                          ;
+; Total logic elements               ; 2,070 / 49,760 ( 4 % )                          ;
+;     Total combinational functions  ; 2,053 / 49,760 ( 4 % )                          ;
 ;     Dedicated logic registers      ; 621 / 49,760 ( 1 % )                            ;
 ; Total registers                    ; 621                                             ;
 ; Total pins                         ; 11 / 360 ( 3 % )                                ;
@@ -160,7 +160,7 @@ on the Quartus Prime software download page.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   3.8%      ;
+;     Processor 2            ;   3.7%      ;
 ;     Processor 3            ;   3.6%      ;
 ;     Processor 4            ;   3.6%      ;
 ;     Processor 5            ;   3.5%      ;
@@ -456,9 +456,6 @@ on the Quartus Prime software download page.
 ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[11]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_mult1         ; DATAA            ;                       ;
 ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[11]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[11]~_Duplicate_1 ; Q                ;                       ;
 ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[11]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_mult1         ; DATAB            ;                       ;
-; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[12]              ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_mult1         ; DATAA            ;                       ;
-; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[12]              ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[12]~_Duplicate_1 ; Q                ;                       ;
-; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].im_q[12]~_Duplicate_1 ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_mult1         ; DATAB            ;                       ;
 ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].re_q[0]               ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; probability:prob_sv|lpm_mult:Mult4|mult_lgs:auto_generated|mac_mult1         ; DATAA            ;                       ;
 ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].re_q[0]               ; Duplicated      ; Register Packing ; Timing optimization ; Q         ;                ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].re_q[0]~_Duplicate_1  ; Q                ;                       ;
 ; quantum_state_vector:u6_state_vector|qsv_flip_flops[2].re_q[0]~_Duplicate_1  ; Packed Register ; Register Packing ; Timing optimization ; Q         ;                ; probability:prob_sv|lpm_mult:Mult4|mult_lgs:auto_generated|mac_mult1         ; DATAB            ;                       ;
@@ -879,8 +876,8 @@ on the Quartus Prime software download page.
 ; Type                ; Total [A + B]       ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+---------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                     ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 3048 ) ; 0.00 % ( 0 / 3048 )        ; 0.00 % ( 0 / 3048 )      ;
-;     -- Achieved     ; 0.00 % ( 0 / 3048 ) ; 0.00 % ( 0 / 3048 )        ; 0.00 % ( 0 / 3048 )      ;
+;     -- Requested    ; 0.00 % ( 0 / 3040 ) ; 0.00 % ( 0 / 3040 )        ; 0.00 % ( 0 / 3040 )      ;
+;     -- Achieved     ; 0.00 % ( 0 / 3040 ) ; 0.00 % ( 0 / 3040 )        ; 0.00 % ( 0 / 3040 )      ;
 ;                     ;                     ;                            ;                          ;
 ; Routing (by net)    ;                     ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )    ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -903,7 +900,7 @@ on the Quartus Prime software download page.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 3032 )   ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 3024 )   ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 16 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -919,26 +916,26 @@ The pin-out file can be found in C:/work/GitHub/FPGA_QuantumComputer_Simulator/F
 +---------------------------------------------+------------------------+
 ; Resource                                    ; Usage                  ;
 +---------------------------------------------+------------------------+
-; Total logic elements                        ; 2,081 / 49,760 ( 4 % ) ;
-;     -- Combinational with no register       ; 1460                   ;
-;     -- Register only                        ; 18                     ;
-;     -- Combinational with a register        ; 603                    ;
+; Total logic elements                        ; 2,070 / 49,760 ( 4 % ) ;
+;     -- Combinational with no register       ; 1449                   ;
+;     -- Register only                        ; 17                     ;
+;     -- Combinational with a register        ; 604                    ;
 ;                                             ;                        ;
 ; Logic element usage by number of LUT inputs ;                        ;
-;     -- 4 input functions                    ; 312                    ;
-;     -- 3 input functions                    ; 1204                   ;
-;     -- <=2 input functions                  ; 547                    ;
-;     -- Register only                        ; 18                     ;
+;     -- 4 input functions                    ; 303                    ;
+;     -- 3 input functions                    ; 1213                   ;
+;     -- <=2 input functions                  ; 537                    ;
+;     -- Register only                        ; 17                     ;
 ;                                             ;                        ;
 ; Logic elements by mode                      ;                        ;
-;     -- normal mode                          ; 644                    ;
-;     -- arithmetic mode                      ; 1419                   ;
+;     -- normal mode                          ; 641                    ;
+;     -- arithmetic mode                      ; 1412                   ;
 ;                                             ;                        ;
 ; Total registers*                            ; 621 / 51,509 ( 1 % )   ;
 ;     -- Dedicated logic registers            ; 621 / 49,760 ( 1 % )   ;
 ;     -- I/O registers                        ; 0 / 1,749 ( 0 % )      ;
 ;                                             ;                        ;
-; Total LABs:  partially or completely used   ; 171 / 3,110 ( 5 % )    ;
+; Total LABs:  partially or completely used   ; 172 / 3,110 ( 6 % )    ;
 ; Virtual pins                                ; 0                      ;
 ; I/O pins                                    ; 11 / 360 ( 3 % )       ;
 ;     -- Clock pins                           ; 1 / 8 ( 13 % )         ;
@@ -958,11 +955,11 @@ The pin-out file can be found in C:/work/GitHub/FPGA_QuantumComputer_Simulator/F
 ; Remote update blocks                        ; 0 / 1 ( 0 % )          ;
 ; Oscillator blocks                           ; 0 / 1 ( 0 % )          ;
 ; Impedance control blocks                    ; 0 / 1 ( 0 % )          ;
-; Average interconnect usage (total/H/V)      ; 1.2% / 1.1% / 1.2%     ;
-; Peak interconnect usage (total/H/V)         ; 10.0% / 9.7% / 10.3%   ;
+; Average interconnect usage (total/H/V)      ; 1.1% / 1.0% / 1.2%     ;
+; Peak interconnect usage (total/H/V)         ; 9.1% / 8.8% / 9.5%     ;
 ; Maximum fan-out                             ; 638                    ;
-; Highest non-global fan-out                  ; 98                     ;
-; Total fan-out                               ; 8035                   ;
+; Highest non-global fan-out                  ; 94                     ;
+; Total fan-out                               ; 8016                   ;
 ; Average fan-out                             ; 2.87                   ;
 +---------------------------------------------+------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
@@ -976,20 +973,20 @@ The pin-out file can be found in C:/work/GitHub/FPGA_QuantumComputer_Simulator/F
 +---------------------------------------------+----------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                  ; Low                            ;
 ;                                             ;                      ;                                ;
-; Total logic elements                        ; 2081 / 49760 ( 4 % ) ; 0 / 49760 ( 0 % )              ;
-;     -- Combinational with no register       ; 1460                 ; 0                              ;
-;     -- Register only                        ; 18                   ; 0                              ;
-;     -- Combinational with a register        ; 603                  ; 0                              ;
+; Total logic elements                        ; 2070 / 49760 ( 4 % ) ; 0 / 49760 ( 0 % )              ;
+;     -- Combinational with no register       ; 1449                 ; 0                              ;
+;     -- Register only                        ; 17                   ; 0                              ;
+;     -- Combinational with a register        ; 604                  ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic element usage by number of LUT inputs ;                      ;                                ;
-;     -- 4 input functions                    ; 312                  ; 0                              ;
-;     -- 3 input functions                    ; 1204                 ; 0                              ;
-;     -- <=2 input functions                  ; 547                  ; 0                              ;
-;     -- Register only                        ; 18                   ; 0                              ;
+;     -- 4 input functions                    ; 303                  ; 0                              ;
+;     -- 3 input functions                    ; 1213                 ; 0                              ;
+;     -- <=2 input functions                  ; 537                  ; 0                              ;
+;     -- Register only                        ; 17                   ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Logic elements by mode                      ;                      ;                                ;
-;     -- normal mode                          ; 644                  ; 0                              ;
-;     -- arithmetic mode                      ; 1419                 ; 0                              ;
+;     -- normal mode                          ; 641                  ; 0                              ;
+;     -- arithmetic mode                      ; 1412                 ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Total registers                             ; 621                  ; 0                              ;
 ;     -- Dedicated logic registers            ; 621 / 49760 ( 1 % )  ; 0 / 49760 ( 0 % )              ;
@@ -1013,8 +1010,8 @@ The pin-out file can be found in C:/work/GitHub/FPGA_QuantumComputer_Simulator/F
 ;     -- Registered Output Connections        ; 0                    ; 0                              ;
 ;                                             ;                      ;                                ;
 ; Internal Connections                        ;                      ;                                ;
-;     -- Total Connections                    ; 8902                 ; 8                              ;
-;     -- Registered Connections               ; 1289                 ; 0                              ;
+;     -- Total Connections                    ; 8882                 ; 8                              ;
+;     -- Registered Connections               ; 1293                 ; 0                              ;
 ;                                             ;                      ;                                ;
 ; External Connections                        ;                      ;                                ;
 ;     -- Top                                  ; 0                    ; 0                              ;
@@ -1618,8 +1615,8 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +------------------------------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node                     ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; ADC blocks ; Full Hierarchy Name                                                                                                                      ; Entity Name          ; Library Name ;
 +------------------------------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------+
-; |top_qc_sim                                    ; 2081 (1)    ; 621 (0)                   ; 0 (0)         ; 0           ; 0    ; 1          ; 34           ; 0       ; 17        ; 11   ; 0            ; 1460 (1)     ; 18 (0)            ; 603 (0)          ; 0          ; |top_qc_sim                                                                                                                              ; top_qc_sim           ; work         ;
-;    |hadamard_gate:u3_h_q1|                     ; 352 (60)    ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 350 (60)     ; 0 (0)             ; 2 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1                                                                                                        ; hadamard_gate        ; work         ;
+; |top_qc_sim                                    ; 2070 (1)    ; 621 (0)                   ; 0 (0)         ; 0           ; 0    ; 1          ; 34           ; 0       ; 17        ; 11   ; 0            ; 1449 (1)     ; 17 (0)            ; 604 (0)          ; 0          ; |top_qc_sim                                                                                                                              ; top_qc_sim           ; work         ;
+;    |hadamard_gate:u3_h_q1|                     ; 351 (58)    ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 349 (56)     ; 0 (0)             ; 2 (2)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1                                                                                                        ; hadamard_gate        ; work         ;
 ;       |lpm_mult:Mult13|                        ; 66 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult13                                                                                        ; lpm_mult             ; work         ;
 ;          |multcore:mult_core|                  ; 66 (34)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (34)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult13|multcore:mult_core                                                                     ; multcore             ; work         ;
 ;             |mpar_add:padder|                  ; 32 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 32 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult13|multcore:mult_core|mpar_add:padder                                                     ; mpar_add             ; work         ;
@@ -1634,8 +1631,8 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;                   |add_sub_fkg:auto_generated| ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult15|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated     ; add_sub_fkg          ; work         ;
 ;                |lpm_add_sub:adder[1]|          ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult15|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                ; lpm_add_sub          ; work         ;
 ;                   |add_sub_9vg:auto_generated| ; 15 (15)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult15|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated     ; add_sub_9vg          ; work         ;
-;       |lpm_mult:Mult4|                         ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4                                                                                         ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 12 (1)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (1)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4|multcore:mult_core                                                                      ; multcore             ; work         ;
+;       |lpm_mult:Mult4|                         ; 14 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4                                                                                         ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 14 (3)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (3)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4|multcore:mult_core                                                                      ; multcore             ; work         ;
 ;             |mpar_add:padder|                  ; 11 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
 ;                |lpm_add_sub:adder[0]|          ; 11 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
 ;                   |add_sub_fkg:auto_generated| ; 11 (11)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult4|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
@@ -1646,11 +1643,11 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;                   |add_sub_fkg:auto_generated| ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult5|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
 ;                |lpm_add_sub:adder[1]|          ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult5|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                 ; lpm_add_sub          ; work         ;
 ;                   |add_sub_9vg:auto_generated| ; 15 (15)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult5|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated      ; add_sub_9vg          ; work         ;
-;       |lpm_mult:Mult6|                         ; 16 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 2 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6                                                                                         ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 16 (1)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 2 (1)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core                                                                      ; multcore             ; work         ;
-;             |mpar_add:padder|                  ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
-;                |lpm_add_sub:adder[0]|          ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
-;                   |add_sub_fkg:auto_generated| ; 15 (15)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 1 (1)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
+;       |lpm_mult:Mult6|                         ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6                                                                                         ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 15 (1)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (1)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core                                                                      ; multcore             ; work         ;
+;             |mpar_add:padder|                  ; 14 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 14 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
+;                   |add_sub_fkg:auto_generated| ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult6|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
 ;       |lpm_mult:Mult7|                         ; 66 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult7                                                                                         ; lpm_mult             ; work         ;
 ;          |multcore:mult_core|                  ; 66 (34)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (34)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult7|multcore:mult_core                                                                      ; multcore             ; work         ;
 ;             |mpar_add:padder|                  ; 32 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 32 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult7|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
@@ -1658,19 +1655,19 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;                   |add_sub_fkg:auto_generated| ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult7|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
 ;                |lpm_add_sub:adder[1]|          ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult7|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                 ; lpm_add_sub          ; work         ;
 ;                   |add_sub_9vg:auto_generated| ; 15 (15)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u3_h_q1|lpm_mult:Mult7|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated      ; add_sub_9vg          ; work         ;
-;    |hadamard_gate:u5_h_q0|                     ; 856 (177)   ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 6            ; 0       ; 3         ; 0    ; 0            ; 795 (116)    ; 0 (0)             ; 61 (61)          ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0                                                                                                        ; hadamard_gate        ; work         ;
+;    |hadamard_gate:u5_h_q0|                     ; 848 (173)   ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 6            ; 0       ; 3         ; 0    ; 0            ; 778 (103)    ; 0 (0)             ; 70 (70)          ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0                                                                                                        ; hadamard_gate        ; work         ;
 ;       |lpm_mult:Mult0|                         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult0                                                                                         ; lpm_mult             ; work         ;
 ;          |mult_dks:auto_generated|             ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult0|mult_dks:auto_generated                                                                 ; mult_dks             ; work         ;
-;       |lpm_mult:Mult10|                        ; 42 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 42 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10                                                                                        ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 42 (25)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 42 (25)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core                                                                     ; multcore             ; work         ;
-;             |mpar_add:padder|                  ; 17 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core|mpar_add:padder                                                     ; mpar_add             ; work         ;
-;                |lpm_add_sub:adder[0]|          ; 17 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                ; lpm_add_sub          ; work         ;
-;                   |add_sub_fkg:auto_generated| ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated     ; add_sub_fkg          ; work         ;
-;       |lpm_mult:Mult11|                        ; 42 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 42 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11                                                                                        ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 42 (25)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 42 (25)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core                                                                     ; multcore             ; work         ;
-;             |mpar_add:padder|                  ; 17 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core|mpar_add:padder                                                     ; mpar_add             ; work         ;
-;                |lpm_add_sub:adder[0]|          ; 17 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                ; lpm_add_sub          ; work         ;
-;                   |add_sub_fkg:auto_generated| ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated     ; add_sub_fkg          ; work         ;
+;       |lpm_mult:Mult10|                        ; 44 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 44 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10                                                                                        ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 44 (28)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 44 (28)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core                                                                     ; multcore             ; work         ;
+;             |mpar_add:padder|                  ; 16 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core|mpar_add:padder                                                     ; mpar_add             ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 16 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                ; lpm_add_sub          ; work         ;
+;                   |add_sub_fkg:auto_generated| ; 16 (16)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult10|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated     ; add_sub_fkg          ; work         ;
+;       |lpm_mult:Mult11|                        ; 33 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 33 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11                                                                                        ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 33 (21)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 33 (21)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core                                                                     ; multcore             ; work         ;
+;             |mpar_add:padder|                  ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core|mpar_add:padder                                                     ; mpar_add             ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                ; lpm_add_sub          ; work         ;
+;                   |add_sub_fkg:auto_generated| ; 12 (12)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult11|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated     ; add_sub_fkg          ; work         ;
 ;       |lpm_mult:Mult12|                        ; 74 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 74 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult12                                                                                        ; lpm_mult             ; work         ;
 ;          |multcore:mult_core|                  ; 74 (41)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 74 (41)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult12|multcore:mult_core                                                                     ; multcore             ; work         ;
 ;             |mpar_add:padder|                  ; 33 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 33 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult12|multcore:mult_core|mpar_add:padder                                                     ; mpar_add             ; work         ;
@@ -1694,18 +1691,18 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;                   |add_sub_9vg:auto_generated| ; 16 (16)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult14|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated     ; add_sub_9vg          ; work         ;
 ;       |lpm_mult:Mult1|                         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult1                                                                                         ; lpm_mult             ; work         ;
 ;          |mult_dks:auto_generated|             ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult1|mult_dks:auto_generated                                                                 ; mult_dks             ; work         ;
-;       |lpm_mult:Mult2|                         ; 59 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 59 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2                                                                                         ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 59 (33)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 59 (33)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core                                                                      ; multcore             ; work         ;
-;             |mpar_add:padder|                  ; 26 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 26 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
-;                |lpm_add_sub:adder[0]|          ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
-;                   |add_sub_fkg:auto_generated| ; 12 (12)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
-;                |lpm_add_sub:adder[1]|          ; 14 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                 ; lpm_add_sub          ; work         ;
-;                   |add_sub_9vg:auto_generated| ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated      ; add_sub_9vg          ; work         ;
-;       |lpm_mult:Mult3|                         ; 66 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3                                                                                         ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 66 (34)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 66 (34)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core                                                                      ; multcore             ; work         ;
-;             |mpar_add:padder|                  ; 32 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 32 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
-;                |lpm_add_sub:adder[0]|          ; 17 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
-;                   |add_sub_fkg:auto_generated| ; 17 (17)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
+;       |lpm_mult:Mult2|                         ; 64 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 64 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2                                                                                         ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 64 (33)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 64 (33)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core                                                                      ; multcore             ; work         ;
+;             |mpar_add:padder|                  ; 31 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 31 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 16 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
+;                   |add_sub_fkg:auto_generated| ; 16 (16)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
+;                |lpm_add_sub:adder[1]|          ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                 ; lpm_add_sub          ; work         ;
+;                   |add_sub_9vg:auto_generated| ; 15 (15)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated      ; add_sub_9vg          ; work         ;
+;       |lpm_mult:Mult3|                         ; 64 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 64 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3                                                                                         ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 64 (33)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 64 (33)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core                                                                      ; multcore             ; work         ;
+;             |mpar_add:padder|                  ; 31 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 31 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder                                                      ; mpar_add             ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 16 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                 ; lpm_add_sub          ; work         ;
+;                   |add_sub_fkg:auto_generated| ; 16 (16)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated      ; add_sub_fkg          ; work         ;
 ;                |lpm_add_sub:adder[1]|          ; 15 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                 ; lpm_add_sub          ; work         ;
 ;                   |add_sub_9vg:auto_generated| ; 15 (15)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated      ; add_sub_9vg          ; work         ;
 ;       |lpm_mult:Mult4|                         ; 74 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 74 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult4                                                                                         ; lpm_mult             ; work         ;
@@ -1739,8 +1736,8 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;                |lpm_add_sub:adder[1]|          ; 14 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult9|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                 ; lpm_add_sub          ; work         ;
 ;                   |add_sub_9vg:auto_generated| ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|hadamard_gate:u5_h_q0|lpm_mult:Mult9|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_9vg:auto_generated      ; add_sub_9vg          ; work         ;
 ;    |lfsr:rng_gen|                              ; 16 (16)     ; 16 (16)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 0          ; |top_qc_sim|lfsr:rng_gen                                                                                                                 ; lfsr                 ; work         ;
-;    |measure:measure_sv|                        ; 110 (110)   ; 3 (3)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 84 (84)      ; 0 (0)             ; 26 (26)          ; 0          ; |top_qc_sim|measure:measure_sv                                                                                                           ; measure              ; work         ;
-;    |probability:prob_sv|                       ; 197 (197)   ; 112 (112)                 ; 0 (0)         ; 0           ; 0    ; 0          ; 28           ; 0       ; 14        ; 0    ; 0            ; 85 (85)      ; 0 (0)             ; 112 (112)        ; 0          ; |top_qc_sim|probability:prob_sv                                                                                                          ; probability          ; work         ;
+;    |measure:measure_sv|                        ; 110 (110)   ; 3 (3)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 83 (83)      ; 0 (0)             ; 27 (27)          ; 0          ; |top_qc_sim|measure:measure_sv                                                                                                           ; measure              ; work         ;
+;    |probability:prob_sv|                       ; 206 (206)   ; 112 (112)                 ; 0 (0)         ; 0           ; 0    ; 0          ; 28           ; 0       ; 14        ; 0    ; 0            ; 91 (91)      ; 1 (1)             ; 114 (114)        ; 0          ; |top_qc_sim|probability:prob_sv                                                                                                          ; probability          ; work         ;
 ;       |lpm_mult:Mult0|                         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|probability:prob_sv|lpm_mult:Mult0                                                                                           ; lpm_mult             ; work         ;
 ;          |mult_pgs:auto_generated|             ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|probability:prob_sv|lpm_mult:Mult0|mult_pgs:auto_generated                                                                   ; mult_pgs             ; work         ;
 ;       |lpm_mult:Mult10|                        ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|probability:prob_sv|lpm_mult:Mult10                                                                                          ; lpm_mult             ; work         ;
@@ -1769,19 +1766,19 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ;          |mult_pgs:auto_generated|             ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|probability:prob_sv|lpm_mult:Mult8|mult_pgs:auto_generated                                                                   ; mult_pgs             ; work         ;
 ;       |lpm_mult:Mult9|                         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|probability:prob_sv|lpm_mult:Mult9                                                                                           ; lpm_mult             ; work         ;
 ;          |mult_rgs:auto_generated|             ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|probability:prob_sv|lpm_mult:Mult9|mult_rgs:auto_generated                                                                   ; mult_rgs             ; work         ;
-;    |probability_weights:prob_weights_sv|       ; 113 (113)   ; 112 (112)                 ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 111 (111)        ; 0          ; |top_qc_sim|probability_weights:prob_weights_sv                                                                                          ; probability_weights  ; work         ;
+;    |probability_weights:prob_weights_sv|       ; 121 (121)   ; 112 (112)                 ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 6 (6)             ; 115 (115)        ; 0          ; |top_qc_sim|probability_weights:prob_weights_sv                                                                                          ; probability_weights  ; work         ;
 ;    |quantum_state_vector:u0_state_vector|      ; 1 (1)       ; 1 (1)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0          ; |top_qc_sim|quantum_state_vector:u0_state_vector                                                                                         ; quantum_state_vector ; work         ;
-;    |quantum_state_vector:u1_state_vector|      ; 2 (2)       ; 2 (2)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0          ; |top_qc_sim|quantum_state_vector:u1_state_vector                                                                                         ; quantum_state_vector ; work         ;
-;    |quantum_state_vector:u2_state_vector|      ; 37 (37)     ; 28 (28)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 9 (9)        ; 2 (2)             ; 26 (26)          ; 0          ; |top_qc_sim|quantum_state_vector:u2_state_vector                                                                                         ; quantum_state_vector ; work         ;
+;    |quantum_state_vector:u1_state_vector|      ; 2 (2)       ; 2 (2)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 0 (0)            ; 0          ; |top_qc_sim|quantum_state_vector:u1_state_vector                                                                                         ; quantum_state_vector ; work         ;
+;    |quantum_state_vector:u2_state_vector|      ; 37 (37)     ; 28 (28)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 9 (9)        ; 0 (0)             ; 28 (28)          ; 0          ; |top_qc_sim|quantum_state_vector:u2_state_vector                                                                                         ; quantum_state_vector ; work         ;
 ;    |quantum_state_vector:u3_state_vector|      ; 121 (121)   ; 85 (85)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 36 (36)      ; 1 (1)             ; 84 (84)          ; 0          ; |top_qc_sim|quantum_state_vector:u3_state_vector                                                                                         ; quantum_state_vector ; work         ;
-;    |quantum_state_vector:u4_state_vector|      ; 95 (95)     ; 94 (94)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 8 (8)             ; 86 (86)          ; 0          ; |top_qc_sim|quantum_state_vector:u4_state_vector                                                                                         ; quantum_state_vector ; work         ;
-;    |quantum_state_vector:u5_state_vector|      ; 229 (229)   ; 164 (164)                 ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 65 (65)      ; 0 (0)             ; 164 (164)        ; 0          ; |top_qc_sim|quantum_state_vector:u5_state_vector                                                                                         ; quantum_state_vector ; work         ;
-;    |rot_gate_pi_4:u2_rpi4_q0q2|                ; 28 (3)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 27 (3)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2                                                                                                   ; rot_gate_pi_4        ; work         ;
-;       |lpm_mult:Mult2|                         ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (0)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2                                                                                    ; lpm_mult             ; work         ;
-;          |multcore:mult_core|                  ; 12 (1)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (1)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core                                                                 ; multcore             ; work         ;
-;             |mpar_add:padder|                  ; 11 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 10 (0)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder                                                 ; mpar_add             ; work         ;
-;                |lpm_add_sub:adder[0]|          ; 11 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 10 (0)       ; 0 (0)             ; 1 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                            ; lpm_add_sub          ; work         ;
-;                   |add_sub_fkg:auto_generated| ; 11 (11)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 1 (1)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated ; add_sub_fkg          ; work         ;
+;    |quantum_state_vector:u4_state_vector|      ; 97 (97)     ; 95 (95)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 2 (2)        ; 3 (3)             ; 92 (92)          ; 0          ; |top_qc_sim|quantum_state_vector:u4_state_vector                                                                                         ; quantum_state_vector ; work         ;
+;    |quantum_state_vector:u5_state_vector|      ; 228 (228)   ; 163 (163)                 ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 65 (65)      ; 0 (0)             ; 163 (163)        ; 0          ; |top_qc_sim|quantum_state_vector:u5_state_vector                                                                                         ; quantum_state_vector ; work         ;
+;    |rot_gate_pi_4:u2_rpi4_q0q2|                ; 28 (3)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 28 (3)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2                                                                                                   ; rot_gate_pi_4        ; work         ;
+;       |lpm_mult:Mult2|                         ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2                                                                                    ; lpm_mult             ; work         ;
+;          |multcore:mult_core|                  ; 12 (1)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (1)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core                                                                 ; multcore             ; work         ;
+;             |mpar_add:padder|                  ; 11 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder                                                 ; mpar_add             ; work         ;
+;                |lpm_add_sub:adder[0]|          ; 11 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                            ; lpm_add_sub          ; work         ;
+;                   |add_sub_fkg:auto_generated| ; 11 (11)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult2|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_fkg:auto_generated ; add_sub_fkg          ; work         ;
 ;       |lpm_mult:Mult3|                         ; 13 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 13 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult3                                                                                    ; lpm_mult             ; work         ;
 ;          |multcore:mult_core|                  ; 13 (1)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 13 (1)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult3|multcore:mult_core                                                                 ; multcore             ; work         ;
 ;             |mpar_add:padder|                  ; 12 (0)      ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (0)       ; 0 (0)             ; 0 (0)            ; 0          ; |top_qc_sim|rot_gate_pi_4:u2_rpi4_q0q2|lpm_mult:Mult3|multcore:mult_core|mpar_add:padder                                                 ; mpar_add             ; work         ;
@@ -1813,38 +1810,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------+----------+---------------+---------------+-----------------------+-----+------+
 
 
-+------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                   ;
-+------------------------------------+-------------------+---------+
-; Source Pin / Fanout                ; Pad To Core Index ; Setting ;
-+------------------------------------+-------------------+---------+
-; clk_i                              ;                   ;         ;
-; rst_ni                             ;                   ;         ;
-;      - sync:rst_sync|ff_1_q~feeder ; 1                 ; 6       ;
-; measure_ni                         ;                   ;         ;
-;      - sync:clk_btn_sync|ff_1_q    ; 0                 ; 6       ;
-+------------------------------------+-------------------+---------+
++----------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                       ;
++----------------------------------------+-------------------+---------+
+; Source Pin / Fanout                    ; Pad To Core Index ; Setting ;
++----------------------------------------+-------------------+---------+
+; clk_i                                  ;                   ;         ;
+; rst_ni                                 ;                   ;         ;
+;      - sync:rst_sync|ff_1_q~feeder     ; 1                 ; 6       ;
+; measure_ni                             ;                   ;         ;
+;      - sync:clk_btn_sync|ff_1_q~feeder ; 0                 ; 6       ;
++----------------------------------------+-------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                  ;
-+--------------------------+---------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; Name                     ; Location      ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------------------------+---------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; clk_i                    ; PIN_P11       ; 638     ; Clock        ; yes    ; Global Clock         ; GCLK19           ; --                        ;
-; sync:clk_btn_sync|ff_2_q ; FF_X49_Y22_N9 ; 3       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; sync:rst_sync|ff_2_q     ; FF_X45_Y53_N5 ; 634     ; Async. clear ; yes    ; Global Clock         ; GCLK10           ; --                        ;
-+--------------------------+---------------+---------+--------------+--------+----------------------+------------------+---------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                   ;
++--------------------------+----------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; Name                     ; Location       ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++--------------------------+----------------+---------+--------------+--------+----------------------+------------------+---------------------------+
+; clk_i                    ; PIN_P11        ; 638     ; Clock        ; yes    ; Global Clock         ; GCLK19           ; --                        ;
+; sync:clk_btn_sync|ff_2_q ; FF_X47_Y31_N15 ; 3       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; sync:rst_sync|ff_2_q     ; FF_X45_Y53_N13 ; 634     ; Async. clear ; yes    ; Global Clock         ; GCLK12           ; --                        ;
++--------------------------+----------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                                                 ;
-+----------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Name                 ; Location      ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+----------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; clk_i                ; PIN_P11       ; 638     ; 617                                  ; Global Clock         ; GCLK19           ; --                        ;
-; sync:rst_sync|ff_2_q ; FF_X45_Y53_N5 ; 634     ; 0                                    ; Global Clock         ; GCLK10           ; --                        ;
-+----------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                                  ;
++----------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Name                 ; Location       ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++----------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; clk_i                ; PIN_P11        ; 638     ; 615                                  ; Global Clock         ; GCLK19           ; --                        ;
+; sync:rst_sync|ff_2_q ; FF_X45_Y53_N13 ; 634     ; 0                                    ; Global Clock         ; GCLK12           ; --                        ;
++----------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
 
 +-----------------------------------------------------------------------------------------------+
@@ -1869,38 +1866,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------+----------------------------+--------------------+---------------------+--------------------------------+-----------------------+-----------------------+-------------------+-----------------+
 ; Name                                                                      ; Mode                       ; Location           ; Sign Representation ; Has Input Shift Register Chain ; Data A Input Register ; Data B Input Register ; Pipeline Register ; Output Register ;
 +---------------------------------------------------------------------------+----------------------------+--------------------+---------------------+--------------------------------+-----------------------+-----------------------+-------------------+-----------------+
-; probability:prob_sv|lpm_mult:Mult2|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y21_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult2|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y21_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult3|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y22_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult3|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y22_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult0|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y23_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult0|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y23_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult2|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y26_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult2|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y26_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult3|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y27_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult3|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y27_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult0|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y25_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult0|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y25_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
 ; probability:prob_sv|lpm_mult:Mult1|mult_rgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y24_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
 ;    probability:prob_sv|lpm_mult:Mult1|mult_rgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y24_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult4|mult_lgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y25_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult4|mult_lgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y25_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y26_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y26_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y29_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult5|mult_ngs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y29_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult4|mult_lgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y30_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult4|mult_lgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y30_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
 ; probability:prob_sv|lpm_mult:Mult6|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y18_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
 ;    probability:prob_sv|lpm_mult:Mult6|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y18_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult7|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y14_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult7|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y14_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult8|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y21_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult8|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X28_Y21_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult9|mult_rgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y22_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult9|mult_rgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X28_Y22_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult10|mult_pgs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y20_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult10|mult_pgs:auto_generated|mac_mult1  ;                            ; DSPMULT_X28_Y20_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult11|mult_pgs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y25_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult11|mult_pgs:auto_generated|mac_mult1  ;                            ; DSPMULT_X28_Y25_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult12|mult_lgs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y30_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult12|mult_lgs:auto_generated|mac_mult1  ;                            ; DSPMULT_X48_Y30_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; probability:prob_sv|lpm_mult:Mult13|mult_ngs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y29_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
-;    probability:prob_sv|lpm_mult:Mult13|mult_ngs:auto_generated|mac_mult1  ;                            ; DSPMULT_X48_Y29_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
-; hadamard_gate:u5_h_q0|lpm_mult:Mult0|mult_dks:auto_generated|mac_out2     ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y20_N2  ;                     ; No                             ;                       ;                       ;                   ; yes             ;
-;    hadamard_gate:u5_h_q0|lpm_mult:Mult0|mult_dks:auto_generated|mac_mult1 ;                            ; DSPMULT_X48_Y20_N0 ; Signed              ;                                ; no                    ; no                    ; no                ;                 ;
-; hadamard_gate:u5_h_q0|lpm_mult:Mult6|mult_dks:auto_generated|mac_out2     ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y19_N2  ;                     ; No                             ;                       ;                       ;                   ; yes             ;
-;    hadamard_gate:u5_h_q0|lpm_mult:Mult6|mult_dks:auto_generated|mac_mult1 ;                            ; DSPMULT_X48_Y19_N0 ; Signed              ;                                ; no                    ; no                    ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult7|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y19_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult7|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X48_Y19_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult8|mult_pgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y20_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult8|mult_pgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X28_Y20_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult9|mult_rgs:auto_generated|mac_out2       ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y21_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult9|mult_rgs:auto_generated|mac_mult1   ;                            ; DSPMULT_X28_Y21_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult10|mult_pgs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y22_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult10|mult_pgs:auto_generated|mac_mult1  ;                            ; DSPMULT_X28_Y22_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult11|mult_pgs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y24_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult11|mult_pgs:auto_generated|mac_mult1  ;                            ; DSPMULT_X28_Y24_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult12|mult_lgs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y27_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult12|mult_lgs:auto_generated|mac_mult1  ;                            ; DSPMULT_X28_Y27_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; probability:prob_sv|lpm_mult:Mult13|mult_ngs:auto_generated|mac_out2      ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y26_N2  ;                     ; No                             ;                       ;                       ;                   ; no              ;
+;    probability:prob_sv|lpm_mult:Mult13|mult_ngs:auto_generated|mac_mult1  ;                            ; DSPMULT_X28_Y26_N0 ; Signed              ;                                ; yes                   ; yes                   ; no                ;                 ;
+; hadamard_gate:u5_h_q0|lpm_mult:Mult0|mult_dks:auto_generated|mac_out2     ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y21_N2  ;                     ; No                             ;                       ;                       ;                   ; yes             ;
+;    hadamard_gate:u5_h_q0|lpm_mult:Mult0|mult_dks:auto_generated|mac_mult1 ;                            ; DSPMULT_X48_Y21_N0 ; Signed              ;                                ; no                    ; no                    ; no                ;                 ;
+; hadamard_gate:u5_h_q0|lpm_mult:Mult6|mult_dks:auto_generated|mac_out2     ; Simple Multiplier (18-bit) ; DSPOUT_X48_Y14_N2  ;                     ; No                             ;                       ;                       ;                   ; yes             ;
+;    hadamard_gate:u5_h_q0|lpm_mult:Mult6|mult_dks:auto_generated|mac_mult1 ;                            ; DSPMULT_X48_Y14_N0 ; Signed              ;                                ; no                    ; no                    ; no                ;                 ;
 ; hadamard_gate:u5_h_q0|lpm_mult:Mult1|mult_dks:auto_generated|mac_out2     ; Simple Multiplier (18-bit) ; DSPOUT_X28_Y23_N2  ;                     ; No                             ;                       ;                       ;                   ; yes             ;
 ;    hadamard_gate:u5_h_q0|lpm_mult:Mult1|mult_dks:auto_generated|mac_mult1 ;                            ; DSPMULT_X28_Y23_N0 ; Signed              ;                                ; no                    ; no                    ; no                ;                 ;
 +---------------------------------------------------------------------------+----------------------------+--------------------+---------------------+--------------------------------+-----------------------+-----------------------+-------------------+-----------------+
@@ -1911,174 +1908,175 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-------------------------+
 ; Routing Resource Type ; Usage                   ;
 +-----------------------+-------------------------+
-; Block interconnects   ; 2,758 / 148,641 ( 2 % ) ;
-; C16 interconnects     ; 14 / 5,382 ( < 1 % )    ;
-; C4 interconnects      ; 1,341 / 106,704 ( 1 % ) ;
-; Direct links          ; 608 / 148,641 ( < 1 % ) ;
+; Block interconnects   ; 2,830 / 148,641 ( 2 % ) ;
+; C16 interconnects     ; 16 / 5,382 ( < 1 % )    ;
+; C4 interconnects      ; 1,331 / 106,704 ( 1 % ) ;
+; Direct links          ; 690 / 148,641 ( < 1 % ) ;
 ; Global clocks         ; 2 / 20 ( 10 % )         ;
-; Local interconnects   ; 374 / 49,760 ( < 1 % )  ;
+; Local interconnects   ; 334 / 49,760 ( < 1 % )  ;
 ; NSLEEPs               ; 0 / 500 ( 0 % )         ;
-; R24 interconnects     ; 21 / 5,406 ( < 1 % )    ;
-; R4 interconnects      ; 1,799 / 147,764 ( 1 % ) ;
+; R24 interconnects     ; 13 / 5,406 ( < 1 % )    ;
+; R4 interconnects      ; 1,615 / 147,764 ( 1 % ) ;
 +-----------------------+-------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Logic Elements                                                          ;
 +---------------------------------------------+-------------------------------+
-; Number of Logic Elements  (Average = 12.27) ; Number of LABs  (Total = 171) ;
+; Number of Logic Elements  (Average = 12.16) ; Number of LABs  (Total = 172) ;
 +---------------------------------------------+-------------------------------+
-; 1                                           ; 7                             ;
-; 2                                           ; 7                             ;
+; 1                                           ; 8                             ;
+; 2                                           ; 5                             ;
 ; 3                                           ; 3                             ;
-; 4                                           ; 4                             ;
+; 4                                           ; 5                             ;
 ; 5                                           ; 2                             ;
-; 6                                           ; 0                             ;
-; 7                                           ; 2                             ;
-; 8                                           ; 1                             ;
+; 6                                           ; 2                             ;
+; 7                                           ; 0                             ;
+; 8                                           ; 4                             ;
 ; 9                                           ; 6                             ;
-; 10                                          ; 13                            ;
-; 11                                          ; 21                            ;
-; 12                                          ; 6                             ;
-; 13                                          ; 3                             ;
-; 14                                          ; 17                            ;
-; 15                                          ; 7                             ;
-; 16                                          ; 72                            ;
+; 10                                          ; 11                            ;
+; 11                                          ; 18                            ;
+; 12                                          ; 11                            ;
+; 13                                          ; 6                             ;
+; 14                                          ; 16                            ;
+; 15                                          ; 6                             ;
+; 16                                          ; 69                            ;
 +---------------------------------------------+-------------------------------+
 
 
 +--------------------------------------------------------------------+
 ; LAB-wide Signals                                                   ;
 +------------------------------------+-------------------------------+
-; LAB-wide Signals  (Average = 0.89) ; Number of LABs  (Total = 171) ;
+; LAB-wide Signals  (Average = 0.91) ; Number of LABs  (Total = 172) ;
 +------------------------------------+-------------------------------+
-; 1 Async. clear                     ; 76                            ;
-; 1 Clock                            ; 77                            ;
+; 1 Async. clear                     ; 78                            ;
+; 1 Clock                            ; 79                            ;
 +------------------------------------+-------------------------------+
 
 
 +------------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                          ;
 +----------------------------------------------+-------------------------------+
-; Number of Signals Sourced  (Average = 14.05) ; Number of LABs  (Total = 171) ;
+; Number of Signals Sourced  (Average = 13.96) ; Number of LABs  (Total = 172) ;
 +----------------------------------------------+-------------------------------+
 ; 0                                            ; 0                             ;
-; 1                                            ; 7                             ;
-; 2                                            ; 8                             ;
-; 3                                            ; 4                             ;
-; 4                                            ; 12                            ;
-; 5                                            ; 1                             ;
-; 6                                            ; 2                             ;
-; 7                                            ; 4                             ;
-; 8                                            ; 6                             ;
-; 9                                            ; 6                             ;
-; 10                                           ; 9                             ;
+; 1                                            ; 8                             ;
+; 2                                            ; 6                             ;
+; 3                                            ; 2                             ;
+; 4                                            ; 15                            ;
+; 5                                            ; 2                             ;
+; 6                                            ; 5                             ;
+; 7                                            ; 0                             ;
+; 8                                            ; 11                            ;
+; 9                                            ; 1                             ;
+; 10                                           ; 10                            ;
 ; 11                                           ; 10                            ;
-; 12                                           ; 3                             ;
-; 13                                           ; 5                             ;
-; 14                                           ; 14                            ;
-; 15                                           ; 3                             ;
-; 16                                           ; 34                            ;
-; 17                                           ; 1                             ;
+; 12                                           ; 6                             ;
+; 13                                           ; 6                             ;
+; 14                                           ; 7                             ;
+; 15                                           ; 7                             ;
+; 16                                           ; 32                            ;
+; 17                                           ; 2                             ;
 ; 18                                           ; 2                             ;
-; 19                                           ; 3                             ;
+; 19                                           ; 2                             ;
 ; 20                                           ; 4                             ;
-; 21                                           ; 0                             ;
-; 22                                           ; 9                             ;
+; 21                                           ; 2                             ;
+; 22                                           ; 6                             ;
 ; 23                                           ; 1                             ;
-; 24                                           ; 0                             ;
-; 25                                           ; 0                             ;
-; 26                                           ; 3                             ;
-; 27                                           ; 2                             ;
+; 24                                           ; 2                             ;
+; 25                                           ; 2                             ;
+; 26                                           ; 0                             ;
+; 27                                           ; 4                             ;
 ; 28                                           ; 6                             ;
-; 29                                           ; 0                             ;
-; 30                                           ; 4                             ;
-; 31                                           ; 1                             ;
+; 29                                           ; 2                             ;
+; 30                                           ; 0                             ;
+; 31                                           ; 2                             ;
 ; 32                                           ; 7                             ;
 +----------------------------------------------+-------------------------------+
 
 
-+---------------------------------------------------------------------------------+
-; LAB Signals Sourced Out                                                         ;
-+-------------------------------------------------+-------------------------------+
-; Number of Signals Sourced Out  (Average = 9.84) ; Number of LABs  (Total = 171) ;
-+-------------------------------------------------+-------------------------------+
-; 0                                               ; 0                             ;
-; 1                                               ; 10                            ;
-; 2                                               ; 16                            ;
-; 3                                               ; 5                             ;
-; 4                                               ; 9                             ;
-; 5                                               ; 12                            ;
-; 6                                               ; 1                             ;
-; 7                                               ; 12                            ;
-; 8                                               ; 5                             ;
-; 9                                               ; 19                            ;
-; 10                                              ; 11                            ;
-; 11                                              ; 16                            ;
-; 12                                              ; 5                             ;
-; 13                                              ; 5                             ;
-; 14                                              ; 9                             ;
-; 15                                              ; 9                             ;
-; 16                                              ; 18                            ;
-; 17                                              ; 0                             ;
-; 18                                              ; 0                             ;
-; 19                                              ; 0                             ;
-; 20                                              ; 0                             ;
-; 21                                              ; 0                             ;
-; 22                                              ; 1                             ;
-; 23                                              ; 0                             ;
-; 24                                              ; 0                             ;
-; 25                                              ; 0                             ;
-; 26                                              ; 1                             ;
-; 27                                              ; 0                             ;
-; 28                                              ; 0                             ;
-; 29                                              ; 0                             ;
-; 30                                              ; 2                             ;
-; 31                                              ; 0                             ;
-; 32                                              ; 5                             ;
-+-------------------------------------------------+-------------------------------+
++----------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                          ;
++--------------------------------------------------+-------------------------------+
+; Number of Signals Sourced Out  (Average = 10.05) ; Number of LABs  (Total = 172) ;
++--------------------------------------------------+-------------------------------+
+; 0                                                ; 0                             ;
+; 1                                                ; 10                            ;
+; 2                                                ; 13                            ;
+; 3                                                ; 5                             ;
+; 4                                                ; 15                            ;
+; 5                                                ; 8                             ;
+; 6                                                ; 8                             ;
+; 7                                                ; 3                             ;
+; 8                                                ; 8                             ;
+; 9                                                ; 15                            ;
+; 10                                               ; 10                            ;
+; 11                                               ; 14                            ;
+; 12                                               ; 6                             ;
+; 13                                               ; 7                             ;
+; 14                                               ; 9                             ;
+; 15                                               ; 12                            ;
+; 16                                               ; 18                            ;
+; 17                                               ; 1                             ;
+; 18                                               ; 1                             ;
+; 19                                               ; 0                             ;
+; 20                                               ; 1                             ;
+; 21                                               ; 0                             ;
+; 22                                               ; 0                             ;
+; 23                                               ; 0                             ;
+; 24                                               ; 0                             ;
+; 25                                               ; 0                             ;
+; 26                                               ; 0                             ;
+; 27                                               ; 0                             ;
+; 28                                               ; 2                             ;
+; 29                                               ; 1                             ;
+; 30                                               ; 0                             ;
+; 31                                               ; 1                             ;
+; 32                                               ; 4                             ;
++--------------------------------------------------+-------------------------------+
 
 
 +------------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                          ;
 +----------------------------------------------+-------------------------------+
-; Number of Distinct Inputs  (Average = 14.59) ; Number of LABs  (Total = 171) ;
+; Number of Distinct Inputs  (Average = 14.99) ; Number of LABs  (Total = 172) ;
 +----------------------------------------------+-------------------------------+
 ; 0                                            ; 0                             ;
-; 1                                            ; 9                             ;
-; 2                                            ; 6                             ;
-; 3                                            ; 7                             ;
-; 4                                            ; 17                            ;
-; 5                                            ; 1                             ;
-; 6                                            ; 7                             ;
+; 1                                            ; 6                             ;
+; 2                                            ; 7                             ;
+; 3                                            ; 3                             ;
+; 4                                            ; 18                            ;
+; 5                                            ; 2                             ;
+; 6                                            ; 11                            ;
 ; 7                                            ; 3                             ;
-; 8                                            ; 6                             ;
-; 9                                            ; 6                             ;
-; 10                                           ; 14                            ;
-; 11                                           ; 2                             ;
-; 12                                           ; 3                             ;
-; 13                                           ; 4                             ;
+; 8                                            ; 3                             ;
+; 9                                            ; 5                             ;
+; 10                                           ; 16                            ;
+; 11                                           ; 4                             ;
+; 12                                           ; 4                             ;
+; 13                                           ; 3                             ;
 ; 14                                           ; 7                             ;
-; 15                                           ; 7                             ;
-; 16                                           ; 1                             ;
-; 17                                           ; 7                             ;
-; 18                                           ; 8                             ;
-; 19                                           ; 4                             ;
+; 15                                           ; 4                             ;
+; 16                                           ; 2                             ;
+; 17                                           ; 6                             ;
+; 18                                           ; 7                             ;
+; 19                                           ; 3                             ;
 ; 20                                           ; 1                             ;
-; 21                                           ; 3                             ;
-; 22                                           ; 5                             ;
-; 23                                           ; 0                             ;
-; 24                                           ; 4                             ;
+; 21                                           ; 4                             ;
+; 22                                           ; 6                             ;
+; 23                                           ; 3                             ;
+; 24                                           ; 6                             ;
 ; 25                                           ; 6                             ;
-; 26                                           ; 2                             ;
+; 26                                           ; 3                             ;
 ; 27                                           ; 2                             ;
-; 28                                           ; 5                             ;
+; 28                                           ; 2                             ;
 ; 29                                           ; 1                             ;
-; 30                                           ; 11                            ;
-; 31                                           ; 3                             ;
+; 30                                           ; 9                             ;
+; 31                                           ; 5                             ;
 ; 32                                           ; 1                             ;
-; 33                                           ; 0                             ;
-; 34                                           ; 7                             ;
+; 33                                           ; 1                             ;
+; 34                                           ; 6                             ;
+; 35                                           ; 1                             ;
 +----------------------------------------------+-------------------------------+
 
 
@@ -2239,14 +2237,14 @@ Info (332154): The derive_clock_uncertainty command did not apply clock uncertai
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176353): Automatically promoted node clk_i~input (placed in PIN P11 (CLK7p, DIFFIO_TX_RX_B20p, DIFFOUT_B20p, High_Speed)) File: C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/top_qc_sim.sv Line: 13
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G19
-Info (176353): Automatically promoted node sync:rst_sync|ff_2_q  File: C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sync.sv Line: 25
+Info (176353): Automatically promoted node sync:rst_sync|ff_2_q  File: C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/RTL/sync.sv Line: 26
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176233): Starting register packing
 Info (176235): Finished register packing
-    Extra Info (176218): Packed 424 registers into blocks of type Embedded multiplier block
+    Extra Info (176218): Packed 422 registers into blocks of type Embedded multiplier block
     Extra Info (176218): Packed 48 registers into blocks of type Embedded multiplier output
-    Extra Info (176220): Created 212 register duplicates
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+    Extra Info (176220): Created 211 register duplicates
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -2255,11 +2253,11 @@ Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:03
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 8% of the available device resources in the region that extends from location X45_Y22 to location X55_Y32
+    Info (170196): Router estimated peak interconnect usage is 7% of the available device resources in the region that extends from location X33_Y22 to location X44_Y32
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.85 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.95 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2267,10 +2265,10 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/OBJ/output_files/top_qc_sim.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 6736 megabytes
-    Info: Processing ended: Mon Feb 16 23:40:14 2026
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Peak virtual memory: 6735 megabytes
+    Info: Processing ended: Sat Feb 21 23:11:20 2026
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:23
 
 
 +----------------------------+

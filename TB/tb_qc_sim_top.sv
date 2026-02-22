@@ -9,13 +9,18 @@
 
 module tb_qc_sim_top ();
 
-localparam FPGA_CLK_SPEED = 20;
+//50MHz clock
+//20ns period, 10ns high, 10ns low
+localparam FPGA_CLK_SPEED = 10;
 
+
+//General signals
 logic fpga_clk;
 logic fpga_rst_n;
 logic fpga_measure_n;
 logic [7:0] hex_0;
 
+//Instatiate UUT
 top_qc_sim uut (
   .clk_i(fpga_clk),
   .rst_ni(fpga_rst_n),
@@ -25,6 +30,7 @@ top_qc_sim uut (
   
 );
 
+//Reset device and don't measure
 initial begin
   fpga_rst_n = 1'b0;
   fpga_measure_n = 1'b1;
@@ -32,6 +38,8 @@ initial begin
   fpga_rst_n = 1'b1;
 end
 
+
+//Clock 
 initial begin
   forever begin
     fpga_clk = 1'b1;
@@ -41,12 +49,13 @@ initial begin
   end
 end
 
+
 initial begin
-  #10200;
+  #10200; //Wait enough time to allow outputs to be ready for measure
   fpga_measure_n = 1'b0;
-  #1000;
+  #1000; //Measure for a time
   fpga_measure_n = 1'b1;
-  #10200;
+  #10200; //Wait again
   $stop;
 end
 

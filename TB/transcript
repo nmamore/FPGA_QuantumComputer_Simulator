@@ -14,26 +14,7 @@
 # 13 compiles, 0 failed with no errors.
 vsim -gui work.tb_qc_sim_top
 # vsim -gui work.tb_qc_sim_top 
-# Start time: 23:38:43 on Feb 16,2026
-# Loading sv_std.std
-# Loading work.tb_qc_sim_top
-# Loading work.top_qc_sim
-# Loading work.hadamard_gate
-# Loading work.quantum_state_vector
-# Loading work.rot_gate_pi_2
-# Loading work.rot_gate_pi_4
-# Loading work.swap_gate
-# Loading work.probability
-# Loading work.probability_weights
-# Loading work.lfsr
-# Loading work.measure
-# Loading work.sync
-# Loading work.sev_seg_display
-vsim -gui work.tb_qc_sim_top
-# End time: 23:39:09 on Feb 16,2026, Elapsed time: 0:00:26
-# Errors: 0, Warnings: 2
-# vsim -gui work.tb_qc_sim_top 
-# Start time: 23:39:09 on Feb 16,2026
+# Start time: 20:59:01 on Feb 21,2026
 # Loading sv_std.std
 # Loading work.tb_qc_sim_top
 # Loading work.top_qc_sim
@@ -59,5 +40,120 @@ run -all
 # ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(50)
 #    Time: 21400 ns  Iteration: 0  Instance: /tb_qc_sim_top
 # Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 50
-# End time: 23:39:40 on Feb 16,2026, Elapsed time: 0:00:31
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# Compile of probability_weights.sv was successful with warnings.
+# Compile of hadamard_gate.sv was successful with warnings.
+# Compile of rot_gate_pi_2.sv was successful with warnings.
+# Compile of rot_gate_pi_4.sv was successful with warnings.
+# Compile of swap_gate.sv was successful with warnings.
+# Compile of sev_seg_display.sv was successful.
+# Compile of sync.sv was successful.
+# 13 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_qc_sim_top
+# Loading work.top_qc_sim
+# Loading work.hadamard_gate
+# Loading work.quantum_state_vector
+# Loading work.rot_gate_pi_2
+# Loading work.rot_gate_pi_4
+# Loading work.swap_gate
+# Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
+# Loading work.measure
+# Loading work.sync
+# Loading work.sev_seg_display
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(50)
+#    Time: 21400 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 50
+do C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/wave.do
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/u0_h_q2/COEFF'.
+# Executing ONERROR command at macro C:\work\GitHub\FPGA_QuantumComputer_Simulator\FPGA_QuantumComputer_Simulator\TB\wave.do line 41
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/u3_h_q1/COEFF'.
+# Executing ONERROR command at macro C:\work\GitHub\FPGA_QuantumComputer_Simulator\FPGA_QuantumComputer_Simulator\TB\wave.do line 101
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_qc_sim_top/uut/u5_h_q0/COEFF'.
+# Executing ONERROR command at macro C:\work\GitHub\FPGA_QuantumComputer_Simulator\FPGA_QuantumComputer_Simulator\TB\wave.do line 141
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# Compile of probability_weights.sv was successful with warnings.
+# Compile of hadamard_gate.sv was successful with warnings.
+# Compile of rot_gate_pi_2.sv was successful with warnings.
+# Compile of rot_gate_pi_4.sv was successful with warnings.
+# Compile of swap_gate.sv was successful with warnings.
+# Compile of sev_seg_display.sv was successful.
+# Compile of sync.sv was successful.
+# 13 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_qc_sim_top
+# Loading work.top_qc_sim
+# Loading work.hadamard_gate
+# Loading work.quantum_state_vector
+# Loading work.rot_gate_pi_2
+# Loading work.rot_gate_pi_4
+# Loading work.swap_gate
+# Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
+# Loading work.measure
+# Loading work.sync
+# Loading work.sev_seg_display
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(50)
+#    Time: 21400 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 50
+# Compile of quantum_state_vector.sv was successful with warnings.
+# Compile of top_qc_sim.sv was successful.
+# Compile of tb_qc_sim_top.sv was successful.
+# Compile of lfsr.sv was successful.
+# Compile of probability.sv was successful with warnings.
+# Compile of measure.sv was successful with warnings.
+# Compile of probability_weights.sv was successful with warnings.
+# Compile of hadamard_gate.sv was successful with warnings.
+# Compile of rot_gate_pi_2.sv was successful with warnings.
+# Compile of rot_gate_pi_4.sv was successful with warnings.
+# Compile of swap_gate.sv was successful with warnings.
+# Compile of sev_seg_display.sv was successful.
+# Compile of sync.sv was successful.
+# 13 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_qc_sim_top
+# Loading work.top_qc_sim
+# Loading work.hadamard_gate
+# Loading work.quantum_state_vector
+# Loading work.rot_gate_pi_2
+# Loading work.rot_gate_pi_4
+# Loading work.swap_gate
+# Loading work.probability
+# Loading work.probability_weights
+# Loading work.lfsr
+# Loading work.measure
+# Loading work.sync
+# Loading work.sev_seg_display
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Note: $stop    : C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv(59)
+#    Time: 21400 ns  Iteration: 0  Instance: /tb_qc_sim_top
+# Break in Module tb_qc_sim_top at C:/work/GitHub/FPGA_QuantumComputer_Simulator/FPGA_QuantumComputer_Simulator/TB/tb_qc_sim_top.sv line 59
+# End time: 23:10:12 on Feb 21,2026, Elapsed time: 2:11:11
 # Errors: 0, Warnings: 1

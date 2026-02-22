@@ -11,7 +11,7 @@ module sev_seg_display
   output logic [7:0] seven_seg_o
 );
 
-always_comb begin
+always_comb begin //Displays hex digit for associated input
   case(dat_i)
     4'h0: begin
       seven_seg_o = 8'hC0;

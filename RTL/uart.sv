@@ -15,64 +15,126 @@ module uart #(
   input logic  clk_i,
   input logic  rst_ni,
   
-  input logic  uart_rx_i,
-  output logic uart_tx_o
+  input logic  uart_rx_i, //Serial UART
+  output logic uart_tx_o,
+  
+  input logic  [7:0] uart_tx_reg_i, //Registers for shift UART data
+  output logic [7:0] uart_rx_reg_o,
+  
+  input logic tx_start_i, //Initiate data transmit
+  output logic tx_busy_o, //Transmit in progress
+  output logic data_valid_o //Indicate data in RX register
+  
 );
 
 logic [2:0] rx_buf;
-logic [3:0] bit_count;
 
-logic [7:0] uart_rx_reg;
+logic [COUNT_BIT-1:0] rx_tick_d;
+logic [COUNT_BIT-1:0] rx_tick_q;
 
-logic [COUNT_BIT-1:0] count;
+logic [2:0] rx_bit_cnt_d;
+logic [2:0] rx_bit_cnt_q;
 
-logic start;
+logic [7:0] rx_shift_d;
+logic [7:0] rx_shift_q;
+
+logic valid_d;
+logic valid_q;
+
+logic [COUNT_BIT-1:0] tx_tick_d;
+logic [COUNT_BIT-1:0] tx_tick_q;
+
+logic [2:0] tx_bit_cnt_d;
+logic [2:0] tx_bit_cnt_q;
+
+logic [7:0] tx_shift_d;
+logic [7:0] tx_shift_q;
+
+assign uart_rx_reg_o = rx_shift_q;
+assign data_valid_o = valid_q;
 
 // Define the states
 typedef enum {
-  StRxIdle, StRxBitCount, StRxShift, StRxStop
+  StRxIdle, StRxStart, StRxShift, StRxStop
 } uartrx_state_e;
 
 uartrx_state_e uartrx_state_d, uartrx_state_q;
 
+// Define the states
+typedef enum {
+  StTxIdle, StTxShift, StTxStop
+} uarttx_state_e;
+
+uarttx_state_e uarttx_state_d, uarttx_state_q;
+
+
+//Clock asynchronous data in
+always_ff @(posedge clk_i or negedge rst_ni) begin
+  if (!rst_ni) begin
+    rx_buf <= 'h0;
+  end else begin
+    rx_buf <= {rx_buf[1:0], uart_rx_i};
+  end
+end
+
 // Combinational decode of the state
 always_comb begin
   uartrx_state_d = uartrx_state_q;
-  uart_rx_reg = 'h0;
+  tx_busy_o = (uarttx_state_q != StTxIdle);
+  rx_tick_d  = 'h0;
+  rx_bit_cnt_d  = 'h0;
+  rx_shift_d  = 'h0;
+  valid_d = 1'b0;
   unique case (uartrx_state_q)
     // StIdle: Wait for start bit
     StRxIdle: begin
-      if (rx_buf = 'h0) begin
-        uartrx_state_d = StRxBitCount;
-        start = 1'b1;
+      valid_d = 1'b0; //Reset data valid
+      if (!rx_buf[2]) begin //Start bit recieved
+        uartrx_state_d = StRxStart;
       end else begin
         uartrx_state_d = StRxIdle;
-        start = 1'b0;
       end
     end
-    // StRxBitCount: Reset accumulators
-    StRxBitCount: begin
-      if (next_bit = 1'b1) begin
-        uartrx_state_d = StRxShift;
+    //Check start bit
+    StRxStart: begin
+      if (rx_tick_q == (CLK_RATE-1)/2) begin //Wait for half the time to center sampling
+        if (!rx_buf[2]) begin //Confirm bit is still low
+          uartrx_state_d = StRxShift;
+          rx_tick_d = 'h0; //Set tick counter
+        end else begin
+          uartrx_state_d = StRxIdle; //False start bit, set back to idle
+          rx_tick_d = 'h0;
+        end
       end else begin
-        uartrx_state_d = StRxBitCount;
+        uartrx_state_d = StRxStart;
+        rx_tick_d = rx_tick_q + 1'b1; //Count clock cycles until set bit rate is reached
       end
     end
+    //Shift next serial bit in
     StRxShift: begin
-      if (rx_buf = 3'b000 || rx_buf = 3'b111) begin
-        uartrx_state_d = StRxBitCount;
-        if (bit_count = 4'b0111) begin
-          uartrx_state_d = StRxStop
+      if (rx_tick_q == CLK_RATE-1) begin //Wait until bit clock trips
+        rx_tick_d = 'h0; //Reset bit clock
+        rx_shift_d = {rx_buf[2], rx_shift_q[7:1]}; //Shift in new LSB data
+        if (rx_bit_cnt_q == 3'b111) begin //Wait until 8 bits are received
+          uartrx_state_d = StRxStop;
+          rx_bit_cnt_d = 1'b0; //Reset bit counter
+        end else begin
+          rx_bit_cnt_d = rx_bit_cnt_q + 1'b1; //Increment bit counter
         end
       end else begin
         uartrx_state_d = StRxShift;
+        rx_tick_d = rx_tick_q + 1'b1; //Count clock cycles until set bit rate is reached
       end
     end
+    //Wait for stop bit and set data valid
     StRxStop: begin
-      if (next_bit = 1'b1 && rx_buf = 3'b111) begin
-        uartrx_state_d = StRxIdle;
+      if (rx_tick_q == CLK_RATE-1) begin //Wait until bit clock trips
+        uartrx_state_d = StRxIdle; //Stop bit, go back to idle
+        rx_tick_d = 1'b0; //Reset counter
+        valid_d = 1'b1; //Set data valid;
       end else begin
         uartrx_state_d = StRxStop;
+        rx_tick_d = rx_tick_q + 1'b1; //Count clock cycles until bit rate is reached
       end
     end
     //Used to catch parasitic states
@@ -80,43 +142,79 @@ always_comb begin
   endcase
 end
 
-// Register the state
-always_ff @(posedge clk or negedge rst_n) begin
-  if (!rst_n) begin
+// Register the state and clock in updated signals
+always_ff @(posedge clk_i or negedge rst_ni) begin
+  if (!rst_ni) begin
     uartrx_state_q <= StRxIdle;
+    rx_tick_q <= 'h0;
+    rx_shift_q <= 'h0;
+    rx_bit_cnt_q <= 'h0;
+    valid_q <= 1'b0;
   end else begin
     uartrx_state_q <= uartrx_state_d;
+    rx_tick_q <= rx_tick_d;
+    rx_shift_q <= rx_shift_d;
+    rx_bit_cnt_q <= rx_bit_cnt_d;
+    valid_q <= valid_d;
   end
 end
 
-//Clock asynchronous data in
-always_ff @(posedge clk or negedge rst_n) begin
-  if (!rst_n) begin
-    rx_buf <= 'h0;
-  end else begin
-    rx_buf <= {rx_buf[2:1], uart_rx_i};
-  end
-end
-
-//Bit clock counter
-always_ff @(posedge clk or negedge rst_n) begin
-  if (!rst_n) begin
-    clk_count <= 'h0;
-    bit_count <= 'h0;
-  end else if (start) begin
-    if (count >= CLK_RATE) begin
-      clk_count <= 'h0
-      next_bit  <= 1'b1;
-      bit_count <= bit_count + 1'b1;
-      if (bit_count = 4'b1000) begin
-        bit_count <= 'h0;
+always_comb begin
+  uarttx_state_d = StTxIdle;
+  uart_tx_o = 1'b1;
+  tx_tick_d = 1'b0;
+  tx_bit_cnt_d = 1'b0;
+  tx_shift_d  = 'h0;
+  unique case (uarttx_state_q)
+    StTxIdle: begin
+      if (tx_start_i) begin
+        uarttx_state_d = StTxShift;
+        tx_shift_d = uart_tx_reg_i;
+        uart_tx_o = 1'b0;
+      end else begin
+        uarttx_state_d = StTxIdle;
       end
-    end else begin
-      clk_count <= count + 1'b1;
-      next_bit <= 1'b0;
     end
-  end
+    StTxShift: begin
+      if (tx_tick_q == CLK_RATE - 1) begin
+        uart_tx_o = tx_shift_q[0];
+        tx_shift_d = {1'b0, tx_shift_q[7:1]};
+        if (tx_bit_cnt_q == 3'b111) begin
+          uarttx_state_d = StTxStop;
+          tx_bit_cnt_d = 1'b0;
+        end else begin
+          tx_bit_cnt_d = tx_bit_cnt_q + 1'b1;
+        end
+      end else begin
+        tx_tick_d = tx_tick_q + 1'b1;
+      end
+    end
+    StTxStop: begin
+      if (tx_tick_q == CLK_RATE-1) begin
+        uarttx_state_d = StTxIdle;
+        tx_tick_d = 1'b0;
+        uart_tx_o = 1'b1;
+      end else begin
+        tx_tick_d = tx_tick_q + 1'b1;
+      end
+    end
+    default: uarttx_state_d = StTxIdle;
+  endcase
 end
 
+// Register the state and clock in updated signals
+always_ff @(posedge clk_i or negedge rst_ni) begin
+  if (!rst_ni) begin
+    uarttx_state_q <= StTxIdle;
+    tx_tick_q <= 'h0;
+    tx_shift_q <= 'h0;
+    tx_bit_cnt_q <= 'h0;
+  end else begin
+    uarttx_state_q <= uarttx_state_d;
+    tx_tick_q <= tx_tick_d;
+    tx_shift_q <= tx_shift_d;
+    tx_bit_cnt_q <= tx_bit_cnt_d;
+  end
+end
 
 endmodule

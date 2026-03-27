@@ -152,42 +152,82 @@ add wave -noupdate -group U5_SV -radix sfixed -childformat {{{/tb_qc_sim_top/uut
 add wave -noupdate -group U5_SV -radix sfixed -childformat {{{/tb_qc_sim_top/uut/u5_state_vector/im_i[0]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[1]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[2]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[3]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[4]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[5]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[6]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_i[7]} -radix sfixed}} -subitemconfig {{/tb_qc_sim_top/uut/u5_state_vector/im_i[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_i[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/u5_state_vector/im_i
 add wave -noupdate -group U5_SV -radix sfixed -childformat {{{/tb_qc_sim_top/uut/u5_state_vector/re_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/re_o[7]} -radix sfixed}} -expand -subitemconfig {{/tb_qc_sim_top/uut/u5_state_vector/re_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/re_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/u5_state_vector/re_o
 add wave -noupdate -group U5_SV -radix sfixed -childformat {{{/tb_qc_sim_top/uut/u5_state_vector/im_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/u5_state_vector/im_o[7]} -radix sfixed}} -expand -subitemconfig {{/tb_qc_sim_top/uut/u5_state_vector/im_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/u5_state_vector/im_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/u5_state_vector/im_o
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/QUBITS
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/SWAP
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/STATES
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/re_i
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/im_i
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/re_o
-add wave -noupdate -expand -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/im_o
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/QUBITS
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/STATES
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/clk_i
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/rst_ni
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/wr_en_i
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/re_i
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/im_i
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/re_o
-add wave -noupdate -expand -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/im_o
-add wave -noupdate -expand -group RNG /tb_qc_sim_top/uut/rng_gen/rst_ni
-add wave -noupdate -expand -group RNG -radix sfixed /tb_qc_sim_top/uut/rng_gen/pseudo_rng_q
-add wave -noupdate -expand -group RNG -radix sfixed /tb_qc_sim_top/uut/rng_gen/pseudo_rng_o
-add wave -noupdate -expand -group RNG /tb_qc_sim_top/uut/rng_gen/parity
-add wave -noupdate -expand -group RNG /tb_qc_sim_top/uut/rng_gen/clk_i
-add wave -noupdate -expand -group Probability -radix sfixed /tb_qc_sim_top/uut/prob_sv/re_i
-add wave -noupdate -expand -group Probability -radix sfixed /tb_qc_sim_top/uut/prob_sv/im_i
-add wave -noupdate -expand -group Probability -radix sfixed /tb_qc_sim_top/uut/prob_sv/temp_reg
-add wave -noupdate -expand -group Probability -radix sfixed -childformat {{{/tb_qc_sim_top/uut/prob_sv/prob_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[7]} -radix sfixed}} -expand -subitemconfig {{/tb_qc_sim_top/uut/prob_sv/prob_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/prob_sv/prob_o
-add wave -noupdate -expand -group {Probability Weight} /tb_qc_sim_top/uut/prob_weights_sv/wr_en_i
-add wave -noupdate -expand -group {Probability Weight} -radix sfixed /tb_qc_sim_top/uut/prob_weights_sv/prob_i
-add wave -noupdate -expand -group {Probability Weight} -radix sfixed -childformat {{{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[7]} -radix sfixed}} -subitemconfig {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o
-add wave -noupdate -expand -group {Probability Weight} -radix sfixed /tb_qc_sim_top/uut/prob_weights_sv/prob_windows
-add wave -noupdate -expand -group Measure /tb_qc_sim_top/uut/measure_sv/measure_i
-add wave -noupdate -expand -group Measure -radix sfixed /tb_qc_sim_top/uut/measure_sv/pseudo_rng_i
-add wave -noupdate -expand -group Measure -radix sfixed -childformat {{{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[0]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[1]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[2]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[3]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[4]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[5]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[6]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[7]} -radix sfixed}} -subitemconfig {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/measure_sv/prob_windows_i
-add wave -noupdate -expand -group Measure -radix hexadecimal /tb_qc_sim_top/uut/measure_sv/cbits_o
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/QUBITS
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/SWAP
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/STATES
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/re_i
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/im_i
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/re_o
+add wave -noupdate -group U6_Swap /tb_qc_sim_top/uut/u6_swap_q2q0/im_o
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/QUBITS
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/STATES
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/clk_i
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/rst_ni
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/wr_en_i
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/re_i
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/im_i
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/re_o
+add wave -noupdate -group U6_SV /tb_qc_sim_top/uut/u6_state_vector/im_o
+add wave -noupdate -group RNG /tb_qc_sim_top/uut/rng_gen/rst_ni
+add wave -noupdate -group RNG -radix sfixed /tb_qc_sim_top/uut/rng_gen/pseudo_rng_q
+add wave -noupdate -group RNG -radix sfixed /tb_qc_sim_top/uut/rng_gen/pseudo_rng_o
+add wave -noupdate -group RNG /tb_qc_sim_top/uut/rng_gen/parity
+add wave -noupdate -group RNG /tb_qc_sim_top/uut/rng_gen/clk_i
+add wave -noupdate -group Probability -radix sfixed /tb_qc_sim_top/uut/prob_sv/re_i
+add wave -noupdate -group Probability -radix sfixed /tb_qc_sim_top/uut/prob_sv/im_i
+add wave -noupdate -group Probability -radix sfixed /tb_qc_sim_top/uut/prob_sv/temp_reg
+add wave -noupdate -group Probability -radix sfixed -childformat {{{/tb_qc_sim_top/uut/prob_sv/prob_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_sv/prob_o[7]} -radix sfixed}} -expand -subitemconfig {{/tb_qc_sim_top/uut/prob_sv/prob_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_sv/prob_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/prob_sv/prob_o
+add wave -noupdate -group {Probability Weight} /tb_qc_sim_top/uut/prob_weights_sv/wr_en_i
+add wave -noupdate -group {Probability Weight} -radix sfixed /tb_qc_sim_top/uut/prob_weights_sv/prob_i
+add wave -noupdate -group {Probability Weight} -radix sfixed -childformat {{{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[0]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[1]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[2]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[3]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[4]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[5]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[6]} -radix sfixed} {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[7]} -radix sfixed}} -subitemconfig {{/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/prob_weights_sv/prob_weight_o
+add wave -noupdate -group {Probability Weight} -radix sfixed /tb_qc_sim_top/uut/prob_weights_sv/prob_windows
+add wave -noupdate -group Measure /tb_qc_sim_top/uut/measure_sv/measure_i
+add wave -noupdate -group Measure -radix sfixed /tb_qc_sim_top/uut/measure_sv/pseudo_rng_i
+add wave -noupdate -group Measure -radix sfixed -childformat {{{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[0]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[1]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[2]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[3]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[4]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[5]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[6]} -radix sfixed} {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[7]} -radix sfixed}} -subitemconfig {{/tb_qc_sim_top/uut/measure_sv/prob_windows_i[0]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[1]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[2]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[3]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[4]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[5]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[6]} {-height 15 -radix sfixed} {/tb_qc_sim_top/uut/measure_sv/prob_windows_i[7]} {-height 15 -radix sfixed}} /tb_qc_sim_top/uut/measure_sv/prob_windows_i
+add wave -noupdate -group Measure -radix hexadecimal /tb_qc_sim_top/uut/measure_sv/cbits_o
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/CLK_FREQ
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/BAUD
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/CLK_RATE
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/COUNT_BIT
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/clk_i
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rst_ni
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uart_rx_i
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uartrx_state_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uartrx_state_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uart_rx_reg_o
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/tx_start_i
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/tx_busy_o
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/data_valid_o
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rx_buf
+add wave -noupdate -group UART -radix unsigned /tb_qc_sim_top/uut/pc_if/rx_tick_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rx_tick_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rx_bit_cnt_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rx_bit_cnt_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rx_shift_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/rx_shift_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/valid_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/valid_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uart_tx_o
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uart_tx_reg_i
+add wave -noupdate -group UART -radix unsigned /tb_qc_sim_top/uut/pc_if/tx_tick_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/tx_tick_q
+add wave -noupdate -group UART -radix hexadecimal /tb_qc_sim_top/uut/pc_if/tx_bit_cnt_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/tx_bit_cnt_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/tx_shift_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/tx_shift_q
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uarttx_state_d
+add wave -noupdate -group UART /tb_qc_sim_top/uut/pc_if/uarttx_state_q
+add wave -noupdate -group TB /tb_qc_sim_top/FPGA_CLK_SPEED
+add wave -noupdate -group TB /tb_qc_sim_top/BAUD_RATE
+add wave -noupdate -group TB /tb_qc_sim_top/fpga_clk
+add wave -noupdate -group TB /tb_qc_sim_top/fpga_rst_n
+add wave -noupdate -group TB /tb_qc_sim_top/fpga_measure_n
+add wave -noupdate -group TB /tb_qc_sim_top/pc_tx
+add wave -noupdate -group TB /tb_qc_sim_top/pc_rx
+add wave -noupdate -group TB /tb_qc_sim_top/hex_0
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {17880254 ps} 0}
-quietly wave cursor active 1
+WaveRestoreCursors {{Cursor 1} {187029160 ps} 0} {{Cursor 2} {133223358 ps} 0}
+quietly wave cursor active 2
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 236
 configure wave -justifyvalue left
@@ -202,4 +242,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {17479559 ps} {21606340 ps}
+WaveRestoreZoom {46354890 ps} {202823427 ps}

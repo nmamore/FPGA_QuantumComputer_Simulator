@@ -8,7 +8,9 @@
 
 module uart #(
   parameter int  CLK_FREQ  = 50000000, //System clock frequency
-  parameter int  BAUD      = 115200    //UART Bit Rate
+  parameter int  BAUD      = 115200,    //UART Bit Rate
+  localparam int CLK_RATE  = CLK_FREQ/BAUD,
+  localparam int COUNT_BIT = $clog2(CLK_RATE)
 
 ) (
   input logic  clk_i,
@@ -25,9 +27,6 @@ module uart #(
   output logic data_valid_o //Indicate data in RX register
   
 );
-
-localparam int CLK_RATE  = CLK_FREQ/BAUD;
-localparam int COUNT_BIT = $clog2(CLK_RATE);
 
 logic [2:0] rx_buf;
 

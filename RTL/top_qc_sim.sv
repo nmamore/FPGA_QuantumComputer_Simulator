@@ -14,6 +14,9 @@ module top_qc_sim #(
   input rst_ni,
   input measure_ni,
   
+  input uart_rx_i,
+  output uart_tx_o,
+  
   output [7:0] hex_0_o
 
 );
@@ -78,12 +81,34 @@ logic signed [15:0] prob_weight_reg [0:STATES-1];
 
 logic [QUBITS-1:0] cbits;
 
+logic data_valid;
+logic tx_busy;
+logic [7:0] uart_rx_reg;
+
 
 //Intializes state vectors with data to perform QFT
 initial begin
   $readmemh("../TB/sv_re_init.hex", init_sv_re);
   $readmemh("../TB/sv_im_init.hex", init_sv_im);
 end
+
+uart #(
+  .CLK_FREQ(50000000),
+  .BAUD(115200)
+) pc_if (
+  .clk_i(clk_i),
+  .rst_ni(rst_ni),
+  .uart_rx_i(uart_rx_i),
+  .uart_tx_o(uart_tx_o),
+
+  .uart_tx_reg_i(uart_rx_reg),
+  .uart_rx_reg_o(uart_rx_reg),
+
+  .tx_start_i(data_valid),
+  .tx_busy_o(tx_busy), //Transmit in progress
+  .data_valid_o(data_valid) //Indicate data in RX register
+  
+);
 
 
 //Hadamard on q2

@@ -13,11 +13,17 @@ module tb_qc_sim_top ();
 //20ns period, 10ns high, 10ns low
 localparam FPGA_CLK_SPEED = 10;
 
+//115200 Baud, 8.68us
+localparam BAUD_RATE = 8680;
 
 //General signals
 logic fpga_clk;
 logic fpga_rst_n;
 logic fpga_measure_n;
+
+logic pc_tx;
+logic pc_rx;
+
 logic [7:0] hex_0;
 
 //Instatiate UUT
@@ -25,6 +31,9 @@ top_qc_sim uut (
   .clk_i(fpga_clk),
   .rst_ni(fpga_rst_n),
   .measure_ni(fpga_measure_n),
+  
+  .uart_rx_i(pc_tx),
+  .uart_tx_o(pc_rx),
   
   .hex_0_o(hex_0)
   
@@ -34,6 +43,7 @@ top_qc_sim uut (
 initial begin
   fpga_rst_n = 1'b0;
   fpga_measure_n = 1'b1;
+  pc_tx = 1'b1;
   #200;
   fpga_rst_n = 1'b1;
 end
@@ -56,6 +66,39 @@ initial begin
   #1000; //Measure for a time
   fpga_measure_n = 1'b1;
   #10200; //Wait again
+  
+  pc_tx = 1'b0;
+  #BAUD_RATE;
+  pc_tx = 1'b1;
+  #BAUD_RATE;
+  pc_tx = 1'b0;
+  #BAUD_RATE;
+  pc_tx = 1'b0;
+  #BAUD_RATE;
+  pc_tx = 1'b1;
+  #BAUD_RATE;
+  pc_tx = 1'b0;
+  #BAUD_RATE;
+  pc_tx = 1'b1;
+  #BAUD_RATE;
+  pc_tx = 1'b1;
+  #BAUD_RATE;
+  pc_tx = 1'b0;
+  #BAUD_RATE;
+  pc_tx = 1'b1;
+  #BAUD_RATE;
+  
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  #BAUD_RATE;
+  
   $stop;
 end
 

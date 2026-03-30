@@ -7,7 +7,7 @@
 
 
 module axi_lite_register #(
-  parameter int AXI_DATA_WIDTH = 16,
+  parameter int AXI_DATA_WIDTH = 32,
   parameter int AXI_ADDR_WIDTH = 8
 
 ) (
@@ -45,21 +45,25 @@ module axi_lite_register #(
 
 `include "register_list.svh"
 
-assign axi_reg_data = REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
-                      REV_REG_ADDR ? rev_reg:
+localparam int ADDR_DEPTH  = 2**AXI_ADDR_WIDTH;
+
+logic [AXI_DATA_WIDTH-1:0] axi_reg_array [0:ADDR_DEPTH-1]
+
+logic arready_d;
+logic arready_q;
+
+logic axi_araddr_d;
+logic axi_araddr_q;
+
+logic [AXI_DATA_WIDTH-1:0] axi_rdata_d;
+logic [AXI_DATA_WIDTH-1:0] axi_rdata_q;
+
+logic axi_rvalid_d;
+logic axi_rvalid_q;
 
 // Define the states
 typedef enum {
-  StAxiReadIdle, StAxiReadData, StRxShift, StRxStop
+  StAxiReadIdle, StAxiReadData
 } axiread_state_e;
 
 axiread_state_e axiread_state_d, axiread_state_q;
@@ -70,6 +74,7 @@ always_comb begin
   arready_d = arready_q;
   axi_araddr_d = axi_araddr_q;
   axi_rdata_d = axi_rdata_q;
+  axi_rvalid_d = axi_rvalid_q;
   unique case (axiread_state_q)
     // StAxiReadIdle: Wait for read to be initiated and capture address
     StAxiReadIdle: begin
@@ -79,16 +84,19 @@ always_comb begin
         axi_araddr_d = axi_araddr_i;
       end else begin
         axiread_state_d = StAxiReadIdle;
+        arready_d = 1'b0;
+        axi_rvalid_d = 1'b0;
       end
     end
     //Capture read address
     StAxiReadData: begin
       if (rready_i) begin
         axi_rdata_d = axi_reg_data[axi_araddr_q];
+        axi_rvalid_d = 1'b1;
+        axiread_state_d = StAxiReadIdle;
       end else begin
         axiread_state_d = StAxiReadData;
       end
-
     end
     //Used to catch parasitic states
     default: uartrx_state_d = StRxIdle;
@@ -102,11 +110,35 @@ always_ff @(posedge axi_aclk_i or negedge axi_arst_ni) begin
     arready_q <= 1'b0;
     axi_araddr_q <= 'h0;
     axi_rdata_q <= 'h0;
+    axi_rvalid_q <= 1'b0;
+    
+    //Register reset
+    axi_reg_data[REV_REG_ADDR]       <= REV_REG_INIT;
+    axi_reg_data[STATUS_REG_ADDR]    <= STATUS_REG_INIT;
+    axi_reg_data[CONTROL_REG_ADDR]   <= CONTROL_REG_INIT;
+    axi_reg_data[RESULT_REG_ADDR]    <= RESULT_REG_INIT;
+    axi_reg_data[SV_000_RE_REG_ADDR] <= SV_000_RE_REG_INIT;
+    axi_reg_data[SV_000_IM_REG_ADDR] <= SV_000_IM_REG_INIT;
+    axi_reg_data[SV_001_RE_REG_ADDR] <= SV_001_RE_REG_INIT;
+    axi_reg_data[SV_001_IM_REG_ADDR] <= SV_001_IM_REG_INIT;
+    axi_reg_data[SV_010_RE_REG_ADDR] <= SV_010_RE_REG_INIT;
+    axi_reg_data[SV_010_IM_REG_ADDR] <= SV_010_IM_REG_INIT;
+    axi_reg_data[SV_011_RE_REG_ADDR] <= SV_011_RE_REG_INIT;
+    axi_reg_data[SV_011_IM_REG_ADDR] <= SV_011_IM_REG_INIT;
+    axi_reg_data[SV_100_RE_REG_ADDR] <= SV_100_RE_REG_INIT;
+    axi_reg_data[SV_100_IM_REG_ADDR] <= SV_100_IM_REG_INIT;
+    axi_reg_data[SV_101_RE_REG_ADDR] <= SV_101_RE_REG_INIT;
+    axi_reg_data[SV_101_IM_REG_ADDR] <= SV_101_IM_REG_INIT;
+    axi_reg_data[SV_110_RE_REG_ADDR] <= SV_110_RE_REG_INIT;
+    axi_reg_data[SV_110_IM_REG_ADDR] <= SV_110_IM_REG_INIT;
+    axi_reg_data[SV_111_RE_REG_ADDR] <= SV_111_RE_REG_INIT;
+    axi_reg_data[SV_111_IM_REG_ADDR] <= SV_111_IM_REG_INIT;
   end else begin
     axiread_state_q <= axiread_state_d;
     arready_q <= arready_d;
     axi_araddr_q <= axi_araddr_d;
     axi_rdata_q <= axi_rdata_d;
+    axi_rvalid_q <= axi_rvalid_d;
   end
 end
 

@@ -5,10 +5,9 @@
 * @date Created 3/22/2026
 */
 
-
 module uart #(
   parameter int  CLK_FREQ  = 50000000, //System clock frequency
-  parameter int  BAUD      = 115200    //UART Bit Rate
+  parameter int  BAUD      = 1000000    //UART Bit Rate
 
 ) (
   input logic  clk_i,

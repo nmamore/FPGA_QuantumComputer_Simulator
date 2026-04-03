@@ -21,6 +21,9 @@ module top_qc_sim #(
 
 );
 
+localparam DATA_WIDTH = 32;
+localparam ADDR_WIDTH = 32;
+
 localparam STATES = 2**QUBITS;
 
 //Signal routing between modules
@@ -81,10 +84,27 @@ logic signed [15:0] prob_weight_reg [0:STATES-1];
 
 logic [QUBITS-1:0] cbits;
 
+logic tx_start;
 logic data_valid;
 logic tx_busy;
 logic [7:0] uart_rx_reg;
+logic [7:0] uart_tx_reg;
 
+logic [ADDR_WIDTH-1:0] araddr;
+logic arvalid;
+logic arready;
+
+logic [DATA_WIDTH-1:0] rdata;
+logic rvalid;
+logic rready;
+
+logic [ADDR_WIDTH-1:0] awaddr;
+logic awvalid;
+logic awready;
+
+logic [DATA_WIDTH-1:0] wdata;
+logic wready;
+logic wvalid;
 
 //Intializes state vectors with data to perform QFT
 initial begin
@@ -104,12 +124,76 @@ uart #(
   .uart_tx_reg_i(uart_rx_reg),
   .uart_rx_reg_o(uart_rx_reg),
 
-  .tx_start_i(data_valid),
+  .tx_start_i(tx_start),
   .tx_busy_o(tx_busy), //Transmit in progress
   .data_valid_o(data_valid) //Indicate data in RX register
-  
 );
 
+axi_lite_uart_if #(
+  .DATA_WIDTH(DATA_WIDTH),
+  .ADDR_WIDTH(ADDR_WIDTH)
+) axi_uart_if (
+  
+  .aclk_i(clk_i),
+  .arst_ni(arst_ni),
+  
+  .araddr_o(araddr),
+  
+  .arvalid_o(arvalid),
+  .arready_i(arready),
+  
+  .rdata_i(rdata),
+  
+  .rvalid_i(rvalid),
+  .rready_o(rready),
+  
+  .awaddr_o(awaddr),
+  
+  .awvalid_o(awvalid),
+  .awready_i(awready),
+  
+  
+  .wdata_o(wdata),
+  
+  .wready_i(wready),
+  .wvalid_o(wvalid),
+
+  .uart_tx_reg_o(uart_tx_reg),
+  .uart_rx_reg_i(uart_rx_reg),
+  
+  .tx_start_o(tx_start),
+  .tx_busy_i(tx_busy),
+  .data_valid_i(data_valid)
+);
+
+axi_lite_register #(
+  .DATA_WIDTH(DATA_WIDTH),
+  .ADDR_WIDTH(ADDR_WIDTH)
+) axi_reg_if (
+  
+  .aclk_i(clk_i),
+  .arst_ni(arst_ni),
+
+  .araddr_i(araddr),
+
+  .arvalid_i(arvalid),
+  .arready_o(arready),
+
+  .rdata_o(rdata),
+
+  .rvalid_o(rvalid),
+  .rready_i(rready),
+
+  .awaddr_i(awaddr),
+
+  .awvalid_i(awvalid),
+  .awready_o(awready),
+
+  .wdata_i(wdata),
+
+  .wready_o(wready),
+  .wvalid_i(wvalid)
+);
 
 //Hadamard on q2
 hadamard_gate #(

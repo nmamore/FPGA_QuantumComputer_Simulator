@@ -114,7 +114,7 @@ end
 
 uart #(
   .CLK_FREQ(50000000),
-  .BAUD(115200)
+  .BAUD(1000000)
 ) pc_if (
   .clk_i(clk_i),
   .rst_ni(rst_ni),
@@ -135,7 +135,7 @@ axi_lite_uart_if #(
 ) axi_uart_if (
   
   .aclk_i(clk_i),
-  .arst_ni(arst_ni),
+  .arst_ni(rst_ni),
   
   .araddr_o(araddr),
   
@@ -172,7 +172,7 @@ axi_lite_register #(
 ) axi_reg_if (
   
   .aclk_i(clk_i),
-  .arst_ni(arst_ni),
+  .arst_ni(rst_ni),
 
   .araddr_i(araddr),
 

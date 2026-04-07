@@ -70,6 +70,7 @@ initial begin
   fpga_measure_n = 1'b1;
   #10200; //Wait again
   uart_read(32'h0000);
+  #200000;
   $stop;
 end
 

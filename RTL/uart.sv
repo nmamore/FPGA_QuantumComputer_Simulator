@@ -168,19 +168,21 @@ end
 
 always_comb begin
   uarttx_state_d = uarttx_state_q;
-  tx_busy_o = (uarttx_state_q != StTxIdle);
   uart_tx_d = uart_tx_q;
   tx_tick_d = tx_tick_q;
   tx_bit_cnt_d = tx_bit_cnt_q;
   tx_shift_d  = tx_shift_q;
+  tx_busy_o = 1'b1;
   unique case (uarttx_state_q)
     StTxIdle: begin
       if (tx_start_i) begin
         uarttx_state_d = StTxShift;
         tx_shift_d = uart_tx_reg_i;
         uart_tx_d = 1'b0;
+        tx_busy_o = 1'b1;
       end else begin
         uarttx_state_d = StTxIdle;
+        tx_busy_o = 1'b0;
       end
     end
     StTxShift: begin

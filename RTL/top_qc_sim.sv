@@ -121,7 +121,7 @@ uart #(
   .uart_rx_i(uart_rx_i),
   .uart_tx_o(uart_tx_o),
 
-  .uart_tx_reg_i(uart_rx_reg),
+  .uart_tx_reg_i(uart_tx_reg),
   .uart_rx_reg_o(uart_rx_reg),
 
   .tx_start_i(tx_start),

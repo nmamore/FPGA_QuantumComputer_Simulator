@@ -99,7 +99,7 @@ write_state_e write_state_d, write_state_q;
 always_comb begin
   read_state_d = read_state_q;
   arready_d = 1'b0;
-  rdata_d = 'h0;
+  rdata_d = rdata_q;
   rvalid_d = 1'b0;
   unique case (read_state_q)
     // StReadIdle: Wait for read to be initiated and capture address
@@ -110,6 +110,7 @@ always_comb begin
         rdata_d = reg_array_q[{araddr_i[ADDR_WIDTH-1:2],2'b00}];
       end else begin
         read_state_d = StReadIdle;
+        rdata_d = 'h0;
       end
     end
     //Capture read address

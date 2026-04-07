@@ -8,6 +8,7 @@ TB/work/*
 OBJ/db/
 OBJ/incremental_db
 OBJ/db/
+OBJ/output_files
 
 !OBJ/output_files/*.pof
 !OBJ/output_files/*.sof

@@ -67,7 +67,7 @@ uartrx_state_e uartrx_state_d, uartrx_state_q;
 
 // Define the states
 typedef enum {
-  StTxIdle, StTxShift, StTxStop
+  StTxIdle, StTxShift, StTxStop1, StTxStop2
 } uarttx_state_e;
 
 uarttx_state_e uarttx_state_d, uarttx_state_q;
@@ -92,6 +92,7 @@ always_comb begin
   unique case (uartrx_state_q)
     // StIdle: Wait for start bit
     StRxIdle: begin
+      rx_shift_d = 'h0;
       valid_d = 1'b0; //Reset data valid
       if (!rx_buf[2]) begin //Start bit recieved
         uartrx_state_d = StRxStart;
@@ -134,14 +135,17 @@ always_comb begin
     end
     //Wait for stop bit and set data valid
     StRxStop: begin
-      if (rx_tick_q == CLK_RATE-1) begin //Wait until bit clock trips
-        uartrx_state_d = StRxIdle; //Stop bit, go back to idle
-        rx_tick_d = 1'b0; //Reset counter
-        valid_d = 1'b1; //Set data valid;
+      if (rx_tick_q == (CLK_RATE-1)/2) begin //Wait for half the time to readjust stop
+        if (rx_buf[2]) begin
+          uartrx_state_d = StRxIdle; //Stop bit, go back to idle
+          rx_tick_d = 'h0; //Reset counter
+          valid_d = 1'b1; //Set data valid
+        end else begin
+          uartrx_state_d = StRxStop;
+        end
       end else begin
         uartrx_state_d = StRxStop;
-        rx_shift_d = rx_shift_q;
-        rx_tick_d = rx_tick_q + 1'b1; //Count clock cycles until bit rate is reached
+        rx_tick_d = rx_tick_q + 1'b1;
       end
     end
     //Used to catch parasitic states
@@ -183,15 +187,16 @@ always_comb begin
       end else begin
         uarttx_state_d = StTxIdle;
         tx_busy_o = 1'b0;
+        tx_shift_d = 'h0;
       end
     end
     StTxShift: begin
       if (tx_tick_q == CLK_RATE - 1) begin
-        tx_tick_d = 1'b0;
+        tx_tick_d = 'h0;
         uart_tx_d = tx_shift_q[0];
         tx_shift_d = {1'b0, tx_shift_q[7:1]};
         if (tx_bit_cnt_q == 3'b111) begin
-          uarttx_state_d = StTxStop;
+          uarttx_state_d = StTxStop1;
           tx_bit_cnt_d = 1'b0;
         end else begin
           tx_bit_cnt_d = tx_bit_cnt_q + 1'b1;
@@ -202,11 +207,20 @@ always_comb begin
         tx_bit_cnt_d = tx_bit_cnt_q;
       end
     end
-    StTxStop: begin
+    StTxStop1: begin
+      if (tx_tick_q == CLK_RATE-1) begin
+        uarttx_state_d = StTxStop2;
+        tx_tick_d = 'h0;
+        uart_tx_d = 1'b1;
+      end else begin
+        tx_tick_d = tx_tick_q + 1'b1;
+        tx_shift_d = tx_shift_q;
+      end
+    end
+    StTxStop2: begin
       if (tx_tick_q == CLK_RATE-1) begin
         uarttx_state_d = StTxIdle;
-        tx_tick_d = 1'b0;
-        uart_tx_d = 1'b1;
+        tx_tick_d = 'h0;
       end else begin
         tx_tick_d = tx_tick_q + 1'b1;
         tx_shift_d = tx_shift_q;

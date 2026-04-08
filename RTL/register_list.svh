@@ -11,7 +11,7 @@ localparam REV_REG_INIT   = 32'h00000110; //[15:12] N/A; [11:8] Major; [7:4] Min
 
 //Status Info on FPGA
 localparam STATUS_REG_ADDR    = 32'h00000004;
-localparam STATUS_REG_INIT    = 32'h00000001;
+localparam STATUS_REG_INIT    = 32'h43211234;
 
 //Control register for FPGA
 localparam CONTROL_REG_ADDR   = 32'h00000008;

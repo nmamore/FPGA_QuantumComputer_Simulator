@@ -7,7 +7,7 @@ ser = serial.Serial(
     bytesize=8,
     parity='N',
     stopbits=1,
-    timeout=1,
+    timeout=2,
 )
 
 print(ser.name)
@@ -17,7 +17,7 @@ ser.write(b'\x00')
 ser.write(b'\x00')
 ser.write(b'\x00')
 
-read = ser.read(16)
+read = ser.read(4)
 
 ser.close()
 

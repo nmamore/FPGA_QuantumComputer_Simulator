@@ -105,9 +105,6 @@ logic [DATA_COUNT_BIT:0] data_byte_cnt_q;
 logic [DATA_COUNT_BIT-1:0] reg_data_byte_cnt_d;
 logic [DATA_COUNT_BIT-1:0] reg_data_byte_cnt_q;
 
-logic [DATA_WIDTH-1:0] data_reg_d;
-logic [DATA_WIDTH-1:0] data_reg_q;
-
 logic tx_start_d;
 logic tx_start_q;
 
@@ -129,7 +126,7 @@ assign tx_start_o = tx_start_q;
 
 // Define the states
 typedef enum {
-  StIdle, StRegAddress, StAxiReadData, StAxiReadAddr, StRegData, StAxiWriteData, StUartTx
+  StIdle, StRegAddress, StAxiReadData, StAxiReadAddr, StRegData, StAxiWriteAddr, StAxiWriteData, StUartTx
 } uartaxi_state_e;
 
 uartaxi_state_e uartaxi_state_d, uartaxi_state_q;
@@ -152,7 +149,6 @@ always_comb begin
   awvalid_d = awvalid_q;
   tx_start_d = tx_start_q;
   uart_tx_reg_d = uart_tx_reg_q;
-  data_reg_d = data_reg_q;
   unique case (uartaxi_state_q)
     // StIdle: Wait for UART transaction
     StIdle: begin
@@ -176,11 +172,9 @@ always_comb begin
             araddr_d = addr_reg_q;
             arvalid_d = 1'b1;
           end else if (cmd_reg_q == CMD_WRITE) begin
-            awaddr_d = cmd_reg_q;
+            uartaxi_state_d = StRegData;
+            awaddr_d = addr_reg_q;
             awvalid_d = 1'b1;
-            if (wready_i) begin
-              uartaxi_state_d = StRegData;
-            end
           end else begin
             cmd_reg_d = 'h0;
             addr_reg_d = 'h0;
@@ -218,6 +212,7 @@ always_comb begin
         end else begin
           data_byte_cnt_d = 'h0;
           tx_start_d = 1'b0;
+          rdata_d = 'h0;
           uartaxi_state_d = StIdle;
         end
       end else begin
@@ -225,16 +220,21 @@ always_comb begin
         tx_start_d = 1'b0;
       end
     end
+    StAxiWriteAddr: begin
+      if (awready_i) begin
+        uartaxi_state_d = StRegData;
+        awvalid_d = 1'b0;
+        awaddr_d = 'h0;
+      end
+    end
     StRegData: begin
-      awaddr_d = 'h0;
-      awvalid_d = 1'b0;
       if (data_valid_i) begin
         if (reg_data_byte_cnt_q < (DATA_BYTE-1)) begin
           reg_data_byte_cnt_d = reg_data_byte_cnt_q + 1'b1;
-          data_reg_d[reg_data_byte_cnt_q*8 +: 8] = uart_rx_reg_i;
+          wdata_d[reg_data_byte_cnt_q*8 +: 8] = uart_rx_reg_i;
         end else begin
           reg_data_byte_cnt_d = 'h0;
-          wdata_d = data_reg_q;
+          wdata_d[31:24] = uart_rx_reg_i;
           wvalid_d = 1'b1;
           uartaxi_state_d = StAxiWriteData;
         end
@@ -268,14 +268,13 @@ always_ff @(posedge aclk_i or negedge arst_ni) begin
     rready_q <= 1'b0;
     rdata_q <= 'h0;
     data_byte_cnt_q <= 'h0;
-    data_reg_q <= 'h0;
     reg_data_byte_cnt_q <= 'h0;
     wdata_q <= 'h0;
     wvalid_q <= 1'b0;
     tx_start_q <= 1'b0;
     uart_tx_reg_q <= 'h0;
     awaddr_q <= 'h0;
-    awvalid_q <= 1'b1;
+    awvalid_q <= 1'b0;
   end else begin
     uartaxi_state_q <= uartaxi_state_d;
     cmd_reg_q <= cmd_reg_d;
@@ -286,7 +285,6 @@ always_ff @(posedge aclk_i or negedge arst_ni) begin
     rready_q <= rready_d;
     rdata_q <= rdata_d;
     data_byte_cnt_q <= data_byte_cnt_d;
-    data_reg_q <= data_reg_d;
     reg_data_byte_cnt_q <= reg_data_byte_cnt_d;
     wdata_q <= wdata_d;
     wvalid_q <= wvalid_d;

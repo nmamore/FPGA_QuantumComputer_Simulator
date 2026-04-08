@@ -27,6 +27,9 @@ logic fpga_measure_n;
 logic pc_tx_uut_rx;
 logic pc_rx_uut_tx;
 
+logic [7:0] temp_uart_rx_reg;
+logic [31:0] data_uart_rx_reg;
+
 logic [7:0] hex_0;
 
 //Instatiate UUT
@@ -47,6 +50,8 @@ initial begin
   fpga_rst_n = 1'b0;
   fpga_measure_n = 1'b1;
   pc_tx_uut_rx = 1'b1;
+  temp_uart_rx_reg = 'h0;
+  data_uart_rx_reg = 'h0;
   #200;
   fpga_rst_n = 1'b1;
 end
@@ -62,6 +67,21 @@ initial begin
   end
 end
 
+initial begin
+  forever begin
+    for (int i = 0; i < 4; i++) begin
+      @(negedge pc_rx_uut_tx);
+      #(BAUD_RATE/2);
+      for (int j = 0; j < 7; j++) begin
+        #BAUD_RATE;
+        temp_uart_rx_reg[j] = pc_rx_uut_tx;
+      end
+      #BAUD_RATE;
+      data_uart_rx_reg[i*8 +: 8] = temp_uart_rx_reg;
+    end
+  end
+end
+
 
 initial begin
   #10200; //Wait enough time to allow outputs to be ready for measure
@@ -69,7 +89,13 @@ initial begin
   #1000; //Measure for a time
   fpga_measure_n = 1'b1;
   #10200; //Wait again
-  uart_read(32'h0000);
+  uart_read(32'h00000000);
+  #200000;
+  uart_read(32'h0000004);
+  #200000;
+  uart_write(32'h00000000, 32'h43211234);
+  #200000;
+  uart_read(32'h00000000);
   #200000;
   $stop;
 end
@@ -96,11 +122,11 @@ endtask
 
 task uart_tx (input [7:0] tx_reg);
   pc_tx_uut_rx = 1'b0;
-  #BAUD_RATE;
   for (int i = 0; i < 8; i++) begin
-    pc_tx_uut_rx = tx_reg[i];
     #BAUD_RATE;
+    pc_tx_uut_rx = tx_reg[i];
   end
+  #BAUD_RATE;
   pc_tx_uut_rx = 1'b1;
   #100;
 endtask

@@ -64,8 +64,8 @@ localparam int CMD_WRITE = 102;
 logic arvalid_d;
 logic arvalid_q;
 
-logic [ADDR_WIDTH-1:0] araddr_d;
-logic [ADDR_WIDTH-1:0] araddr_q;
+logic [ADDR_WIDTH-9:0] araddr_d;
+logic [ADDR_WIDTH-9:0] araddr_q;
 
 logic [DATA_WIDTH-1:0] rdata_d;
 logic [DATA_WIDTH-1:0] rdata_q;
@@ -169,11 +169,11 @@ always_comb begin
           addr_byte_cnt_d = 'h0;
           if (cmd_reg_q == CMD_READ) begin
             uartaxi_state_d = StAxiReadAddr;
-            araddr_d = {uart_rx_reg_i, addr_reg_q[23:0]};
+            araddr_d = {uart_rx_reg_i, addr_reg_q};
             arvalid_d = 1'b1;
           end else if (cmd_reg_q == CMD_WRITE) begin
             uartaxi_state_d = StAxiWriteAddr;
-            awaddr_d = {uart_rx_reg_i, addr_reg_q[23:0]};
+            awaddr_d = {uart_rx_reg_i, addr_reg_q};
             awvalid_d = 1'b1;
           end else begin
             cmd_reg_d = 'h0;

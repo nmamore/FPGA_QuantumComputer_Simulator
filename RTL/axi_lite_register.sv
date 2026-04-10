@@ -39,7 +39,10 @@ module axi_lite_register #(
   input logic [DATA_WIDTH-1:0] wdata_i,
   
   output logic  wready_o,
-  input  logic  wvalid_i
+  input  logic  wvalid_i,
+  
+  output logic [DATA_WIDTH-1:0] control_reg_o,
+  input logic  [DATA_WIDTH-1:0] result_reg_i
 );
 
 `include "register_list.svh"
@@ -80,6 +83,10 @@ assign rvalid_o = rvalid_q;
 
 assign awready_o = awready_q;
 assign wready_o = wready_q;
+
+//Register Assignments
+
+assign control_reg_o = reg_array_q[CONTROL_REG_ADDR];
 
 // Define the states
 typedef enum {
@@ -146,8 +153,9 @@ end
 always_comb begin
   write_state_d = write_state_q;
   awready_d = 1'b0;
-  awaddr_d = 'h0;
+  awaddr_d = awaddr_q;
   reg_array_d = reg_array_q;
+  reg_array_d[RESULT_REG_ADDR] = result_reg_i;
   wready_d = 1'b0;
   unique case (write_state_q)
     // StWriteIdle: Wait for write to be initiated and capture address
@@ -158,13 +166,20 @@ always_comb begin
         awaddr_d = {awaddr_i[ADDR_WIDTH-1:2],2'b00};
       end else begin
         write_state_d = StWriteIdle;
+        awaddr_d = 'h0;
       end
     end
     StWriteData: begin
       if (wvalid_i) begin
         write_state_d = StWriteIdle;
-        reg_array_d[awaddr_q] = wdata_i;
         wready_d = 1'b1;
+        if ((awaddr_q != REV_REG_ADDR) && (awaddr_q != STATUS_REG_ADDR) && (awaddr_q != RESULT_REG_ADDR)) begin
+          reg_array_d[awaddr_q] = wdata_i;
+        end else if (awaddr_q == STATUS_REG_ADDR) begin
+          reg_array_d[awaddr_q] = reg_array_q[awaddr_q] & wdata_i;
+        end else begin
+          reg_array_d[awaddr_q] = reg_array_q[awaddr_q];
+        end
       end else begin
         write_state_d = StWriteData;
       end

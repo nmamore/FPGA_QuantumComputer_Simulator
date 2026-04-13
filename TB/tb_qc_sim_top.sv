@@ -72,7 +72,7 @@ initial begin
     for (int i = 0; i < 4; i++) begin
       @(negedge pc_rx_uut_tx);
       #(BAUD_RATE/2);
-      for (int j = 0; j < 7; j++) begin
+      for (int j = 0; j < 8; j++) begin
         #BAUD_RATE;
         temp_uart_rx_reg[j] = pc_rx_uut_tx;
       end

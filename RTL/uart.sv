@@ -39,9 +39,6 @@ logic [2:0] rx_bit_cnt_q;
 logic [7:0] rx_shift_d;
 logic [7:0] rx_shift_q;
 
-logic valid_d;
-logic valid_q;
-
 logic [COUNT_BIT-1:0] tx_tick_d;
 logic [COUNT_BIT-1:0] tx_tick_q;
 
@@ -51,12 +48,7 @@ logic [2:0] tx_bit_cnt_q;
 logic [7:0] tx_shift_d;
 logic [7:0] tx_shift_q;
 
-logic uart_tx_d;
-logic uart_tx_q;
-
-assign uart_tx_o = uart_tx_q;
 assign uart_rx_reg_o = rx_shift_q;
-assign data_valid_o = valid_q;
 
 // Define the states
 typedef enum {
@@ -67,7 +59,7 @@ uartrx_state_e uartrx_state_d, uartrx_state_q;
 
 // Define the states
 typedef enum {
-  StTxIdle, StTxShift, StTxStop1, StTxStop2
+  StTxIdle, StTxStart, StTxShift, StTxStop
 } uarttx_state_e;
 
 uarttx_state_e uarttx_state_d, uarttx_state_q;
@@ -87,13 +79,11 @@ always_comb begin
   uartrx_state_d = uartrx_state_q;
   rx_tick_d  = rx_tick_q;
   rx_bit_cnt_d  = rx_bit_cnt_q;
-  rx_shift_d  = rx_shift_q;
-  valid_d = valid_q;
+  data_valid_o = 1'b0;
   unique case (uartrx_state_q)
     // StIdle: Wait for start bit
     StRxIdle: begin
       rx_shift_d = 'h0;
-      valid_d = 1'b0; //Reset data valid
       if (!rx_buf[2]) begin //Start bit recieved
         uartrx_state_d = StRxStart;
       end else begin
@@ -139,7 +129,7 @@ always_comb begin
         if (rx_buf[2]) begin
           uartrx_state_d = StRxIdle; //Stop bit, go back to idle
           rx_tick_d = 'h0; //Reset counter
-          valid_d = 1'b1; //Set data valid
+          data_valid_o = 1'b1; //Set data valid
         end else begin
           uartrx_state_d = StRxStop;
         end
@@ -160,19 +150,16 @@ always_ff @(posedge clk_i or negedge rst_ni) begin
     rx_tick_q <= 'h0;
     rx_shift_q <= 'h0;
     rx_bit_cnt_q <= 'h0;
-    valid_q <= 1'b0;
   end else begin
     uartrx_state_q <= uartrx_state_d;
     rx_tick_q <= rx_tick_d;
     rx_shift_q <= rx_shift_d;
     rx_bit_cnt_q <= rx_bit_cnt_d;
-    valid_q <= valid_d;
   end
 end
 
 always_comb begin
   uarttx_state_d = uarttx_state_q;
-  uart_tx_d = uart_tx_q;
   tx_tick_d = tx_tick_q;
   tx_bit_cnt_d = tx_bit_cnt_q;
   tx_shift_d  = tx_shift_q;
@@ -180,24 +167,33 @@ always_comb begin
   unique case (uarttx_state_q)
     StTxIdle: begin
       if (tx_start_i) begin
-        uarttx_state_d = StTxShift;
+        uarttx_state_d = StTxStart;
         tx_shift_d = uart_tx_reg_i;
-        uart_tx_d = 1'b0;
+        uart_tx_o = 1'b0;
         tx_busy_o = 1'b1;
       end else begin
-        uarttx_state_d = StTxIdle;
         tx_busy_o = 1'b0;
         tx_shift_d = 'h0;
+        uart_tx_o = 1'b1;
+      end
+    end
+    StTxStart: begin
+      uart_tx_o = 1'b0;
+      if (tx_tick_q == CLK_RATE - 1) begin
+        uarttx_state_d = StTxShift;
+        tx_tick_d = 'h0;
+      end else begin
+        tx_tick_d = tx_tick_q + 1'b1;
       end
     end
     StTxShift: begin
+      uart_tx_o = tx_shift_q[0];
       if (tx_tick_q == CLK_RATE - 1) begin
         tx_tick_d = 'h0;
-        uart_tx_d = tx_shift_q[0];
         tx_shift_d = {1'b0, tx_shift_q[7:1]};
         if (tx_bit_cnt_q == 3'b111) begin
-          uarttx_state_d = StTxStop1;
-          tx_bit_cnt_d = 1'b0;
+          uarttx_state_d = StTxStop;
+          tx_bit_cnt_d = 'h0;
         end else begin
           tx_bit_cnt_d = tx_bit_cnt_q + 1'b1;
         end
@@ -207,23 +203,13 @@ always_comb begin
         tx_bit_cnt_d = tx_bit_cnt_q;
       end
     end
-    StTxStop1: begin
-      if (tx_tick_q == CLK_RATE-1) begin
-        uarttx_state_d = StTxStop2;
-        tx_tick_d = 'h0;
-        uart_tx_d = 1'b1;
-      end else begin
-        tx_tick_d = tx_tick_q + 1'b1;
-        tx_shift_d = tx_shift_q;
-      end
-    end
-    StTxStop2: begin
+    StTxStop: begin
+      uart_tx_o = 1'b1;
       if (tx_tick_q == CLK_RATE-1) begin
         uarttx_state_d = StTxIdle;
         tx_tick_d = 'h0;
       end else begin
         tx_tick_d = tx_tick_q + 1'b1;
-        tx_shift_d = tx_shift_q;
       end
     end
     default: uarttx_state_d = StTxIdle;
@@ -234,13 +220,11 @@ end
 always_ff @(posedge clk_i or negedge rst_ni) begin
   if (!rst_ni) begin
     uarttx_state_q <= StTxIdle;
-    uart_tx_q <= 1'b1;
     tx_tick_q <= 'h0;
     tx_shift_q <= 'h0;
     tx_bit_cnt_q <= 'h0;
   end else begin
     uarttx_state_q <= uarttx_state_d;
-    uart_tx_q <= uart_tx_d;
     tx_tick_q <= tx_tick_d;
     tx_shift_q <= tx_shift_d;
     tx_bit_cnt_q <= tx_bit_cnt_d;

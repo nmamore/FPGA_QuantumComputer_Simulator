@@ -21,7 +21,7 @@ STATUS_REG = 4
 CONTROL_REG = 8
 RESULT_REG = 12
 
-shots = 2048
+shots = 1024
 
 def read_reg(ser, reg):
     cmd = struct.pack("B", READ_CMD)

@@ -99,10 +99,6 @@ logic tx_start;
 logic tx_busy;
 logic data_valid;
 
-//Assignments
-
-assign tx_busy_o = tx_busy;
-
 // Define the states
 typedef enum {
   StRxIdle, StRxRegAddress, StRxData
@@ -205,10 +201,10 @@ end
 
 always_comb begin
   uarttx_state_d = uarttx_state_q;
-  uart_tx_reg_d = uart_tx_reg_q;
+  uart_tx_reg = 8'hFF;
   tx_data_byte_cnt_d = tx_data_byte_cnt_q;
-  tx_done_o = 1'b0;
   tx_start = 1'b0;
+  tx_done_o = 1'b0;
   unique case (uarttx_state_q)
     //StTxIdle: Wait until data is ready to be transmit
     StTxIdle: begin
@@ -221,13 +217,13 @@ always_comb begin
     //StTxUart: Partition bytes for data transfer
     StTxUart: begin
       //Wait until TX is done to transmit data
+      uart_tx_reg = uart_tx_reg_d[tx_data_byte_cnt_q*8 +: 8]; //Send bytes out
       if (!tx_busy) begin
-        uart_tx_reg = uart_tx_reg_d[tx_data_byte_cnt_q*8 +: 8]; //Send bytes out
         tx_data_byte_cnt_d = tx_data_byte_cnt_q + 1'b1; //Increment counter
         if (tx_data_byte_cnt_q == (DATA_BYTE-1)) begin
           uarttx_state_d = StTxIdle;
-          tx_done_o = 1'b1;
           tx_start = 1'b0;
+          tx_done_o = 1'b1;
           tx_data_byte_cnt_d = 'h0;
         end else begin
           tx_start = 1'b1; //Start transmit
@@ -243,14 +239,9 @@ end
 always_ff @(posedge aclk_i or negedge arst_ni) begin
   if (!arst_ni) begin
     uarttx_state_d <= StTxIdle;
-    
-    uart_tx_reg_q <= 'h0;
     tx_data_byte_cnt_q <= 'h0;
-
   end else begin
     uartaxi_state_q <= uartaxi_state_d;
-    
-    uart_tx_reg_q <= uart_tx_reg_d;
     tx_data_byte_cnt_q <= tx_data_byte_cnt_d;
   end
 end

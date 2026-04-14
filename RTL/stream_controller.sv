@@ -1,12 +1,12 @@
 /*
-* @file axi_lite_uart_if.sv
-* @brief Interface between internal AXI bus and external UART
+* @file stream_controller.sv
+* @brief Stream data to UART when command recieved
 * @author Nicholas Amore namore7@gmail.com
 * @date Created 3/28/2026
 */
 
 
-module axi_stream_controller #(
+module stream_controller #(
   parameter int DATA_WIDTH = 32,
   parameter int ADDR_WIDTH = 32
 
@@ -22,8 +22,8 @@ module axi_stream_controller #(
   
   input  logic [7:0]            stream_uart_rx_cmd_i,
   
-  output stream_tx_ready_o,
-  input  stream_tx_busy_i,
+  output logic stream_tx_ready_o,
+  input  logic stream_tx_done_i,
   
   output logic measure_o
 );
@@ -58,14 +58,14 @@ always_comb begin
     StIdle: begin
       if (stream_uart_rx_cmd_i == CMD_STREAM) begin
         stream_state_d = StData;
-        stream_tx_ready_o = 1'bl; //Alert 
+        stream_tx_ready_o = 1'b1; //Alert 
         measure_o = 1'b1;
       end else begin
         stream_tx_ready_o = 1'b0;
       end
     end
     StData: begin
-      if (stream_tx_busy_i)
+      if (stream_tx_done_i) begin
         stream_state_d = StIdle;
         stream_tx_ready_o = 1'b0;
       end else begin

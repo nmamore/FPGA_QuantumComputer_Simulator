@@ -23,6 +23,8 @@ module top_qc_sim #(
 
 localparam DATA_WIDTH = 32;
 localparam ADDR_WIDTH = 32;
+localparam CLK_FREQ = 50000000;
+localparam BAUD = 1000000;
 
 localparam STATES = 2**QUBITS;
 
@@ -86,12 +88,31 @@ logic signed [15:0] prob_weight_reg [0:STATES-1];
 logic [QUBITS-1:0] cbits;
 
 logic measure;
+logic stream_measure;
 
-logic tx_start;
-logic data_valid;
-logic tx_busy;
-logic [7:0] uart_rx_reg;
-logic [7:0] uart_tx_reg;
+logic reg_ready;
+logic tx_ready;
+logic tx_done;
+
+logic [DATA_WIDTH-1:0] uart_tx_reg;
+logic [DATA_WIDTH-1:0] uart_rx_cmd;
+logic [DATA_WIDTH-1:0] uart_rx_reg;
+logic [DATA_WIDTH-1:0] uart_rx_data;
+
+logic lite_reg_ready;
+logic lite_tx_ready;
+logic lite_tx_done;
+
+logic [DATA_WIDTH-1:0] lite_uart_tx_reg;
+logic [DATA_WIDTH-1:0] lite_uart_rx_cmd;
+logic [DATA_WIDTH-1:0] lite_uart_rx_reg;
+logic [DATA_WIDTH-1:0] lite_uart_rx_data;
+
+logic stream_tx_ready;
+logic stream_tx_done;
+
+logic [DATA_WIDTH-1:0] stream_uart_tx_reg;
+logic [DATA_WIDTH-1:0] stream_uart_rx_cmd;
 
 logic [ADDR_WIDTH-1:0] araddr;
 logic arvalid;
@@ -113,7 +134,7 @@ logic [DATA_WIDTH-1:0] control_reg;
 logic [DATA_WIDTH-1:0] result_reg;
 
 assign rst_n = sync_rst_n & !control_reg[0];
-assign measure = !sync_measure_n | control_reg[1];
+assign measure = !sync_measure_n | control_reg[1] | stream_measure;
 assign result_reg = {29'h0, cbits};
 
 //Intializes state vectors with data to perform QFT
@@ -122,58 +143,116 @@ initial begin
   $readmemh("../TB/sv_im_init.hex", init_sv_im);
 end
 
-uart #(
-  .CLK_FREQ(50000000),
-  .BAUD(1000000)
-) pc_if (
+uart_if #(
+  .DATA_WIDTH(DATA_WIDTH),
+  .ADDR_WIDTH(ADDR_WIDTH),
+  .CLK_FREQ(CLK_FREQ),
+  .BAUD(BAUD)
+) uart_if (
+  
   .clk_i(clk_i),
   .rst_ni(rst_n),
+  
+  .uart_tx_reg_i(uart_tx_reg),
+  .uart_rx_cmd_o(uart_rx_cmd),
+  .uart_rx_reg_o(uart_rx_reg),
+  .uart_rx_data_o(uart_rx_data),
+  
   .uart_rx_i(uart_rx_i),
   .uart_tx_o(uart_tx_o),
+  
+  .reg_ready_o(reg_ready),
+  .tx_ready_i(tx_ready),
+  .tx_done_o(tx_done)
 
-  .uart_tx_reg_i(uart_tx_reg),
-  .uart_rx_reg_o(uart_rx_reg),
-
-  .tx_start_i(tx_start),
-  .tx_busy_o(tx_busy), //Transmit in progress
-  .data_valid_o(data_valid) //Indicate data in RX register
 );
 
-axi_lite_uart_if #(
+uart_crossbar #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
-) axi_uart_if (
+) crossbar (
+  .clk_i(clk_i),
+  .rst_ni(rst_n),
   
+  .uart_tx_reg_o(uart_tx_reg),
+  .uart_rx_cmd_i(uart_rx_cmd),
+  .uart_rx_reg_i(uart_rx_reg),
+  .uart_rx_data_i(uart_rx_data),
+  
+  .reg_ready_i(reg_ready),
+  .tx_ready_o(tx_ready),
+  .tx_done_i(tx_done),
+  
+  .lite_uart_tx_reg_i(lite_uart_tx_reg),
+  .lite_uart_rx_cmd_o(lite_uart_rx_cmd),
+  .lite_uart_rx_reg_o(lite_uart_rx_reg),
+  .lite_uart_rx_data_o(lite_uart_rx_data),
+  
+  .lite_reg_ready_o(lite_reg_ready),
+  .lite_tx_ready_i(lite_tx_ready),
+  .lite_tx_done_o(lite_tx_done),
+  
+  .stream_uart_tx_reg_i(stream_uart_tx_reg),
+  .stream_uart_rx_cmd_o(stream_uart_rx_cmd),
+  
+  .stream_tx_ready_i(stream_tx_ready),
+  .stream_tx_done_o(stream_tx_done)
+
+);
+
+axi_lite_controller #(
+  .DATA_WIDTH(DATA_WIDTH),
+  .ADDR_WIDTH(ADDR_WIDTH)
+) axi_lite_controller (
   .aclk_i(clk_i),
   .arst_ni(rst_n),
-  
-  .araddr_o(araddr),
-  
-  .arvalid_o(arvalid),
-  .arready_i(arready),
-  
-  .rdata_i(rdata),
-  
-  .rvalid_i(rvalid),
-  .rready_o(rready),
-  
-  .awaddr_o(awaddr),
-  
-  .awvalid_o(awvalid),
-  .awready_i(awready),
-  
-  
-  .wdata_o(wdata),
-  
-  .wready_i(wready),
-  .wvalid_o(wvalid),
 
-  .uart_tx_reg_o(uart_tx_reg),
-  .uart_rx_reg_i(uart_rx_reg),
+  .araddr_i(araddr),
+
+  .arvalid_i(arvalid),
+  .arready_o(arready),
+
+  .rdata_o(rdata),
+
+  .rvalid_o(rvalid),
+  .rready_i(rready),
+
+  .awaddr_i(awaddr),
+
+  .awvalid_i(awvalid),
+  .awready_o(awready),
+
+  .wdata_i(wdata),
+
+  .wready_o(wready),
+  .wvalid_i(wvalid),
   
-  .tx_start_o(tx_start),
-  .tx_busy_i(tx_busy),
-  .data_valid_i(data_valid)
+  .uart_tx_reg_o(lite_uart_tx_reg),
+  .uart_rx_cmd_i(lite_uart_rx_cmd),
+  .uart_rx_reg_i(lite_uart_rx_reg),
+  .uart_rx_data_i(lite_uart_rx_data),
+  
+  .reg_ready_i(lite_reg_ready),
+  .tx_done_i(lite_tx_done),
+  .tx_ready_o(lite_tx_ready)
+);
+
+stream_controller #(
+  .DATA_WIDTH(DATA_WIDTH),
+  .ADDR_WIDTH(ADDR_WIDTH)
+) stream_controller (
+  .clk_i(clk_i),
+  .rst_ni(rst_n),
+  
+  .result_reg_i(result_reg),
+  
+  .stream_uart_tx_reg_o(stream_uart_tx_reg),
+  .stream_uart_rx_cmd_i(stream_uart_rx_cmd),
+  
+  .stream_tx_ready_o(stream_tx_ready),
+  .stream_tx_done_i(stream_tx_done),
+  
+  .measure(stream_measure)
 );
 
 axi_lite_register #(

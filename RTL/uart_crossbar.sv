@@ -35,17 +35,17 @@ module uart_crossbar #(
   output logic [ADDR_WIDTH-1:0] lite_uart_rx_reg_o,
   output logic [DATA_WIDTH-1:0] lite_uart_rx_data_o, 
   
-  output lite_reg_ready_o,
-  input  lite_tx_ready_i,
-  output lite_tx_done_o,
+  output logic lite_reg_ready_o,
+  input logic  lite_tx_ready_i,
+  output logic lite_tx_done_o,
   
   //Stream Signals
   input logic [DATA_WIDTH-1:0]  stream_uart_tx_reg_i,
   
   output logic [7:0]            stream_uart_rx_cmd_o,
   
-  input  stream_tx_ready_i,
-  output stream_tx_done_o
+  input logic  stream_tx_ready_i,
+  output logic stream_tx_done_o
 );
 
 localparam int ADDR_BYTE  = ADDR_WIDTH/8;
@@ -64,14 +64,14 @@ always_comb begin
   //Clear signals not used
   stream_uart_rx_cmd_o = 'h0;
   
-  stream_tx_busy_o  = 1'b0;
+  stream_tx_done_o  = 1'b0;
   
   lite_uart_rx_cmd_o = 'h0;
   lite_uart_rx_reg_o = 'h0;
   lite_uart_rx_data_o = 'h0;
   
   lite_reg_ready_o = 1'b0;
-  lite_tx_busy_o  = 1'b0;
+  lite_tx_done_o  = 1'b0;
 
   unique case (uart_rx_cmd_i)
     //Connect stream signals to data port
@@ -81,7 +81,7 @@ always_comb begin
       stream_uart_rx_cmd_o = uart_rx_cmd_i;
       
       tx_ready_o = stream_tx_ready_i;
-      stream_tx_busy_o = tx_busy_i;
+      stream_tx_done_o = tx_done_i;
     end
     //Connect lite signals to data port
     CMD_STOP: begin
@@ -93,7 +93,7 @@ always_comb begin
       
       lite_reg_ready_o = reg_ready_i;
       tx_ready_o = lite_tx_ready_i;
-      lite_tx_busy_o = tx_busy_i;
+      lite_tx_done_o = tx_done_i;
     end
     //Set any other command to lite signals
     default: begin
@@ -105,7 +105,7 @@ always_comb begin
       
       lite_reg_ready_o = reg_ready_i;
       tx_ready_o = lite_tx_ready_i;
-      lite_tx_busy_o = tx_busy_i;
+      lite_tx_done_o = tx_done_i;
     end
   endcase
 end

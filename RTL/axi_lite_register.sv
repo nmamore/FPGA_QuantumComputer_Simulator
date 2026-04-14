@@ -54,35 +54,12 @@ logic [DATA_WIDTH-1:0] reg_array_d [0:ADDR_DEPTH-1];
 logic [DATA_WIDTH-1:0] reg_array_q [0:ADDR_DEPTH-1];
 
 //Read Signals
-logic arready_d;
-logic arready_q;
-
-logic [DATA_WIDTH-1:0] rdata_d;
-logic [DATA_WIDTH-1:0] rdata_q;
-
-logic rvalid_d;
-logic rvalid_q;
+logic [ADDR_WIDTH-1:0] araddr_d;
+logic [ADDR_WIDTH-1:0] araddr_q;
 
 //Write Signals
-logic awready_d;
-logic awready_q;
-
 logic [ADDR_WIDTH-1:0] awaddr_d;
 logic [ADDR_WIDTH-1:0] awaddr_q;
-
-logic wready_d;
-logic wready_q;
-
-//AXI Read Assignments
-
-assign arready_o = arready_q;
-assign rdata_o = rdata_q;
-assign rvalid_o = rvalid_q;
-
-//AXI Write Assignments
-
-assign awready_o = awready_q;
-assign wready_o = wready_q;
 
 //Register Assignments
 
@@ -105,26 +82,29 @@ write_state_e write_state_d, write_state_q;
 // Combinational decode of the state
 always_comb begin
   read_state_d = read_state_q;
-  arready_d = 1'b0;
-  rdata_d = rdata_q;
-  rvalid_d = 1'b0;
+  
+  arready_o = 1'b0;
+  araddr_d = araddr_q;
+  rdata_o = 'h0;
+  rvalid_o = 1'b0;
   unique case (read_state_q)
     // StReadIdle: Wait for read to be initiated and capture address
     StReadIdle: begin
       if (arvalid_i) begin
         read_state_d = StReadValid;
-        arready_d = 1'b1;
-        rdata_d = reg_array_q[{araddr_i[ADDR_WIDTH-1:2],2'b00}];
+        arready_o = 1'b1;
+        araddr_d = {araddr_i[ADDR_WIDTH-1:2],2'b00};
       end else begin
         read_state_d = StReadIdle;
-        rdata_d = 'h0;
       end
     end
     //Capture read address
     StReadValid: begin
-      rvalid_d = 1'b1;
+      rvalid_o = 1'b1;
+      rdata_o = reg_array_q[araddr_d];
       if (rready_i) begin
         read_state_d = StReadIdle;
+        araddr_d = 'h0;
       end else begin
         read_state_d = StReadValid;
       end
@@ -138,41 +118,36 @@ end
 always_ff @(posedge aclk_i or negedge arst_ni) begin
   if (!arst_ni) begin
     read_state_q <= StReadIdle;
-    arready_q <= 1'b0;
-    rdata_q <= 'h0;
-    rvalid_q <= 1'b0;
+    araddr_q <= 'h0;
   end else begin
     read_state_q <= read_state_d;
-    arready_q <= arready_d;
-    rdata_q <= rdata_d;
-    rvalid_q <= rvalid_d;
+    araddr_q <= araddr_d;
   end
 end
 
 // Combinational decode of the state
 always_comb begin
   write_state_d = write_state_q;
-  awready_d = 1'b0;
+  
+  awready_o = 1'b0;
   awaddr_d = awaddr_q;
+  wready_o = 1'b0;
+  
   reg_array_d = reg_array_q;
   reg_array_d[RESULT_REG_ADDR] = result_reg_i;
-  wready_d = 1'b0;
   unique case (write_state_q)
     // StWriteIdle: Wait for write to be initiated and capture address
     StWriteIdle: begin
       if (awvalid_i) begin
         write_state_d = StWriteData;
-        awready_d = 1'b1;
+        awready_o = 1'b1;
         awaddr_d = {awaddr_i[ADDR_WIDTH-1:2],2'b00};
-      end else begin
-        write_state_d = StWriteIdle;
-        awaddr_d = 'h0;
       end
     end
     StWriteData: begin
       if (wvalid_i) begin
         write_state_d = StWriteIdle;
-        wready_d = 1'b1;
+        wready_o = 1'b1;
         if ((awaddr_q != REV_REG_ADDR) && (awaddr_q != STATUS_REG_ADDR) && (awaddr_q != RESULT_REG_ADDR)) begin
           reg_array_d[awaddr_q] = wdata_i;
         end else if (awaddr_q == STATUS_REG_ADDR) begin
@@ -180,8 +155,6 @@ always_comb begin
         end else begin
           reg_array_d[awaddr_q] = reg_array_q[awaddr_q];
         end
-      end else begin
-        write_state_d = StWriteData;
       end
     end
     //Used to catch parasitic states
@@ -193,9 +166,7 @@ end
 always_ff @(posedge aclk_i or negedge arst_ni) begin
   if (!arst_ni) begin
     write_state_q <= StWriteIdle;
-    awready_q <= 1'b0;
-    awaddr_q <= 1'b0;
-    wready_q <= 1'b0;
+    awaddr_q <= 'h0;
     //Register reset
     reg_array_q                     <= '{default: '0};
     reg_array_q[REV_REG_ADDR]       <= REV_REG_INIT;
@@ -220,9 +191,7 @@ always_ff @(posedge aclk_i or negedge arst_ni) begin
     reg_array_q[SV_111_IM_REG_ADDR] <= SV_111_IM_REG_INIT;
   end else begin
     write_state_q <= write_state_d;
-    awready_q <= awready_d;
     awaddr_q <= awaddr_d;
-    wready_q <= wready_d;
     reg_array_q <= reg_array_d;
   end
 end

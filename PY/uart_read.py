@@ -80,7 +80,7 @@ bars = plt.bar(values, counts, color='steelblue', edgecolor='black', width=0.8)
 for i, (v, c) in enumerate(zip(values, counts)):
     plt.text(v, c + 0.1, str(c), ha='center', va='bottom', fontsize=10)
 
-plt.title("Result register values (0–7) over 32 shots")
+plt.title(f"Result register values (0–7) over {shots} shots")
 plt.xlabel("Register value (0–7)")
 plt.ylabel("Count")
 plt.xticks(np.arange(0, 8))

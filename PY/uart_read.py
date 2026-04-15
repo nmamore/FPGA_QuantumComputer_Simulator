@@ -15,13 +15,15 @@ ser = serial.Serial(
 
 READ_CMD = 153
 WRITE_CMD = 102
+STREAM_CMD = 165
+STOP_CMD = 90
 
 REV_REG = 0
 STATUS_REG = 4
 CONTROL_REG = 8
 RESULT_REG = 12
 
-shots = 2048
+shots = 10000
 
 def read_reg(ser, reg):
     cmd = struct.pack("B", READ_CMD)
@@ -36,13 +38,22 @@ def write_reg(ser, reg, data):
     ser.write(cmd + reg_bytes + data_bytes)
     ser.flush()
 
+def stream(ser):
+    cmd = struct.pack("B", STREAM_CMD)
+    ser.write(cmd)
+    ser.flush()
+
+def stop(ser):
+    cmd = struct.pack("B", STOP_CMD)
+    ser.write(cmd)
+    ser.flush()
+
 print(ser.name)
 write_reg(ser, CONTROL_REG, 1)
-write_reg(ser, CONTROL_REG, 2)
+stream(ser)
 
 reads = []
 for n in range (shots):
-    read_reg(ser, RESULT_REG)
     resp = ser.read(4)
     if len (resp) == 4:
         value = struct.unpack("<I", resp)[0]
@@ -53,6 +64,7 @@ for n in range (shots):
         
 
 write_reg(ser, CONTROL_REG, 0)
+stop(ser)
 
 ser.close()
 

@@ -67,14 +67,14 @@ assign control_reg_o = reg_array_q[CONTROL_REG_ADDR];
 
 // Define the states
 typedef enum {
-  StReadIdle, StReadValid
+  StReadIdle, StReadAddrAck, StReadValid
 } read_state_e;
 
 read_state_e read_state_d, read_state_q;
 
 // Define the states
 typedef enum {
-  StWriteIdle, StWriteData
+  StWriteIdle, StWriteAddrAck, StWriteData, StWriteDataAck
 } write_state_e;
 
 write_state_e write_state_d, write_state_q;
@@ -91,12 +91,16 @@ always_comb begin
     // StReadIdle: Wait for read to be initiated and capture address
     StReadIdle: begin
       if (arvalid_i) begin
-        read_state_d = StReadValid;
-        arready_o = 1'b1;
+        read_state_d = StReadAddrAck;
         araddr_d = {araddr_i[ADDR_WIDTH-1:2],2'b00};
       end else begin
         read_state_d = StReadIdle;
       end
+    end
+    //StReadAddrAck: Acknowledge read address
+    StReadAddrAck: begin
+      read_state_d = StReadValid;
+      arready_o = 1'b1;
     end
     //Capture read address
     StReadValid: begin
@@ -139,15 +143,17 @@ always_comb begin
     // StWriteIdle: Wait for write to be initiated and capture address
     StWriteIdle: begin
       if (awvalid_i) begin
-        write_state_d = StWriteData;
-        awready_o = 1'b1;
+        write_state_d = StWriteAddrAck;
         awaddr_d = {awaddr_i[ADDR_WIDTH-1:2],2'b00};
       end
     end
+    StWriteAddrAck: begin
+      write_state_d = StWriteData;
+      awready_o = 1'b1;
+    end
     StWriteData: begin
       if (wvalid_i) begin
-        write_state_d = StWriteIdle;
-        wready_o = 1'b1;
+        write_state_d = StWriteDataAck;
         if ((awaddr_q != REV_REG_ADDR) && (awaddr_q != STATUS_REG_ADDR) && (awaddr_q != RESULT_REG_ADDR)) begin
           reg_array_d[awaddr_q] = wdata_i;
         end else if (awaddr_q == STATUS_REG_ADDR) begin
@@ -156,6 +162,10 @@ always_comb begin
           reg_array_d[awaddr_q] = reg_array_q[awaddr_q];
         end
       end
+    end
+    StWriteDataAck: begin
+      wready_o = 1'b1;
+      write_state_d = StWriteIdle;
     end
     //Used to catch parasitic states
     default: write_state_d = StWriteIdle;

@@ -79,6 +79,7 @@ always_comb begin
   uartrx_state_d = uartrx_state_q;
   rx_tick_d  = rx_tick_q;
   rx_bit_cnt_d  = rx_bit_cnt_q;
+  rx_shift_d = rx_shift_q;
   data_valid_o = 1'b0;
   unique case (uartrx_state_q)
     // StIdle: Wait for start bit
@@ -166,19 +167,19 @@ always_comb begin
   tx_busy_o = 1'b1;
   unique case (uarttx_state_q)
     StTxIdle: begin
+      tx_busy_o = 1'b0;
       if (tx_start_i) begin
         uarttx_state_d = StTxStart;
         tx_shift_d = uart_tx_reg_i;
         uart_tx_o = 1'b0;
-        tx_busy_o = 1'b1;
       end else begin
-        tx_busy_o = 1'b0;
         tx_shift_d = 'h0;
         uart_tx_o = 1'b1;
       end
     end
     StTxStart: begin
       uart_tx_o = 1'b0;
+      tx_busy_o = 1'b1;
       if (tx_tick_q == CLK_RATE - 1) begin
         uarttx_state_d = StTxShift;
         tx_tick_d = 'h0;

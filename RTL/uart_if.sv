@@ -33,12 +33,16 @@ module uart_if #(
   //Flag signals
   output logic reg_ready_o,
   
-  input  tx_ready_i,
-  output tx_done_o,
+  input logic tx_ready_i,
+  output logic tx_done_o
 );
 
 logic [7:0] uart_tx_reg;
 logic [7:0] uart_rx_reg;
+
+logic tx_start;
+logic tx_busy;
+logic data_valid;
 
 uart #(
   .CLK_FREQ(CLK_FREQ), //System clock frequency
@@ -74,9 +78,6 @@ localparam int CMD_STOP = 90;
 
 //UART signals
 
-logic [7:0] uart_rx_reg;
-logic [7:0] uart_tx_reg;
-
 logic [DATA_WIDTH-1:0] uart_tx_reg_d;
 logic [DATA_WIDTH-1:0] uart_tx_reg_q;
 
@@ -95,14 +96,11 @@ logic [DATA_COUNT_BIT:0] rx_data_byte_cnt_q;
 logic [DATA_COUNT_BIT:0] tx_data_byte_cnt_d;
 logic [DATA_COUNT_BIT:0] tx_data_byte_cnt_q;
 
-logic tx_start;
-logic tx_busy;
-logic data_valid;
 
 // Define the states
 typedef enum {
   StRxIdle, StRxRegAddress, StRxData
-} uartrxaxi_state_e;
+} uartrx_state_e;
 
 uartrx_state_e uartrx_state_d, uartrx_state_q;
 
@@ -156,23 +154,23 @@ always_comb begin
     //StRxData: Collect data bytes
     StRxData: begin
       //If command is read, no further bytes to be recieved
-      if (cmd_reg_q == CMD_READ)
+      if (uart_rx_cmd_q == CMD_READ) begin
         uartrx_state_d = StRxIdle;
         reg_ready_o = 1'b0;
       //Collect data bytes
       end else if (data_valid) begin
-        uart_rx_data_o[data_byte_cnt_q*8 +: 8] = uart_rx_reg; //Stores bytes
+        uart_rx_data_o[rx_data_byte_cnt_q*8 +: 8] = uart_rx_reg; //Stores bytes
         rx_data_byte_cnt_d = rx_data_byte_cnt_q + 1'b1; //Increment byte counter
-        if (addr_byte_cnt_q == (DATA_BYTE-1)) begin //Go back to idle after all bytes recieved
+        if (rx_data_byte_cnt_q == (DATA_BYTE-1)) begin //Go back to idle after all bytes recieved
           uartrx_state_d = StRxIdle;
-          data_byte_cnt_d = 'h0;
+          rx_data_byte_cnt_d = 'h0;
           reg_ready_o = 1'b1;
         end else begin
           reg_ready_o = 1'b0;
         end
       end
     end
-    default: uart_rx_data_d = StRxIdle;
+    default: uartrx_state_d = StRxIdle;
   endcase
 end
 
@@ -182,8 +180,8 @@ always_ff @(posedge clk_i or negedge rst_ni) begin
     uartrx_state_q <= StRxIdle;
     
     uart_rx_cmd_q <= 'h0;
+    uart_rx_reg_q <= 'h0;
     uart_rx_data_q <= 'h0;
-    uart_rx_data_d <= 'h0;
     
     addr_byte_cnt_q <= 'h0;
     rx_data_byte_cnt_q <= 'h0;
@@ -201,7 +199,8 @@ end
 
 always_comb begin
   uarttx_state_d = uarttx_state_q;
-  uart_tx_reg = 8'hFF;
+  uart_tx_reg_d = uart_tx_reg_q;
+  uart_tx_reg = 'h0;
   tx_data_byte_cnt_d = tx_data_byte_cnt_q;
   tx_start = 1'b0;
   tx_done_o = 1'b0;
@@ -212,21 +211,22 @@ always_comb begin
       if (tx_ready_i) begin
         uarttx_state_d = StTxUart;
         uart_tx_reg_d = uart_tx_reg_i;
+      end else begin
+        uart_tx_reg_d = 'h0;
       end
     end
     //StTxUart: Partition bytes for data transfer
     StTxUart: begin
       //Wait until TX is done to transmit data
-      uart_tx_reg = uart_tx_reg_d[tx_data_byte_cnt_q*8 +: 8]; //Send bytes out
       if (!tx_busy) begin
-        tx_data_byte_cnt_d = tx_data_byte_cnt_q + 1'b1; //Increment counter
+        tx_start = 1'b1;
+        uart_tx_reg = uart_tx_reg_q[tx_data_byte_cnt_q*8 +: 8]; //Send bytes out
         if (tx_data_byte_cnt_q == (DATA_BYTE-1)) begin
           uarttx_state_d = StTxIdle;
-          tx_start = 1'b0;
           tx_done_o = 1'b1;
           tx_data_byte_cnt_d = 'h0;
         end else begin
-          tx_start = 1'b1; //Start transmit
+           tx_data_byte_cnt_d = tx_data_byte_cnt_q + 1'b1; //Increment counter
         end
       end
     end
@@ -236,13 +236,15 @@ always_comb begin
 end
 
 // Register the state and clock in updated signals
-always_ff @(posedge aclk_i or negedge arst_ni) begin
-  if (!arst_ni) begin
-    uarttx_state_d <= StTxIdle;
+always_ff @(posedge clk_i or negedge rst_ni) begin
+  if (!rst_ni) begin
+    uarttx_state_q <= StTxIdle;
+    uart_tx_reg_q <= 'h0;
     tx_data_byte_cnt_q <= 'h0;
   end else begin
-    uartaxi_state_q <= uartaxi_state_d;
+    uarttx_state_q <= uarttx_state_d;
     tx_data_byte_cnt_q <= tx_data_byte_cnt_d;
+    uart_tx_reg_q <= uart_tx_reg_d;
   end
 end
 

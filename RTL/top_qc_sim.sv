@@ -95,7 +95,7 @@ logic tx_ready;
 logic tx_done;
 
 logic [DATA_WIDTH-1:0] uart_tx_reg;
-logic [DATA_WIDTH-1:0] uart_rx_cmd;
+logic [7:0]            uart_rx_cmd;
 logic [DATA_WIDTH-1:0] uart_rx_reg;
 logic [DATA_WIDTH-1:0] uart_rx_data;
 
@@ -104,7 +104,7 @@ logic lite_tx_ready;
 logic lite_tx_done;
 
 logic [DATA_WIDTH-1:0] lite_uart_tx_reg;
-logic [DATA_WIDTH-1:0] lite_uart_rx_cmd;
+logic [7:0]            lite_uart_rx_cmd;
 logic [DATA_WIDTH-1:0] lite_uart_rx_reg;
 logic [DATA_WIDTH-1:0] lite_uart_rx_data;
 
@@ -112,7 +112,7 @@ logic stream_tx_ready;
 logic stream_tx_done;
 
 logic [DATA_WIDTH-1:0] stream_uart_tx_reg;
-logic [DATA_WIDTH-1:0] stream_uart_rx_cmd;
+logic [7:0]            stream_uart_rx_cmd;
 
 logic [ADDR_WIDTH-1:0] araddr;
 logic arvalid;
@@ -207,25 +207,25 @@ axi_lite_controller #(
   .aclk_i(clk_i),
   .arst_ni(rst_n),
 
-  .araddr_i(araddr),
+  .araddr_o(araddr),
 
-  .arvalid_i(arvalid),
-  .arready_o(arready),
+  .arvalid_o(arvalid),
+  .arready_i(arready),
 
-  .rdata_o(rdata),
+  .rdata_i(rdata),
 
-  .rvalid_o(rvalid),
-  .rready_i(rready),
+  .rvalid_i(rvalid),
+  .rready_o(rready),
 
-  .awaddr_i(awaddr),
+  .awaddr_o(awaddr),
 
-  .awvalid_i(awvalid),
-  .awready_o(awready),
+  .awvalid_o(awvalid),
+  .awready_i(awready),
 
-  .wdata_i(wdata),
+  .wdata_o(wdata),
 
-  .wready_o(wready),
-  .wvalid_i(wvalid),
+  .wready_i(wready),
+  .wvalid_o(wvalid),
   
   .uart_tx_reg_o(lite_uart_tx_reg),
   .uart_rx_cmd_i(lite_uart_rx_cmd),
@@ -252,7 +252,7 @@ stream_controller #(
   .stream_tx_ready_o(stream_tx_ready),
   .stream_tx_done_i(stream_tx_done),
   
-  .measure(stream_measure)
+  .measure_o(stream_measure)
 );
 
 axi_lite_register #(

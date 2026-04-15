@@ -18,6 +18,8 @@ localparam BAUD_RATE = 1000;
 
 localparam int CMD_READ = 153;
 localparam int CMD_WRITE = 102;
+localparam int CMD_STREAM = 165;
+localparam int CMD_STOP = 90;
 
 //General signals
 logic fpga_clk;
@@ -107,12 +109,22 @@ initial begin
   #200000;
   uart_write(32'h00000008, 32'h00000002);
   #200000;
-  uart_read(32'h0000000C);
+  uart_read(32'h00000008);
   #200000;
   uart_read(32'h0000000C);
   #200000;
   uart_read(32'h0000000C);
   #200000;
+  uart_read(32'h0000000C);
+  #200000;
+  uart_write(32'h00000008, 32'h00000000);
+  #200000;
+  uart_read(32'h00000008);
+  #200000;
+  uart_stream();
+  #2000000;
+  uart_stop();
+  #2000000;
   $stop;
 end
 
@@ -134,6 +146,14 @@ task uart_read (input [31:0] addr_reg);
   uart_tx(addr_reg[15:8]);
   uart_tx(addr_reg[23:16]);
   uart_tx(addr_reg[31:24]);
+endtask
+
+task uart_stream ();
+  uart_tx(CMD_STREAM);
+endtask
+
+task uart_stop ();
+  uart_tx(CMD_STOP);
 endtask
 
 task uart_tx (input [7:0] tx_reg);

@@ -60,6 +60,8 @@ set_location_assignment PIN_B8 -to rst_ni
 set_location_assignment PIN_A7 -to measure_ni
 set_location_assignment PIN_W9 -to uart_rx_i
 set_location_assignment PIN_W10 -to uart_tx_o
+set_location_assignment PIN_W8 -to start_o
+set_location_assignment PIN_W7 -to stable_o
 set_location_assignment PIN_C14 -to hex_0_o[0]
 set_location_assignment PIN_E15 -to hex_0_o[1]
 set_location_assignment PIN_C15 -to hex_0_o[2]
@@ -73,6 +75,7 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/debug.stp
+set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/stability.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/stream_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/uart_crossbar.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/axi_lite_controller.sv

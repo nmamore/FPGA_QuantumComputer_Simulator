@@ -91,6 +91,8 @@ initial begin
   #1000; //Measure for a time
   fpga_measure_n = 1'b1;
   #10200; //Wait again
+  uart_write(32'h00000008, 32'h00000004);
+  #200000;
   uart_read(32'h00000000);
   #200000;
   uart_write(32'h00000000, 32'h43211234);
@@ -106,6 +108,8 @@ initial begin
   uart_write(32'h00000008, 32'h00000001);
   #200000;
   uart_read(32'h00000004);
+  #200000;
+  uart_write(32'h00000008, 32'h00000004);
   #200000;
   uart_write(32'h00000008, 32'h00000002);
   #200000;

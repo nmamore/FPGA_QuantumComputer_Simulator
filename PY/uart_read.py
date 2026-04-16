@@ -30,6 +30,11 @@ def read_reg(ser, reg):
     reg_bytes = struct.pack("<I",reg)
     ser.write(cmd + reg_bytes)
     ser.flush()
+    
+    response = ser.read(4)
+    if len(response) != 4:
+        return None
+    return struct.unpack("<I", response)[0]
 
 def write_reg(ser, reg, data):
     cmd = struct.pack("B", WRITE_CMD)
@@ -50,6 +55,14 @@ def stop(ser):
 
 print(ser.name)
 write_reg(ser, CONTROL_REG, 1)
+write_reg(ser, CONTROL_REG, 4)
+
+while True:
+    status = read_reg(ser, STATUS_REG)
+    if status & 1:
+        break
+    time.sleep(0.001)
+
 stream(ser)
 
 reads = []

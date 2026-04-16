@@ -42,7 +42,8 @@ module axi_lite_register #(
   input  logic  wvalid_i,
   
   output logic [DATA_WIDTH-1:0] control_reg_o,
-  input logic  [DATA_WIDTH-1:0] result_reg_i
+  input logic  [DATA_WIDTH-1:0] result_reg_i,
+  input logic stable_i
 );
 
 `include "register_list.svh"
@@ -139,6 +140,7 @@ always_comb begin
   
   reg_array_d = reg_array_q;
   reg_array_d[RESULT_REG_ADDR] = result_reg_i;
+  reg_array_d[STATUS_REG_ADDR][1] = stable_i;
   unique case (write_state_q)
     // StWriteIdle: Wait for write to be initiated and capture address
     StWriteIdle: begin
@@ -157,7 +159,8 @@ always_comb begin
         if ((awaddr_q != REV_REG_ADDR) && (awaddr_q != STATUS_REG_ADDR) && (awaddr_q != RESULT_REG_ADDR)) begin
           reg_array_d[awaddr_q] = wdata_i;
         end else if (awaddr_q == STATUS_REG_ADDR) begin
-          reg_array_d[awaddr_q] = reg_array_q[awaddr_q] & wdata_i;
+          reg_array_d[awaddr_q][DATA_WIDTH-1:1] = reg_array_q[awaddr_q][DATA_WIDTH-1:1];
+          reg_array_d[awaddr_q][0] = reg_array_q[awaddr_q][0] & wdata_i[0];
         end else begin
           reg_array_d[awaddr_q] = reg_array_q[awaddr_q];
         end
@@ -183,6 +186,7 @@ always_ff @(posedge aclk_i or negedge arst_ni) begin
     reg_array_q[STATUS_REG_ADDR]    <= STATUS_REG_INIT;
     reg_array_q[CONTROL_REG_ADDR]   <= CONTROL_REG_INIT;
     reg_array_q[RESULT_REG_ADDR]    <= RESULT_REG_INIT;
+    reg_array_q[SCRATCH_REG_ADDR]   <= SCRATCH_REG_INIT;
     reg_array_q[SV_000_RE_REG_ADDR] <= SV_000_RE_REG_INIT;
     reg_array_q[SV_000_IM_REG_ADDR] <= SV_000_IM_REG_INIT;
     reg_array_q[SV_001_RE_REG_ADDR] <= SV_001_RE_REG_INIT;

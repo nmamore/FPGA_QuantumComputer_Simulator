@@ -130,12 +130,6 @@ assign start = control_reg[2];
 assign start_o = start;
 assign stable_o = stable;
 
-//Intializes state vectors with data to perform QFT
-initial begin
-  $readmemh("../TB/sv_re_init.hex", init_sv_re);
-  $readmemh("../TB/sv_im_init.hex", init_sv_im);
-end
-
 uart_if #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH),
@@ -277,7 +271,10 @@ axi_lite_register #(
   .wvalid_i(wvalid),
   .control_reg_o(control_reg),
   .result_reg_i(result_reg),
-  .stable_i(stable)
+  .stable_i(stable),
+  
+  .sv_re_o(init_sv_re),
+  .sv_im_o(init_sv_im)
 );
 
 //Intermediate storage
@@ -297,8 +294,7 @@ quantum_state_vector # (
 //Hadamard on q2
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(4),
-  .GATES(1)
+  .TARGET(2)
 ) q2_h (
   .re_i(u0_sv_re),
   .im_i(u0_sv_im),
@@ -336,8 +332,7 @@ rot_gate_pi_4 #(
 //Hadamard on q1
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(2),
-  .GATES(1)
+  .TARGET(1)
 ) q1_h (
   .re_i(u3_sv_re),
   .im_i(u3_sv_im),
@@ -362,8 +357,7 @@ rot_gate_pi_2 #(
 //Hadamard on q0
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(1),
-  .GATES(1)
+  .TARGET(0)
 ) q0_h (
   .re_i(u5_sv_re),
   .im_i(u5_sv_im),

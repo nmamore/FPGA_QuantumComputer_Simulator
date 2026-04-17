@@ -83,8 +83,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/uart_if.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/axi_lite_register.sv
 set_global_assignment -name SOURCE_FILE ../RTL/register_list.svh
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/uart.sv
-set_global_assignment -name HEX_FILE ../TB/sv_re_init.hex
-set_global_assignment -name HEX_FILE ../TB/sv_im_init.hex
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/sync.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/swap_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/sev_seg_display.sv

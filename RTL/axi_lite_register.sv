@@ -43,7 +43,10 @@ module axi_lite_register #(
   
   output logic [DATA_WIDTH-1:0] control_reg_o,
   input logic  [DATA_WIDTH-1:0] result_reg_i,
-  input logic stable_i
+  input logic stable_i,
+  
+  output logic signed [15:0] sv_re_o [0:7],
+  output logic signed [15:0] sv_im_o [0:7]
 );
 
 `include "register_list.svh"
@@ -65,6 +68,25 @@ logic [ADDR_WIDTH-1:0] awaddr_q;
 //Register Assignments
 
 assign control_reg_o = reg_array_q[CONTROL_REG_ADDR];
+
+assign sv_re_o[0] = reg_array_q[SV_000_RE_REG_ADDR][15:0];
+assign sv_re_o[1] = reg_array_q[SV_001_RE_REG_ADDR][15:0];
+assign sv_re_o[2] = reg_array_q[SV_010_RE_REG_ADDR][15:0];
+assign sv_re_o[3] = reg_array_q[SV_011_RE_REG_ADDR][15:0];
+assign sv_re_o[4] = reg_array_q[SV_100_RE_REG_ADDR][15:0];
+assign sv_re_o[5] = reg_array_q[SV_101_RE_REG_ADDR][15:0];
+assign sv_re_o[6] = reg_array_q[SV_110_RE_REG_ADDR][15:0];
+assign sv_re_o[7] = reg_array_q[SV_111_RE_REG_ADDR][15:0];
+
+assign sv_im_o[0] = reg_array_q[SV_000_IM_REG_ADDR][15:0];
+assign sv_im_o[1] = reg_array_q[SV_001_IM_REG_ADDR][15:0];
+assign sv_im_o[2] = reg_array_q[SV_010_IM_REG_ADDR][15:0];
+assign sv_im_o[3] = reg_array_q[SV_011_IM_REG_ADDR][15:0];
+assign sv_im_o[4] = reg_array_q[SV_100_IM_REG_ADDR][15:0];
+assign sv_im_o[5] = reg_array_q[SV_101_IM_REG_ADDR][15:0];
+assign sv_im_o[6] = reg_array_q[SV_110_IM_REG_ADDR][15:0];
+assign sv_im_o[7] = reg_array_q[SV_111_IM_REG_ADDR][15:0];
+
 
 // Define the states
 typedef enum {

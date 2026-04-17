@@ -32,6 +32,9 @@ logic pc_rx_uut_tx;
 logic [7:0] temp_uart_rx_reg;
 logic [31:0] data_uart_rx_reg;
 
+logic start;
+logic stable;
+
 logic [7:0] hex_0;
 
 //Instatiate UUT
@@ -42,6 +45,9 @@ top_qc_sim uut (
   
   .uart_rx_i(pc_tx_uut_rx),
   .uart_tx_o(pc_rx_uut_tx),
+  
+  .start_o(start),
+  .stable_o(stable),
   
   .hex_0_o(hex_0)
   

@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE 10M50DAF484C7G
 set_global_assignment -name TOP_LEVEL_ENTITY top_qc_sim
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 25.1STD.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:15:44  FEBRUARY 16, 2026"
-set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
@@ -60,6 +60,8 @@ set_location_assignment PIN_B8 -to rst_ni
 set_location_assignment PIN_A7 -to measure_ni
 set_location_assignment PIN_W9 -to uart_rx_i
 set_location_assignment PIN_W10 -to uart_tx_o
+set_location_assignment PIN_W8 -to start_o
+set_location_assignment PIN_W7 -to stable_o
 set_location_assignment PIN_C14 -to hex_0_o[0]
 set_location_assignment PIN_E15 -to hex_0_o[1]
 set_location_assignment PIN_C15 -to hex_0_o[2]
@@ -73,6 +75,7 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/debug.stp
+set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/stability.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/stream_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/uart_crossbar.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/axi_lite_controller.sv
@@ -80,8 +83,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/uart_if.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/axi_lite_register.sv
 set_global_assignment -name SOURCE_FILE ../RTL/register_list.svh
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/uart.sv
-set_global_assignment -name HEX_FILE ../TB/sv_re_init.hex
-set_global_assignment -name HEX_FILE ../TB/sv_im_init.hex
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/sync.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/swap_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../RTL/sev_seg_display.sv

@@ -17,6 +17,9 @@ module top_qc_sim #(
   input uart_rx_i,
   output uart_tx_o,
   
+  output start_o,
+  output stable_o,
+  
   output [7:0] hex_0_o
 
 );
@@ -32,47 +35,29 @@ localparam STATES = 2**QUBITS;
 logic signed [15:0] init_sv_re [0:STATES-1];
 logic signed [15:0] init_sv_im [0:STATES-1];
 
-logic signed [15:0] u0_re [0:STATES-1];
-logic signed [15:0] u0_im [0:STATES-1];
-
 logic signed [15:0] u0_sv_re [0:STATES-1];
 logic signed [15:0] u0_sv_im [0:STATES-1];
-
-logic signed [15:0] u1_re [0:STATES-1];
-logic signed [15:0] u1_im [0:STATES-1];
 
 logic signed [15:0] u1_sv_re [0:STATES-1];
 logic signed [15:0] u1_sv_im [0:STATES-1];
 
-logic signed [15:0] u2_re [0:STATES-1];
-logic signed [15:0] u2_im [0:STATES-1];
-
 logic signed [15:0] u2_sv_re [0:STATES-1];
 logic signed [15:0] u2_sv_im [0:STATES-1];
-
-logic signed [15:0] u3_re [0:STATES-1];
-logic signed [15:0] u3_im [0:STATES-1];
 
 logic signed [15:0] u3_sv_re [0:STATES-1];
 logic signed [15:0] u3_sv_im [0:STATES-1];
 
-logic signed [15:0] u4_re [0:STATES-1];
-logic signed [15:0] u4_im [0:STATES-1];
-
 logic signed [15:0] u4_sv_re [0:STATES-1];
 logic signed [15:0] u4_sv_im [0:STATES-1];
-
-logic signed [15:0] u5_re [0:STATES-1];
-logic signed [15:0] u5_im [0:STATES-1];
 
 logic signed [15:0] u5_sv_re [0:STATES-1];
 logic signed [15:0] u5_sv_im [0:STATES-1];
 
-logic signed [15:0] u6_re [0:STATES-1];
-logic signed [15:0] u6_im [0:STATES-1];
-
 logic signed [15:0] u6_sv_re [0:STATES-1];
 logic signed [15:0] u6_sv_im [0:STATES-1];
+
+logic signed [15:0] u7_sv_re [0:STATES-1];
+logic signed [15:0] u7_sv_im [0:STATES-1];
 
 //General Signals
 
@@ -89,6 +74,9 @@ logic [QUBITS-1:0] cbits;
 
 logic measure;
 logic stream_measure;
+
+logic start;
+logic stable;
 
 logic reg_ready;
 logic tx_ready;
@@ -133,16 +121,20 @@ logic wvalid;
 logic [DATA_WIDTH-1:0] control_reg;
 logic [DATA_WIDTH-1:0] result_reg;
 
+//Reset from button or command
 assign rst_n = sync_rst_n & !control_reg[0];
+//Measure from button or command
 assign measure = !sync_measure_n | control_reg[1] | stream_measure;
+//Store classical data bits in result register, pad as needed
 assign result_reg = {29'h0, cbits};
 
-//Intializes state vectors with data to perform QFT
-initial begin
-  $readmemh("../TB/sv_re_init.hex", init_sv_re);
-  $readmemh("../TB/sv_im_init.hex", init_sv_im);
-end
+//Start command associated with control register
+assign start = control_reg[2];
 
+assign start_o = start;
+assign stable_o = stable;
+
+//Manages packaging bytes into format used by FPGA
 uart_if #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH),
@@ -167,6 +159,7 @@ uart_if #(
 
 );
 
+//Changes UART data to either AXI4-Lite or Stream interface
 uart_crossbar #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -200,6 +193,7 @@ uart_crossbar #(
 
 );
 
+//Sends AXI register commands to register module
 axi_lite_controller #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -237,6 +231,7 @@ axi_lite_controller #(
   .tx_ready_o(lite_tx_ready)
 );
 
+//Outputs data continously
 stream_controller #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -255,6 +250,7 @@ stream_controller #(
   .measure_o(stream_measure)
 );
 
+//Varied registers for FPGA
 axi_lite_register #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -283,34 +279,37 @@ axi_lite_register #(
   .wready_o(wready),
   .wvalid_i(wvalid),
   .control_reg_o(control_reg),
-  .result_reg_i(result_reg)
-);
-
-//Hadamard on q2
-hadamard_gate #(
-  .QUBITS(3),
-  .BITMASK(4),
-  .GATES(1)
-) u0_h_q2 (
-  .re_i(init_sv_re),
-  .im_i(init_sv_im),
+  .result_reg_i(result_reg),
+  .stable_i(stable),
   
-  .re_o(u0_re),
-  .im_o(u0_im)
+  .sv_re_o(init_sv_re),
+  .sv_im_o(init_sv_im)
 );
 
 //Intermediate storage
 quantum_state_vector # (
   .QUBITS(3)
-) u0_state_vector (
+) init_state_vector (
   .clk_i      (clk_i),
   .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
+  .wr_en_i    (start),
   
-  .re_i (u0_re),
-  .im_i (u0_im),
+  .re_i (init_sv_re),
+  .im_i (init_sv_im),
   .re_o (u0_sv_re),
   .im_o (u0_sv_im)
+);
+
+//Hadamard on q2
+hadamard_gate #(
+  .QUBITS(3),
+  .TARGET(2)
+) q2_h (
+  .re_i(u0_sv_re),
+  .im_i(u0_sv_im),
+  
+  .re_o(u1_sv_re),
+  .im_o(u1_sv_im)
 );
 
 //Q1 control rotation of pi/2 on q2
@@ -318,25 +317,12 @@ rot_gate_pi_2 #(
   .QUBITS(3),
   .CONTROL(1),
   .TARGET(2)
-) u1_rpi2_q1q2 (
-  .re_i(u0_sv_re),
-  .im_i(u0_sv_im),
-  .re_o(u1_re),
-  .im_o(u1_im)
-);
-
-//Intermediate storage
-quantum_state_vector # (
-  .QUBITS(3)
-) u1_state_vector (
-  .clk_i      (clk_i),
-  .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
+) q2_rpi2 (
+  .re_i(u1_sv_re),
+  .im_i(u1_sv_im),
   
-  .re_i (u1_re),
-  .im_i (u1_im),
-  .re_o (u1_sv_re),
-  .im_o (u1_sv_im)
+  .re_o(u2_sv_re),
+  .im_o(u2_sv_im)
 );
 
 //Q0 control rotation of pi/4 on q2
@@ -344,52 +330,24 @@ rot_gate_pi_4 #(
   .QUBITS(3),
   .CONTROL(0),
   .TARGET(2)
-) u2_rpi4_q0q2 (
-  .re_i(u1_sv_re),
-  .im_i(u1_sv_im),
-  .re_o(u2_re),
-  .im_o(u2_im)
-);
-
-//Intermediate storage
-quantum_state_vector # (
-  .QUBITS(3)
-) u2_state_vector (
-  .clk_i      (clk_i),
-  .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
+) q2_rpi4 (
+  .re_i(u2_sv_re),
+  .im_i(u2_sv_im),
   
-  .re_i (u2_re),
-  .im_i (u2_im),
-  .re_o (u2_sv_re),
-  .im_o (u2_sv_im)
+  .re_o(u3_sv_re),
+  .im_o(u3_sv_im)
 );
 
 //Hadamard on q1
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(2),
-  .GATES(1)
-) u3_h_q1 (
-  .re_i(u2_sv_re),
-  .im_i(u2_sv_im),
+  .TARGET(1)
+) q1_h (
+  .re_i(u3_sv_re),
+  .im_i(u3_sv_im),
   
-  .re_o(u3_re),
-  .im_o(u3_im)
-);
-
-//Intermediate storage
-quantum_state_vector # (
-  .QUBITS(3)
-) u3_state_vector (
-  .clk_i      (clk_i),
-  .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
-  
-  .re_i (u3_re),
-  .im_i (u3_im),
-  .re_o (u3_sv_re),
-  .im_o (u3_sv_im)
+  .re_o(u4_sv_re),
+  .im_o(u4_sv_im)
 );
 
 //Q0 control rotation of pi/2 on q1
@@ -397,89 +355,44 @@ rot_gate_pi_2 #(
   .QUBITS(3),
   .CONTROL(0),
   .TARGET(1)
-) u4_rpi2_q0q1 (
-  .re_i(u3_sv_re),
-  .im_i(u3_sv_im),
-  .re_o(u4_re),
-  .im_o(u4_im)
-);
-
-//Intermediate storage
-quantum_state_vector # (
-  .QUBITS(3)
-) u4_state_vector (
-  .clk_i      (clk_i),
-  .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
+) q1_rpi2 (
+  .re_i(u4_sv_re),
+  .im_i(u4_sv_im),
   
-  .re_i (u4_re),
-  .im_i (u4_im),
-  .re_o (u4_sv_re),
-  .im_o (u4_sv_im)
+  .re_o(u5_sv_re),
+  .im_o(u5_sv_im)
 );
 
 //Hadamard on q0
 hadamard_gate #(
   .QUBITS(3),
-  .BITMASK(1),
-  .GATES(1)
-) u5_h_q0 (
-  .re_i(u4_sv_re),
-  .im_i(u4_sv_im),
+  .TARGET(0)
+) q0_h (
+  .re_i(u5_sv_re),
+  .im_i(u5_sv_im),
   
-  .re_o(u5_re),
-  .im_o(u5_im)
-);
-
-//Intermediate storage
-quantum_state_vector # (
-  .QUBITS(3)
-) u5_state_vector (
-  .clk_i      (clk_i),
-  .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
-  
-  .re_i (u5_re),
-  .im_i (u5_im),
-  .re_o (u5_sv_re),
-  .im_o (u5_sv_im)
+  .re_o(u6_sv_re),
+  .im_o(u6_sv_im)
 );
 
 //Swap q2 and q0
 swap_gate #(
   .QUBITS(3),
   .SWAP(1)
-) u6_swap_q2q0 (
-  .re_i(u5_sv_re),
-  .im_i(u5_sv_im),
+) q2q0_swap (
+  .re_i(u6_sv_re),
+  .im_i(u6_sv_im),
   
-  .re_o(u6_re),
-  .im_o(u6_im)
-);
-
-//Intermediate storage
-quantum_state_vector # (
-  .QUBITS(3)
-) u6_state_vector (
-  .clk_i      (clk_i),
-  .rst_ni     (rst_n),
-  .wr_en_i    (1'b1),
-  
-  .re_i (u6_re),
-  .im_i (u6_im),
-  .re_o (u6_sv_re),
-  .im_o (u6_sv_im)
+  .re_o(u7_sv_re),
+  .im_o(u7_sv_im)
 );
 
 //Generate probabilities from SV amplitudes
 probability #(
   .QUBITS(3)
 ) prob_sv (
-  .clk_i(clk_i),
-  .rst_ni(rst_n),
-  .wr_en_i(1'b1),
-  .re_i(u6_sv_re),
-  .im_i(u6_sv_im),
+  .re_i(u7_sv_re),
+  .im_i(u7_sv_im),
   .prob_o(prob_reg)
 );
 
@@ -487,12 +400,19 @@ probability #(
 probability_weights #(
   .QUBITS(3)
 ) prob_weights_sv (
-  .clk_i(clk_i),
-  .rst_ni(rst_n),
-  .wr_en_i(1'b1),
   .prob_i(prob_reg),
   .prob_weight_o(prob_weight_reg)
 );
+
+stability #(
+  .QUBITS(3)
+) comb_stable (
+  .clk_i(clk_i),
+  .rst_ni(rst_n),
+  .stable_o(stable),
+  .prob_weight_i(prob_weight_reg[STATES-1])
+);
+
 
 //Generate random number
 lfsr rng_gen (

@@ -8,46 +8,23 @@
 module probability_weights #(
   parameter QUBITS = 3 //Qubits determine vector size
 ) (
-  input logic         clk_i,
-  input logic         rst_ni,
-  input logic         wr_en_i,
-  input logic signed  [15:0] prob_i [0:(2**QUBITS)-1],
+  input  logic signed [15:0] prob_i [0:(2**QUBITS)-1],
   
   output logic signed [15:0] prob_weight_o [0:(2**QUBITS)-1]
 );
 
 localparam STATES = 2**QUBITS;  //Determines how many states there are
 
-logic signed [15:0] prob_windows [0:(2**QUBITS)-1]; //Stores probability windows
-
-assign prob_windows[0] = prob_i[0]; //First iteration will always just be equal to itself
+assign prob_weight_o[0] = prob_i[0]; //First iteration will always just be equal to itself
 
 genvar i; //Creates multiple iterations of the same circuit
 
 generate
 
-for (i = 1; i < STATES; i++) begin: prob_window
-  assign prob_windows[i] = prob_i[i] + prob_windows[i-1]; //Cumulative distribution function. Sums current index with previous
+for (i = 1; i < STATES; i++) begin: window_func
+  assign prob_weight_o[i] = prob_i[i] + prob_weight_o[i-1]; //Cumulative distribution function. Sums current index with previous
 end
 
 endgenerate
 
-generate
-
-for (i = 0; i < STATES; i++) begin: prob_weight_sv
-  
-  logic signed [15:0] prob_weight_q;
-  
-  always_ff @(posedge clk_i or negedge rst_ni) begin
-    if (!rst_ni) begin
-      prob_weight_q <= 'h0;
-    end else if (wr_en_i) begin
-      prob_weight_q <= prob_windows[i]; //Store each iteration in own location
-    end
-  end
-  
-  assign prob_weight_o[i] = prob_weight_q;
-end
-
-endgenerate
 endmodule

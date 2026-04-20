@@ -42,7 +42,11 @@ module axi_lite_register #(
   input  logic  wvalid_i,
   
   output logic [DATA_WIDTH-1:0] control_reg_o,
-  input logic  [DATA_WIDTH-1:0] result_reg_i
+  input logic  [DATA_WIDTH-1:0] result_reg_i,
+  input logic stable_i,
+  
+  output logic signed [15:0] sv_re_o [0:7],
+  output logic signed [15:0] sv_im_o [0:7]
 );
 
 `include "register_list.svh"
@@ -64,6 +68,25 @@ logic [ADDR_WIDTH-1:0] awaddr_q;
 //Register Assignments
 
 assign control_reg_o = reg_array_q[CONTROL_REG_ADDR];
+
+assign sv_re_o[0] = reg_array_q[SV_000_RE_REG_ADDR][15:0];
+assign sv_re_o[1] = reg_array_q[SV_001_RE_REG_ADDR][15:0];
+assign sv_re_o[2] = reg_array_q[SV_010_RE_REG_ADDR][15:0];
+assign sv_re_o[3] = reg_array_q[SV_011_RE_REG_ADDR][15:0];
+assign sv_re_o[4] = reg_array_q[SV_100_RE_REG_ADDR][15:0];
+assign sv_re_o[5] = reg_array_q[SV_101_RE_REG_ADDR][15:0];
+assign sv_re_o[6] = reg_array_q[SV_110_RE_REG_ADDR][15:0];
+assign sv_re_o[7] = reg_array_q[SV_111_RE_REG_ADDR][15:0];
+
+assign sv_im_o[0] = reg_array_q[SV_000_IM_REG_ADDR][15:0];
+assign sv_im_o[1] = reg_array_q[SV_001_IM_REG_ADDR][15:0];
+assign sv_im_o[2] = reg_array_q[SV_010_IM_REG_ADDR][15:0];
+assign sv_im_o[3] = reg_array_q[SV_011_IM_REG_ADDR][15:0];
+assign sv_im_o[4] = reg_array_q[SV_100_IM_REG_ADDR][15:0];
+assign sv_im_o[5] = reg_array_q[SV_101_IM_REG_ADDR][15:0];
+assign sv_im_o[6] = reg_array_q[SV_110_IM_REG_ADDR][15:0];
+assign sv_im_o[7] = reg_array_q[SV_111_IM_REG_ADDR][15:0];
+
 
 // Define the states
 typedef enum {
@@ -139,6 +162,7 @@ always_comb begin
   
   reg_array_d = reg_array_q;
   reg_array_d[RESULT_REG_ADDR] = result_reg_i;
+  reg_array_d[STATUS_REG_ADDR][1] = stable_i;
   unique case (write_state_q)
     // StWriteIdle: Wait for write to be initiated and capture address
     StWriteIdle: begin
@@ -147,22 +171,26 @@ always_comb begin
         awaddr_d = {awaddr_i[ADDR_WIDTH-1:2],2'b00};
       end
     end
+    //StWriteAddrAck: Confirm address was recieved
     StWriteAddrAck: begin
       write_state_d = StWriteData;
       awready_o = 1'b1;
     end
+    //StWriteData: Write data to register
     StWriteData: begin
-      if (wvalid_i) begin
+      if (wvalid_i) begin //Wait until data is valid
         write_state_d = StWriteDataAck;
         if ((awaddr_q != REV_REG_ADDR) && (awaddr_q != STATUS_REG_ADDR) && (awaddr_q != RESULT_REG_ADDR)) begin
-          reg_array_d[awaddr_q] = wdata_i;
-        end else if (awaddr_q == STATUS_REG_ADDR) begin
-          reg_array_d[awaddr_q] = reg_array_q[awaddr_q] & wdata_i;
+          reg_array_d[awaddr_q] = wdata_i; //Update register as long as it is not a RO
+        end else if (awaddr_q == STATUS_REG_ADDR) begin //Clear bit one of the status register if bit 0 is a 1. Maintain state of register otherwise
+          reg_array_d[awaddr_q][DATA_WIDTH-1:1] = reg_array_q[awaddr_q][DATA_WIDTH-1:1];
+          reg_array_d[awaddr_q][0] = reg_array_q[awaddr_q][0] & wdata_i[0];
         end else begin
-          reg_array_d[awaddr_q] = reg_array_q[awaddr_q];
+          reg_array_d[awaddr_q] = reg_array_q[awaddr_q]; //Keep old state
         end
       end
     end
+    //StWriteDataAck: Confirm data was recieved
     StWriteDataAck: begin
       wready_o = 1'b1;
       write_state_d = StWriteIdle;
@@ -183,6 +211,7 @@ always_ff @(posedge aclk_i or negedge arst_ni) begin
     reg_array_q[STATUS_REG_ADDR]    <= STATUS_REG_INIT;
     reg_array_q[CONTROL_REG_ADDR]   <= CONTROL_REG_INIT;
     reg_array_q[RESULT_REG_ADDR]    <= RESULT_REG_INIT;
+    reg_array_q[SCRATCH_REG_ADDR]   <= SCRATCH_REG_INIT;
     reg_array_q[SV_000_RE_REG_ADDR] <= SV_000_RE_REG_INIT;
     reg_array_q[SV_000_IM_REG_ADDR] <= SV_000_IM_REG_INIT;
     reg_array_q[SV_001_RE_REG_ADDR] <= SV_001_RE_REG_INIT;

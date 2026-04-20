@@ -121,15 +121,20 @@ logic wvalid;
 logic [DATA_WIDTH-1:0] control_reg;
 logic [DATA_WIDTH-1:0] result_reg;
 
+//Reset from button or command
 assign rst_n = sync_rst_n & !control_reg[0];
+//Measure from button or command
 assign measure = !sync_measure_n | control_reg[1] | stream_measure;
+//Store classical data bits in result register, pad as needed
 assign result_reg = {29'h0, cbits};
 
+//Start command associated with control register
 assign start = control_reg[2];
 
 assign start_o = start;
 assign stable_o = stable;
 
+//Manages packaging bytes into format used by FPGA
 uart_if #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH),
@@ -154,6 +159,7 @@ uart_if #(
 
 );
 
+//Changes UART data to either AXI4-Lite or Stream interface
 uart_crossbar #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -187,6 +193,7 @@ uart_crossbar #(
 
 );
 
+//Sends AXI register commands to register module
 axi_lite_controller #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -224,6 +231,7 @@ axi_lite_controller #(
   .tx_ready_o(lite_tx_ready)
 );
 
+//Outputs data continously
 stream_controller #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)
@@ -242,6 +250,7 @@ stream_controller #(
   .measure_o(stream_measure)
 );
 
+//Varied registers for FPGA
 axi_lite_register #(
   .DATA_WIDTH(DATA_WIDTH),
   .ADDR_WIDTH(ADDR_WIDTH)

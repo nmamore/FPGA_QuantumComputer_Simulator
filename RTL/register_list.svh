@@ -7,7 +7,7 @@
 
 //Revision of FPGA
 localparam REV_REG_ADDR   = 32'h00000000;
-localparam REV_REG_INIT   = 32'h00010100; //[31:24] N/A; [23:16] Major; [15:7] Minor; [7:0] Bug Fix
+localparam REV_REG_INIT   = 32'h00010200; //[31:24] N/A; [23:16] Major; [15:7] Minor; [7:0] Bug Fix
 
 //Status Info on FPGA
 localparam STATUS_REG_ADDR    = 32'h00000004;

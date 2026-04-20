@@ -56,16 +56,17 @@ always_comb begin
   unique case (stream_state_q)
     //StIdle: Wait for stream to be initiated
     StIdle: begin
-      if (stream_uart_rx_cmd_i == CMD_STREAM) begin
+      if (stream_uart_rx_cmd_i == CMD_STREAM) begin //Keep streaming as long as command is still valid
         stream_state_d = StData;
-        stream_tx_ready_o = 1'b1; //Alert 
-        measure_o = 1'b1;
+        stream_tx_ready_o = 1'b1; //Start transaction
+        measure_o = 1'b1; //Get a single measurement
       end else begin
         stream_tx_ready_o = 1'b0;
       end
     end
+    //StData: Send data out over UART
     StData: begin
-      if (stream_tx_done_i) begin
+      if (stream_tx_done_i) begin //Wait until data is transmitted
         stream_state_d = StIdle;
         stream_tx_ready_o = 1'b0;
       end else begin

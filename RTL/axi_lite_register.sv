@@ -171,23 +171,26 @@ always_comb begin
         awaddr_d = {awaddr_i[ADDR_WIDTH-1:2],2'b00};
       end
     end
+    //StWriteAddrAck: Confirm address was recieved
     StWriteAddrAck: begin
       write_state_d = StWriteData;
       awready_o = 1'b1;
     end
+    //StWriteData: Write data to register
     StWriteData: begin
-      if (wvalid_i) begin
+      if (wvalid_i) begin //Wait until data is valid
         write_state_d = StWriteDataAck;
         if ((awaddr_q != REV_REG_ADDR) && (awaddr_q != STATUS_REG_ADDR) && (awaddr_q != RESULT_REG_ADDR)) begin
-          reg_array_d[awaddr_q] = wdata_i;
-        end else if (awaddr_q == STATUS_REG_ADDR) begin
+          reg_array_d[awaddr_q] = wdata_i; //Update register as long as it is not a RO
+        end else if (awaddr_q == STATUS_REG_ADDR) begin //Clear bit one of the status register if bit 0 is a 1. Maintain state of register otherwise
           reg_array_d[awaddr_q][DATA_WIDTH-1:1] = reg_array_q[awaddr_q][DATA_WIDTH-1:1];
           reg_array_d[awaddr_q][0] = reg_array_q[awaddr_q][0] & wdata_i[0];
         end else begin
-          reg_array_d[awaddr_q] = reg_array_q[awaddr_q];
+          reg_array_d[awaddr_q] = reg_array_q[awaddr_q]; //Keep old state
         end
       end
     end
+    //StWriteDataAck: Confirm data was recieved
     StWriteDataAck: begin
       wready_o = 1'b1;
       write_state_d = StWriteIdle;

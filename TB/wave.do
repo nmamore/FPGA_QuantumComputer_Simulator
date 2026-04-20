@@ -267,8 +267,6 @@ add wave -noupdate -group {Init SV} /tb_qc_sim_top/uut/init_state_vector/im_i
 add wave -noupdate -group {Init SV} /tb_qc_sim_top/uut/init_state_vector/re_o
 add wave -noupdate -group {Init SV} /tb_qc_sim_top/uut/init_state_vector/im_o
 add wave -noupdate -group {U0- Q2_H} /tb_qc_sim_top/uut/q2_h/QUBITS
-add wave -noupdate -group {U0- Q2_H} /tb_qc_sim_top/uut/q2_h/GATES
-add wave -noupdate -group {U0- Q2_H} /tb_qc_sim_top/uut/q2_h/BITMASK
 add wave -noupdate -group {U0- Q2_H} /tb_qc_sim_top/uut/q2_h/STATES
 add wave -noupdate -group {U0- Q2_H} /tb_qc_sim_top/uut/q2_h/re_i
 add wave -noupdate -group {U0- Q2_H} /tb_qc_sim_top/uut/q2_h/im_i
@@ -299,8 +297,6 @@ add wave -noupdate -group {U2- Q2_RPI4} /tb_qc_sim_top/uut/q2_rpi4/SQRT2_2
 add wave -noupdate -group {U2- Q2_RPI4} /tb_qc_sim_top/uut/q2_rpi4/re_temp
 add wave -noupdate -group {U2- Q2_RPI4} /tb_qc_sim_top/uut/q2_rpi4/im_temp
 add wave -noupdate -group {U3- Q1_H} /tb_qc_sim_top/uut/q1_h/QUBITS
-add wave -noupdate -group {U3- Q1_H} /tb_qc_sim_top/uut/q1_h/GATES
-add wave -noupdate -group {U3- Q1_H} /tb_qc_sim_top/uut/q1_h/BITMASK
 add wave -noupdate -group {U3- Q1_H} /tb_qc_sim_top/uut/q1_h/STATES
 add wave -noupdate -group {U3- Q1_H} /tb_qc_sim_top/uut/q1_h/re_i
 add wave -noupdate -group {U3- Q1_H} /tb_qc_sim_top/uut/q1_h/im_i
@@ -320,8 +316,6 @@ add wave -noupdate -group {U4- Q1_RPI2} /tb_qc_sim_top/uut/q1_rpi2/im_o
 add wave -noupdate -group {U4- Q1_RPI2} /tb_qc_sim_top/uut/q1_rpi2/re_temp
 add wave -noupdate -group {U4- Q1_RPI2} /tb_qc_sim_top/uut/q1_rpi2/im_temp
 add wave -noupdate -group {U5- Q0_H} /tb_qc_sim_top/uut/q0_h/QUBITS
-add wave -noupdate -group {U5- Q0_H} /tb_qc_sim_top/uut/q0_h/GATES
-add wave -noupdate -group {U5- Q0_H} /tb_qc_sim_top/uut/q0_h/BITMASK
 add wave -noupdate -group {U5- Q0_H} /tb_qc_sim_top/uut/q0_h/STATES
 add wave -noupdate -group {U5- Q0_H} /tb_qc_sim_top/uut/q0_h/re_i
 add wave -noupdate -group {U5- Q0_H} /tb_qc_sim_top/uut/q0_h/im_i

@@ -7,7 +7,7 @@
 
 module hadamard_gate #(
   parameter int QUBITS = 3, //Qubits determine vector size
-  parameter int TARGET = 0
+  parameter int TARGET = 0  //What qubit is H applied on
 ) (
   input logic signed [15:0] re_i [0:(2**QUBITS)-1],
   input logic signed [15:0] im_i [0:(2**QUBITS)-1],

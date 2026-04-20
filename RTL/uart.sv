@@ -166,47 +166,51 @@ always_comb begin
   tx_shift_d  = tx_shift_q;
   tx_busy_o = 1'b1;
   unique case (uarttx_state_q)
+    //StTxIdle: Wait for UART TX to be initiated
     StTxIdle: begin
       tx_busy_o = 1'b0;
-      if (tx_start_i) begin
+      if (tx_start_i) begin //Kick off UART
         uarttx_state_d = StTxStart;
-        tx_shift_d = uart_tx_reg_i;
+        tx_shift_d = uart_tx_reg_i; //Grab data to shift
         uart_tx_o = 1'b0;
       end else begin
         tx_shift_d = 'h0;
         uart_tx_o = 1'b1;
       end
     end
+    //StTxStart: Send start bit
     StTxStart: begin
       uart_tx_o = 1'b0;
       tx_busy_o = 1'b1;
-      if (tx_tick_q == CLK_RATE - 1) begin
+      if (tx_tick_q == CLK_RATE - 1) begin //Wait for bit clock to expire
         uarttx_state_d = StTxShift;
         tx_tick_d = 'h0;
       end else begin
         tx_tick_d = tx_tick_q + 1'b1;
       end
     end
+    //StTxShift: Shift data out at the BAUD rate
     StTxShift: begin
       uart_tx_o = tx_shift_q[0];
-      if (tx_tick_q == CLK_RATE - 1) begin
+      if (tx_tick_q == CLK_RATE - 1) begin //Wait for bit clock to expire
         tx_tick_d = 'h0;
         tx_shift_d = {1'b0, tx_shift_q[7:1]};
-        if (tx_bit_cnt_q == 3'b111) begin
+        if (tx_bit_cnt_q == 3'b111) begin //Track until all 8 bits are sent
           uarttx_state_d = StTxStop;
           tx_bit_cnt_d = 'h0;
         end else begin
-          tx_bit_cnt_d = tx_bit_cnt_q + 1'b1;
+          tx_bit_cnt_d = tx_bit_cnt_q + 1'b1; //Track bits transmitted
         end
       end else begin
-        tx_tick_d = tx_tick_q + 1'b1;
+        tx_tick_d = tx_tick_q + 1'b1; //Update bit clock
         tx_shift_d = tx_shift_q;
         tx_bit_cnt_d = tx_bit_cnt_q;
       end
     end
+    //StTxStop: Send stop bit
     StTxStop: begin
       uart_tx_o = 1'b1;
-      if (tx_tick_q == CLK_RATE-1) begin
+      if (tx_tick_q == CLK_RATE-1) begin //Wait for bit clock to expire
         uarttx_state_d = StTxIdle;
         tx_tick_d = 'h0;
       end else begin

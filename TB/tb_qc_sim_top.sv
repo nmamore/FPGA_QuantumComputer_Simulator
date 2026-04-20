@@ -75,17 +75,19 @@ initial begin
   end
 end
 
+//UART RX channel
 initial begin
   forever begin
+    //Loop for 4 bytes
     for (int i = 0; i < 4; i++) begin
-      @(negedge pc_rx_uut_tx);
-      #(BAUD_RATE/2);
-      for (int j = 0; j < 8; j++) begin
+      @(negedge pc_rx_uut_tx); //Wait for start
+      #(BAUD_RATE/2); //Sample at center of baud
+      for (int j = 0; j < 8; j++) begin //Grab data every bit clock
         #BAUD_RATE;
         temp_uart_rx_reg[j] = pc_rx_uut_tx;
       end
       #BAUD_RATE;
-      data_uart_rx_reg[i*8 +: 8] = temp_uart_rx_reg;
+      data_uart_rx_reg[i*8 +: 8] = temp_uart_rx_reg; //Append to 32 bit data
     end
   end
 end
@@ -97,50 +99,51 @@ initial begin
   #1000; //Measure for a time
   fpga_measure_n = 1'b1;
   #10200; //Wait again
-  uart_write(32'h00000008, 32'h00000004);
+  uart_write(32'h00000008, 32'h00000004); //Load initial state vector
   #200000;
-  uart_read(32'h00000000);
+  uart_read(32'h00000000); //Read rev register
   #200000;
-  uart_write(32'h00000000, 32'h43211234);
+  uart_write(32'h00000000, 32'h43211234); //Write to rev register
   #200000;
-  uart_read(32'h00000000);
+  uart_read(32'h00000000); //Confirm register wasn't overwritten
   #200000;
-  uart_read(32'h00000004);
+  uart_read(32'h00000004); //Check reset status
   #200000;
-  uart_write(32'h00000004, 32'hFFFFFFFE);
+  uart_write(32'h00000004, 32'hFFFFFFFE); //Clear reset status
   #200000;
-  uart_read(32'h00000004);
+  uart_read(32'h00000004); //Check reset status is cleared
   #200000;
-  uart_write(32'h00000008, 32'h00000001);
+  uart_write(32'h00000008, 32'h00000001); //Reset FPGA
   #200000;
-  uart_read(32'h00000004);
+  uart_read(32'h00000004); //Check reset status
   #200000;
-  uart_write(32'h00000008, 32'h00000004);
+  uart_write(32'h00000008, 32'h00000004); //Load initial state vector
   #200000;
-  uart_write(32'h00000008, 32'h00000002);
+  uart_write(32'h00000008, 32'h00000002); //Send measure command
   #200000;
-  uart_read(32'h00000008);
+  uart_read(32'h00000008); //Check values in control register
   #200000;
-  uart_read(32'h0000000C);
-  #200000;
-  uart_read(32'h0000000C);
+  uart_read(32'h0000000C); //Check result register
   #200000;
   uart_read(32'h0000000C);
   #200000;
-  uart_write(32'h00000008, 32'h00000000);
+  uart_read(32'h0000000C);
   #200000;
-  uart_read(32'h00000008);
+  uart_write(32'h00000008, 32'h00000000); //Stop measuring
   #200000;
-  uart_stream();
+  uart_read(32'h00000008); //Check control is off
+  #200000;
+  uart_stream(); //Begin streaming data
   #2000000;
-  uart_stop();
+  uart_stop(); //Stop streaming data
   #2000000;
   $stop;
 end
 
+//Implement PC reg write over UART
 task uart_write (input [31:0] addr_reg, input [31:0] data_reg);
-  uart_tx(CMD_WRITE);
-  uart_tx(addr_reg[7:0]);
+  uart_tx(CMD_WRITE); //Write command
+  uart_tx(addr_reg[7:0]); //Output register and data starting with LSB
   uart_tx(addr_reg[15:8]);
   uart_tx(addr_reg[23:16]);
   uart_tx(addr_reg[31:24]);
@@ -150,30 +153,34 @@ task uart_write (input [31:0] addr_reg, input [31:0] data_reg);
   uart_tx(data_reg[31:24]);
 endtask
 
+//Implement PC reg read over UART
 task uart_read (input [31:0] addr_reg);
-  uart_tx(CMD_READ);
-  uart_tx(addr_reg[7:0]);
+  uart_tx(CMD_READ); //Read command
+  uart_tx(addr_reg[7:0]); //Output register starting with LSB
   uart_tx(addr_reg[15:8]);
   uart_tx(addr_reg[23:16]);
   uart_tx(addr_reg[31:24]);
 endtask
 
+//Stream data to PC over UART
 task uart_stream ();
-  uart_tx(CMD_STREAM);
+  uart_tx(CMD_STREAM); //Send stream command
 endtask
 
+//Stop stream data
 task uart_stop ();
-  uart_tx(CMD_STOP);
+  uart_tx(CMD_STOP); //Stop streaming data
 endtask
 
+//Transmit logic for UART
 task uart_tx (input [7:0] tx_reg);
-  pc_tx_uut_rx = 1'b0;
+  pc_tx_uut_rx = 1'b0; //Start bit
   for (int i = 0; i < 8; i++) begin
     #BAUD_RATE;
-    pc_tx_uut_rx = tx_reg[i];
+    pc_tx_uut_rx = tx_reg[i]; //Send shifted logic
   end
   #BAUD_RATE;
-  pc_tx_uut_rx = 1'b1;
+  pc_tx_uut_rx = 1'b1; //Stop bit
   #100;
 endtask
 

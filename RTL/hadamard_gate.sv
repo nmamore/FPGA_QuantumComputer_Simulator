@@ -18,73 +18,11 @@ module hadamard_gate #(
 
 localparam int STATES = 2**QUBITS;
 
-logic signed [31:0] re_temp [0:(2**QUBITS)-1]; //Temp register to avoid overflow from multiplication
-logic signed [31:0] im_temp [0:(2**QUBITS)-1];
+localparam int POS = 1 << TARGET;
 
-logic signed [15:0] sqrt_2_n = 16'h2D41; //1/sqrt(2)
+localparam logic signed [31:0] HALF_LSB = 32'h2000;
 
-always_comb begin
-  if (TARGET == 0) begin //Varied sums with differing phases depending on H gates
-    re_temp[0] = ((re_i[0] + re_i[1]) * sqrt_2_n) >>> 14; //Right shift by 14 to scale back to Q1.14 fixed point multiplication
-    re_temp[1] = ((re_i[0] - re_i[1]) * sqrt_2_n) >>> 14;
-    re_temp[2] = ((re_i[2] + re_i[3]) * sqrt_2_n) >>> 14;
-    re_temp[3] = ((re_i[2] - re_i[3]) * sqrt_2_n) >>> 14;
-    re_temp[4] = ((re_i[4] + re_i[5]) * sqrt_2_n) >>> 14;
-    re_temp[5] = ((re_i[4] - re_i[5]) * sqrt_2_n) >>> 14;
-    re_temp[6] = ((re_i[6] + re_i[7]) * sqrt_2_n) >>> 14;
-    re_temp[7] = ((re_i[6] - re_i[7]) * sqrt_2_n) >>> 14;
-    
-    im_temp[0] = ((im_i[0] + im_i[1]) * sqrt_2_n) >>> 14;
-    im_temp[1] = ((im_i[0] - im_i[1]) * sqrt_2_n) >>> 14;
-    im_temp[2] = ((im_i[2] + im_i[3]) * sqrt_2_n) >>> 14;
-    im_temp[3] = ((im_i[2] - im_i[3]) * sqrt_2_n) >>> 14;
-    im_temp[4] = ((im_i[4] + im_i[5]) * sqrt_2_n) >>> 14;
-    im_temp[5] = ((im_i[4] - im_i[5]) * sqrt_2_n) >>> 14;
-    im_temp[6] = ((im_i[6] + im_i[7]) * sqrt_2_n) >>> 14;
-    im_temp[7] = ((im_i[6] - im_i[7]) * sqrt_2_n) >>> 14;
-  end else if (TARGET == 1) begin
-    re_temp[0] = ((re_i[0] + re_i[2]) * sqrt_2_n) >>> 14;
-    re_temp[1] = ((re_i[1] + re_i[3]) * sqrt_2_n) >>> 14;
-    re_temp[2] = ((re_i[0] - re_i[2]) * sqrt_2_n) >>> 14;
-    re_temp[3] = ((re_i[1] - re_i[3]) * sqrt_2_n) >>> 14;
-    re_temp[4] = ((re_i[4] + re_i[6]) * sqrt_2_n) >>> 14;
-    re_temp[5] = ((re_i[5] + re_i[7]) * sqrt_2_n) >>> 14;
-    re_temp[6] = ((re_i[4] - re_i[6]) * sqrt_2_n) >>> 14;
-    re_temp[7] = ((re_i[5] - re_i[7]) * sqrt_2_n) >>> 14;
-    
-    im_temp[0] = ((im_i[0] + im_i[2]) * sqrt_2_n) >>> 14;
-    im_temp[1] = ((im_i[1] + im_i[3]) * sqrt_2_n) >>> 14;
-    im_temp[2] = ((im_i[0] - im_i[2]) * sqrt_2_n) >>> 14;
-    im_temp[3] = ((im_i[1] - im_i[3]) * sqrt_2_n) >>> 14;
-    im_temp[4] = ((im_i[4] + im_i[6]) * sqrt_2_n) >>> 14;
-    im_temp[5] = ((im_i[5] + im_i[7]) * sqrt_2_n) >>> 14;
-    im_temp[6] = ((im_i[4] - im_i[6]) * sqrt_2_n) >>> 14;
-    im_temp[7] = ((im_i[5] - im_i[7]) * sqrt_2_n) >>> 14;
-  end else if (TARGET == 2) begin
-    re_temp[0] = ((re_i[0] + re_i[4]) * sqrt_2_n) >>> 14;
-    re_temp[1] = ((re_i[1] + re_i[5]) * sqrt_2_n) >>> 14;
-    re_temp[2] = ((re_i[2] + re_i[6]) * sqrt_2_n) >>> 14;
-    re_temp[3] = ((re_i[3] + re_i[7]) * sqrt_2_n) >>> 14;
-    re_temp[4] = ((re_i[0] - re_i[4]) * sqrt_2_n) >>> 14;
-    re_temp[5] = ((re_i[1] - re_i[5]) * sqrt_2_n) >>> 14;
-    re_temp[6] = ((re_i[2] - re_i[6]) * sqrt_2_n) >>> 14;
-    re_temp[7] = ((re_i[3] - re_i[7]) * sqrt_2_n) >>> 14;
-    
-    im_temp[0] = ((im_i[0] + im_i[4]) * sqrt_2_n) >>> 14;
-    im_temp[1] = ((im_i[1] + im_i[5]) * sqrt_2_n) >>> 14;
-    im_temp[2] = ((im_i[2] + im_i[6]) * sqrt_2_n) >>> 14;
-    im_temp[3] = ((im_i[3] + im_i[7]) * sqrt_2_n) >>> 14;
-    im_temp[4] = ((im_i[0] - im_i[4]) * sqrt_2_n) >>> 14;
-    im_temp[5] = ((im_i[1] - im_i[5]) * sqrt_2_n) >>> 14;
-    im_temp[6] = ((im_i[2] - im_i[6]) * sqrt_2_n) >>> 14;
-    im_temp[7] = ((im_i[3] - im_i[7]) * sqrt_2_n) >>> 14;
-  end else begin
-    for (int i = 0; i < STATES; i++) begin
-      re_temp[i] = re_i[i];
-      im_temp[i] = im_i[i];
-    end
-  end
-end
+localparam logic signed [15:0] SQRT_2_N = 16'h2D41; //1/sqrt(2)
 
 genvar i; //Creates multiple iterations of the same circuit
 
@@ -92,9 +30,18 @@ generate
 
 for (i = 0; i < STATES; i++) begin: gen_hadamard
 
-  assign re_o[i] = re_temp[i][15:0]; //Output for each index
-  assign im_o[i] = im_temp[i][15:0];
-
+    if (TARGET < QUBITS) begin //Check to make sure use does not enter target greater than number of qubits
+        if ((i & POS) == 0) begin //Finds phase bit
+            assign re_o[i] = 16'(((32'(re_i[i] + re_i[i + POS]) * SQRT_2_N) + HALF_LSB) >>> 14);
+            assign im_o[i] = 16'(((32'(im_i[i] + im_i[i + POS]) * SQRT_2_N) + HALF_LSB) >>> 14);
+        end else begin
+            assign re_o[i] = 16'(((32'(re_i[i - POS] - re_i[i]) * SQRT_2_N) + HALF_LSB) >>> 14);
+            assign im_o[i] = 16'(((32'(im_i[i - POS] - im_i[i]) * SQRT_2_N) + HALF_LSB) >>> 14);
+        end
+    end else begin
+        assign re_o[i] = re_i[i];
+        assign im_o[i] = im_i[i];
+    end
 end
 
 endgenerate
